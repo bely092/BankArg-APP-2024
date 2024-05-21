@@ -13,6 +13,7 @@
 |[IEEE830](https://github.com/ISPC-BankArg-2024/.github/wiki/08-IEEE830)|Documentacion del IEEE830|
 |[Testing](https://github.com/ISPC-BankArg-2024/.github/wiki/09-Testing)|Todo lo de testing del proyecto|
 |[Videos](https://github.com/ISPC-BankArg-2024/.github/wiki/10-Videos)|Todos los videos de los proyectos|
+|[Retrospective Sprint](https://github.com/ISPC-BankArg-2024/.github/wiki/11-Retrospective-Sprint)|Tablero Ideaboard|
 
 <br>
 
