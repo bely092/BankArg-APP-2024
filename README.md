@@ -38,6 +38,6 @@
 <br>
 
 
-### [Figma](https://www.figma.com/file/AhjScpyVarUiVG0H8JI1IR/BankArg-Dise%C3%B1o-y-prototipado?type=design&node-id=0%3A1&mode=design&t=0lbUY3KUcLKTkotq-1)
+### [Figma de APP](https://www.figma.com/file/AhjScpyVarUiVG0H8JI1IR/BankArg-Dise%C3%B1o-y-prototipado?type=design&node-id=0%3A1&mode=design&t=0lbUY3KUcLKTkotq-1)
 ### [Mapa](https://github.com/ISPC-BankArg-2024/BankArg-APP-2024/blob/main/Documentacion/Mapa/BankArg-Web-Mapa.pdf)
 ### <center>[Proyecto Kangbang](https://github.com/orgs/ISPC-BankArg-2024/projects/1/views/1)</center>
