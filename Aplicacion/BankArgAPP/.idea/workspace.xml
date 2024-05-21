@@ -4,22 +4,56 @@
     <shared>
       <config />
     </shared>
+    <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/font/poppins.xml">
+        <config>
+          <theme>@style/Theme.BankArgAPP</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_contact.xml">
+        <config>
+          <theme>@style/Theme.BankArgAPP</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
+        <config>
+          <theme>@style/Theme.BankArgAPP</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+        <config>
+          <theme>@style/Theme.BankArgAPP</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_support.xml">
+        <config>
+          <theme>@style/Theme.BankArgAPP</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_transfer.xml">
+        <config>
+          <theme>@style/Theme.BankArgAPP</theme>
+        </config>
+      </layout>
+    </layouts>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01698c86-09c7-45f0-891b-38ab5d695451" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lalita/bankargapp/UsuariosSQLiteHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lalita/bankargapp/UsuariosSQLiteHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\ezegi\.android\avd\Pixel_2_API_30.avd]" />
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Ezequiel Giampaoli\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -92,9 +126,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "ScreenRecorder.SavePath": "C:\\Users\\ezegi\\OneDrive\\Documentos\\Educacion\\ISPC\\ISPC",
+    "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
-    "last_opened_file_path": "C:/Users/ezegi/OneDrive/Documentos/Educacion/ISPC/ISPC"
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/Ezequiel Giampaoli/Documents/Educacion/ISPC/TP Final/BankArg-APP-2024/Aplicacion/BankArgAPP"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -116,6 +152,7 @@
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
       <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
       <option name="CLEAR_LOGCAT" value="false" />
