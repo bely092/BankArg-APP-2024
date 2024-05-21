@@ -1,9 +1,5 @@
-# BankArg-APP
-BankArg repository. Universitary Project (ISPC)
-
-### Wiki: https://github.com/egiam/BankArg-APP/wiki
-
-### Indice de Wiki
+# Indice
+<br>
 
 |Topic|Description|
 |---|---|
@@ -18,53 +14,30 @@ BankArg repository. Universitary Project (ISPC)
 |[Testing](https://github.com/ISPC-BankArg-2024/.github/wiki/09-Testing)|Todo lo de testing del proyecto|
 |[Videos](https://github.com/ISPC-BankArg-2024/.github/wiki/10-Videos)|Todos los videos de los proyectos|
 
-***
+<br>
 
 
 
----
 
-# Integrantes actuales
+## Personal Involucrado
 
-1. Ezequiel Giampaoli - Email: ezegiampaoli@gmail.com - GitHub: egiam
-2. Maria Laura Peralta - Email: lali.635@gmail.com - Github: PeraltaMariaL-ISPC (peraltaml.ispc@gmail.com)
-3. Valentin Alterio - Email: alteriovalentin01@gmail.com - Github: Valealterio
-4. Joaquin Bonvechi - Email: joacobonvechi2272002@gmail.com - GitHub: JoacoBonvechi
+| Nombre              | Rol        | Usuario de Github | Responsabilidad | Información de contacto          |
+|---------------------|------------|-------------------|-----------------|---------------------------------|
+| Ezequiel Giampaoli  | Developer / Scrum Master  | egiam             | Developer       | ezegiampaoli@gmail.com          |
+| Maria Laura Peralta | Developer  | PeraltaMariaL-ISPC| Developer       | lali.635@gmail.com              |
+| Valentin ALterio    | Developer  | Valealterio       | Developer       | alteriovalentin01@gmail.com     |
+| Joaquin Bonvechi    | Developer  | JoacoBonvechi     | Developer       | joacobonvechi2272002@gmail.com  |
+| Rodrigo Leiva       | Developer  | rodrileiv         | Developer       | rodrigoleiva1995@hotmail.com   |
+| Paula Cabrera       | Developer / Scrum Master  | paulac23          | Developer       | paucabrera95@gmail.com         |
+| Brian Galarza       | Abandono | galarzabrian      | Abandono | briangalarza71@gmail.com       |
+| David Spuler        | Abandono | davidspuler       | Abandono | davidspuler68@gmail.com        |
+| Roberto Carlos Osores | Developer | roberto-osores   | Developer       | osoresroberto@gmail.com        |
+| Belen Riquelme      | Developer  | bely092           | Developer       | koen.lion92@gmail.com          |
 
 
-***
+<br>
 
-## Repositorio Anterior
-* [https://github.com/egiam/BankArg-ISPC](https://github.com/egiam/BankArg-ISPC)
 
-## Videos Anteriores
-* (2022): [https://youtu.be/rN-Nq3JZeyk](https://youtu.be/rN-Nq3JZeyk)
-* (2023): [https://www.youtube.com/watch?v=ht3yoEX2-hU&t=7s](https://www.youtube.com/watch?v=ht3yoEX2-hU&t=7s)
 
-## Pagina Beta 2022
-* [https://egiam.github.io/BankArg-ISPC/front/index.html](https://egiam.github.io/BankArg-ISPC/front/index.html)
-
-## Wiki
-* [https://github.com/egiam/BankArg-APP/wiki](https://github.com/egiam/BankArg-APP/wiki)
-
-## IEEE830
-* [https://docs.google.com](https://docs.google.com/document/d/1GP3mUcusSDJSBabNtAv_j24QICd07vWKgxNyWRG0tnY/edit?usp=drivesdk)
-
-## Diagrama Relacional
-* https://dbdiagram.io/d/BankArg-6503c0ec02bd1c4a5e9c89a1
-
-## Diseño de la Aplicacion en Figma
-* https://www.figma.com/file/AhjScpyVarUiVG0H8JI1IR/BankArg-Dise%C3%B1o-y-prototipado?type=design&node-id=0%3A1&mode=design&t=0lbUY3KUcLKTkotq-1
-
-## Planificación de casos de prueba
-* https://docs.google.com/spreadsheets/d/11NFxOZDACnIeen5MOgz6tVU_wM_sal1cWBXQvdNFUrE/edit?usp=sharing
-
-## Video Demo Navegacion 
-* https://www.youtube.com/watch?v=gYrCypQRQHs&t=18s
-
-## Casos de Prueba automatizados con Selenium
-Se trabajó sobre el sitio web https://www.saucedemo.com/, realizando 5 casos de prueba del login:
-* https://drive.google.com/file/d/1Q9ZL32cUeXCvk-MjsvOEhLSU_vXFrAHX/view?usp=sharing
-
-## Video Accesibilidad
-* https://drive.google.com/file/d/14V0KGYr_Ks8LxnSK9O2djWtU8z715ri_/view?usp=sharing
+### Mapa: https://github.com/ISPC-BankArg-2024/BankArg-Web-2024/blob/main/Documentacion%202023/Mapa/BankArg-Web-Mapa.pdf
+### <center>Proyecto Kangbang: https://github.com/orgs/ISPC-BankArg-2024/projects/1/views/1</center>
