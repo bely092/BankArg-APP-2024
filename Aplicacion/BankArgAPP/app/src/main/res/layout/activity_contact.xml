@@ -193,7 +193,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/lbl_mensaje" />
 
             <Button
-                android:id="@+id/Enviar"
+                android:id="@+id/btn_editar"
                 android:layout_width="260dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="16dp"
@@ -236,7 +236,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Enviar"
+                app:layout_constraintTop_toBottomOf="@+id/btn_editar"
                 app:layout_constraintTop_toTopOf="@+id/rectangle_2" />
             <!-- FOOTER END -->
 

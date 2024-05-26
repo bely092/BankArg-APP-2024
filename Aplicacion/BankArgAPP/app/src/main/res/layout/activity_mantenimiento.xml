@@ -60,7 +60,7 @@
             <!--            HEADER END -->
 
             <Button
-                android:id="@+id/Enviar"
+                android:id="@+id/btn_editar"
                 android:layout_width="260dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="16dp"

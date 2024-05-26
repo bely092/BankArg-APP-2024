@@ -196,7 +196,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/rectangle_2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Enviar" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_editar" />
             <!-- FOOTER END -->
 
 

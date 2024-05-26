@@ -3,11 +3,14 @@ package com.lalita.bankargapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+    private DatabaseHelper dbHelper;
+    private SQLiteDatabase db;
 
     //variable de tipo Button
     Button btnInicio;
@@ -18,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Acceso al loguin
+        //Acceso al login
         btnInicio = findViewById(R.id.btn_main_in);
         btnInicio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivities(new Intent[]{intent});
             }
         });
+
+        dbHelper = new DatabaseHelper(this);
+        db = dbHelper.getWritableDatabase();
+
+        // Ejemplo: Insertar un documento
+        db.execSQL("INSERT INTO Documentos (tipo_doc) VALUES ('DNI');");
     }
 
 }
