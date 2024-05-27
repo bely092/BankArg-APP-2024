@@ -346,7 +346,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView2"
                 android:layout_width="349dp"
-                android:layout_height="800dp"
+                android:layout_height="900dp"
                 android:layout_margin="30dp"
                 android:background="@drawable/custom_edittext"
                 app:cardBackgroundColor="@color/col2"
