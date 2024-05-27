@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2C3333"
+    android:background="@color/col1"
     tools:context=".LoginActivity">
 
     <ImageButton
@@ -30,7 +30,7 @@
         android:layout_width="349dp"
         android:layout_height="355dp"
         android:layout_margin="30dp"
-        app:cardBackgroundColor="#E7F6F2"
+        app:cardBackgroundColor="@color/col2"
         app:cardCornerRadius="30dp"
         app:cardElevation="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:background="#2C3333"
+            android:background="@color/col1"
             android:orientation="vertical"
             android:padding="25dp">
 
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:text="INICIAR SESION"
                 android:textAlignment="center"
-                android:textColor="#E7F6F2"
+                android:textColor="@color/col2"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -102,12 +102,13 @@
                 android:id="@+id/signupText"
                 android:layout_width="293dp"
                 android:layout_height="49dp"
+                android:layout_marginTop="20dp"
                 android:clickable="true"
                 android:onClick="onClick"
                 android:padding="8dp"
                 android:text="No estas registrado? registrate ahora"
                 android:textAlignment="center"
-                android:textColor="#E7F6F2"
+                android:textColor="@color/col2"
                 android:textColorLink="@color/col3"
                 android:textSize="12sp"
                 android:textStyle="italic" />
