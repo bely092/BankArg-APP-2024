@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/col1"
+    android:background="#2C3333"
     tools:context=".LoginActivity">
 
     <ImageButton
         android:id="@+id/imageButton9"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="250dp"
+        android:layout_height="270dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:adjustViewBounds="true"
@@ -30,10 +30,9 @@
         android:layout_width="349dp"
         android:layout_height="355dp"
         android:layout_margin="30dp"
-        android:background="@drawable/custom_edittext"
-        app:cardBackgroundColor="@color/col2"
+        app:cardBackgroundColor="#E7F6F2"
         app:cardCornerRadius="30dp"
-        app:cardElevation="20dp"
+        app:cardElevation="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,17 +42,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
+            android:background="#2C3333"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="25dp">
 
             <TextView
                 android:id="@+id/loginText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Login"
+                android:text="INICIAR SESION"
                 android:textAlignment="center"
-                android:textColor="@color/col3"
-                android:textSize="36sp"
+                android:textColor="#E7F6F2"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -61,40 +61,41 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="25dp"
-                android:background="@drawable/custom_edittext"
+                android:background="@drawable/borde_redondeado"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
-                android:hint="Username"
+                android:hint="Usuario"
                 android:padding="8dp"
-                android:textColorHint="@color/col1"
-                android:textColor="@color/col1"
-                android:textColorHighlight="@color/cardview_dark_background" />
+                android:textColor="#2C3333"
+                android:textColorHighlight="#2C3333"
+                android:textColorHint="#2C3333"
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext"
+                android:background="@drawable/borde_redondeado"
                 android:drawableLeft="@drawable/baseline_lock_person_24"
                 android:drawablePadding="8dp"
-                android:hint="Password"
+                android:hint="Contraseña"
                 android:inputType="textPassword"
                 android:padding="8dp"
-                android:textColorHint="@color/col1"
-                android:textColor="@color/col1"
-                android:textColorHighlight="@color/cardview_dark_background" />
+                android:textColor="#2C3333"
+                android:textColorHighlight="#2C3333"
+                android:textColorHint="#2C3333"
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/loginButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/col3"
-                android:text="Acceder"
+                android:backgroundTint="@color/col5"
+                android:text="INGRESAR"
                 android:textColor="@color/col2"
-                android:textSize="26sp"
-                android:textStyle="bold"
+                android:textSize="14sp"
                 app:cornerRadius="24dp" />
 
             <TextView
@@ -104,10 +105,12 @@
                 android:clickable="true"
                 android:onClick="onClick"
                 android:padding="8dp"
-                android:text="Not yet registered? SignUp Now"
+                android:text="No estas registrado? registrate ahora"
                 android:textAlignment="center"
-                android:textColor="@color/col1"
-                android:textSize="19sp" />
+                android:textColor="#E7F6F2"
+                android:textColorLink="@color/col3"
+                android:textSize="12sp"
+                android:textStyle="italic" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

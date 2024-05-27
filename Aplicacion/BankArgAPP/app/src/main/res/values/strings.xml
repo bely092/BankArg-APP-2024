@@ -5,7 +5,7 @@
 
     <!-- LOGIN -->
     <string name="title_app_login">Login</string>
-    <string name="btn_acceder">Acceder</string>
+    <string name="btn_acceder">ACCEDER</string>
     <string name="form_user">Usuario</string>
     <string name="form_password">Contraseña</string>
     <string name="bankarg_des">© BankArg | Designed by BankArg</string>
