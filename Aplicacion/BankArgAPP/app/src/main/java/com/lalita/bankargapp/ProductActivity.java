@@ -32,6 +32,17 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
 
+        /*--- Boton en el tool bar que lleva al perfil---*/
+
+        View btnPerfil = findViewById(R.id.account_cir);
+        btnPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProductActivity.this, PerfilActivity.class);
+                startActivity(intent);
+            }
+        });
+
         btnBanking = findViewById(R.id.btn_pago_servicios);
         btnLoan = findViewById(R.id.btn_pago_prestamos);
         btnTransfer = findViewById(R.id.btn_pago_tarjeta);
