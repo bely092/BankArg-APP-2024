@@ -75,7 +75,7 @@
                     app:circularflow_radiusInDP="10sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_transfer" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_pago_tarjeta" />
 
                 <View
                     android:id="@+id/view6"
@@ -88,7 +88,7 @@
                     app:circularflow_radiusInDP="10sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_loan" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_pago_prestamos" />
 
                 <View
                     android:id="@+id/view5"
@@ -101,7 +101,7 @@
                     app:circularflow_radiusInDP="10sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_pagos" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_pago_cuentas" />
 
                 <View
                     android:id="@+id/view4"
@@ -114,7 +114,7 @@
                     app:circularflow_radiusInDP="10sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_banking" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_pago_servicios" />
 
                 <View
                     android:id="@+id/view3"
@@ -154,7 +154,7 @@
                     app:srcCompat="@mipmap/banking" />
 
                 <Button
-                    android:id="@+id/btn_banking"
+                    android:id="@+id/btn_pago_servicios"
                     android:layout_width="350dp"
                     android:layout_height="80dp"
                     android:layout_marginTop="50dp"
@@ -194,7 +194,7 @@
                     app:srcCompat="@mipmap/pago_foreground" />
 
                 <Button
-                    android:id="@+id/btn_pagos"
+                    android:id="@+id/btn_pago_cuentas"
                     android:layout_width="350dp"
                     android:layout_height="80dp"
                     android:layout_marginTop="50dp"
@@ -234,7 +234,7 @@
                     app:srcCompat="@mipmap/prestamo" />
 
                 <Button
-                    android:id="@+id/btn_loan"
+                    android:id="@+id/btn_pago_prestamos"
                     android:layout_width="350dp"
                     android:layout_height="80dp"
                     android:layout_marginTop="50dp"
@@ -274,7 +274,7 @@
                     app:srcCompat="@mipmap/transferencia" />
 
                 <Button
-                    android:id="@+id/btn_transfer"
+                    android:id="@+id/btn_pago_tarjeta"
                     android:layout_width="350dp"
                     android:layout_height="80dp"
                     android:backgroundTint="#395B64"
@@ -314,7 +314,7 @@
                     app:srcCompat="@mipmap/token" />
 
                 <Button
-                    android:id="@+id/button10"
+                    android:id="@+id/btn_pago_producto"
                     android:layout_width="350dp"
                     android:layout_height="80dp"
                     android:layout_marginTop="50dp"

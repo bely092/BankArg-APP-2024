@@ -32,10 +32,10 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
 
-        btnBanking = findViewById(R.id.btn_banking);
-        btnLoan = findViewById(R.id.btn_loan);
-        btnTransfer = findViewById(R.id.btn_transfer);
-        btnPagos = findViewById(R.id.btn_pagos);
+        btnBanking = findViewById(R.id.btn_pago_servicios);
+        btnLoan = findViewById(R.id.btn_pago_prestamos);
+        btnTransfer = findViewById(R.id.btn_pago_tarjeta);
+        btnPagos = findViewById(R.id.btn_pago_cuentas);
 
         btnTransfer.setOnClickListener(new View.OnClickListener() {
             @Override
