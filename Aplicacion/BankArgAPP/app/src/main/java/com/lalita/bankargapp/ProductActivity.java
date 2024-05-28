@@ -25,7 +25,7 @@ public class ProductActivity extends AppCompatActivity {
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
-    Button btnBanking, btnLoan, btnTransfer;
+    Button btnBanking, btnLoan, btnTransfer, btnPagos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class ProductActivity extends AppCompatActivity {
         btnBanking = findViewById(R.id.btn_banking);
         btnLoan = findViewById(R.id.btn_loan);
         btnTransfer = findViewById(R.id.btn_transfer);
+        btnPagos = findViewById(R.id.btn_pagos);
 
         btnTransfer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +57,14 @@ public class ProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ProductActivity.this, BankingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnPagos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductActivity.this, PagosActivity.class);
                 startActivity(intent);
             }
         });
