@@ -1,73 +1,31 @@
 package com.lalita.bankargapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class ProductActivity extends AppCompatActivity {
+public class PagosActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
-    Button btnBanking, btnLoan, btnTransfer, btnPagos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_products);
-
-        btnBanking = findViewById(R.id.btn_banking);
-        btnLoan = findViewById(R.id.btn_loan);
-        btnTransfer = findViewById(R.id.btn_transfer);
-        btnPagos = findViewById(R.id.btn_pagos);
-
-        btnTransfer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProductActivity.this, TransferActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnLoan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProductActivity.this, LoanActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnBanking.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProductActivity.this, BankingActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnPagos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProductActivity.this, PagosActivity.class);
-                startActivity(intent);
-            }
-        });
+        setContentView(R.layout.activity_pagos);
 
         /*---------------------Hooks------------------------*/
         drawerLayout=findViewById(R.id.drawer_layout);
@@ -87,7 +45,7 @@ public class ProductActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
 
-                ProductActivity activity = ProductActivity.this;
+                PagosActivity activity = PagosActivity.this;
                 if (itemId == R.id.nav_home) {
                     Intent intent = new Intent(activity, HomeActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Home is selected");
@@ -139,32 +97,5 @@ public class ProductActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-
     }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (toggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-//    Product
-//    public void SobreNosotros() {
-//        Intent intent = new Intent(ProductActivity.this, SobreNosotrosActivity.class);
-//        startActivity(intent);
-//    }
-
 }
