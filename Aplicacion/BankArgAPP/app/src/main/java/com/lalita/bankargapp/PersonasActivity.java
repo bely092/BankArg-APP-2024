@@ -43,6 +43,17 @@ public class PersonasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personas);
 
+        /*--- Boton en el tool bar que lleva al perfil---*/
+
+        View btnPerfil = findViewById(R.id.account_cir);
+        btnPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PersonasActivity.this, PerfilActivity.class);
+                startActivity(intent);
+            }
+        });
+
         nombreEditText = findViewById(R.id.nombre);
         apellidoEditText = findViewById(R.id.apellido);
         passwordEditText = findViewById(R.id.password);

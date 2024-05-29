@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -21,11 +23,75 @@ public class PagosActivity extends AppCompatActivity {
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
+    Button btnPagoServicio, btnPagoCuenta, btnPagoPrestamo, btnPagoTarjeta, btnPagoProducto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagos);
+
+        /*--- Boton en el tool bar que lleva al perfil---*/
+
+        View btnPerfil = findViewById(R.id.account_cir);
+        btnPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PagosActivity.this, PerfilActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+        /*--- Botones de Pago de servicios ---*/
+        btnPagoServicio = findViewById(R.id.btn_pago_servicios);
+        btnPagoCuenta = findViewById(R.id.btn_pago_cuentas);
+        btnPagoPrestamo = findViewById(R.id.btn_pago_prestamos);
+        btnPagoTarjeta = findViewById(R.id.btn_pago_tarjeta);
+        btnPagoProducto= findViewById(R.id.btn_pago_producto);
+
+        /*--- Modificar Las Activity class cuando se creen las vistas ---*/
+        btnPagoServicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PagosActivity.this, PagosActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnPagoCuenta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PagosActivity.this, PagosActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnPagoPrestamo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PagosActivity.this, PagosActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnPagoTarjeta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PagosActivity.this, PagosActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnPagoProducto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PagosActivity.this, PagosActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         /*---------------------Hooks------------------------*/
         drawerLayout=findViewById(R.id.drawer_layout);
