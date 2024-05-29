@@ -14,7 +14,8 @@
 
     <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbarSize="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -72,6 +73,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/baseline_person_pin_24"
+                android:clickable="false"
                 app:layout_constraintEnd_toEndOf="@+id/linearLayout"
                 app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
@@ -142,6 +144,8 @@
                 android:text="@string/bankarg_des"
                 android:textAppearance="@style/bankarg_des"
                 android:textColor="@color/col2"
+                android:textSize="14sp"
+                android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -163,11 +167,11 @@
             <TextView
                 android:id="@+id/joaqu_n_bon"
                 android:layout_width="251dp"
-                android:layout_height="79dp"
+                android:layout_height="120dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="72dp"
+                android:layout_marginTop="38dp"
                 android:layout_marginEnd="2dp"
                 android:fontFamily="@font/poppins"
                 android:gravity="center_horizontal|center_vertical"
@@ -344,6 +348,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="50dp"
                 android:backgroundTint="@color/col1"
+                android:scrollbarStyle="outsideOverlay"
                 android:text="Editar Datos"
                 android:textColor="@color/col6"
                 android:textSize="14sp"

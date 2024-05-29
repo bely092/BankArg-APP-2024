@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -29,6 +30,17 @@ public class TransferActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer);
+
+        /*--- Boton en el tool bar que lleva al perfil---*/
+
+        View btnPerfil = findViewById(R.id.account_cir);
+        btnPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TransferActivity.this, PerfilActivity.class);
+                startActivity(intent);
+            }
+        });
 
         /*---------------------Hooks------------------------*/
         drawerLayout=findViewById(R.id.drawer_layout);

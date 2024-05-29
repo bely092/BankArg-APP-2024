@@ -35,6 +35,17 @@ public class SupportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_support);
 
+        /*--- Boton en el tool bar que lleva al perfil---*/
+
+        View btnPerfil = findViewById(R.id.account_cir);
+        btnPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SupportActivity.this, PerfilActivity.class);
+                startActivity(intent);
+            }
+        });
+
         /*---------------------Hooks------------------------*/
         drawerLayout=findViewById(R.id.drawer_layout);
         toolbar=findViewById(R.id.toolbar);
