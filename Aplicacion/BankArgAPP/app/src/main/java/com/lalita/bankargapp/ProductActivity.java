@@ -32,6 +32,7 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
 
+
         /*--- Boton en el tool bar que lleva al perfil---*/
 
         View btnPerfil = findViewById(R.id.account_cir);

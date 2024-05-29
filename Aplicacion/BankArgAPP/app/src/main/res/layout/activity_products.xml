@@ -6,12 +6,14 @@
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
+    android:background="@color/col1"
     android:fitsSystemWindows="false"
     tools:context=".ProductActivity">
 
     <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbarSize="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -23,6 +25,7 @@
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/col1"
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.Toolbar
@@ -58,29 +61,30 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="3700dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-                <View
-                    android:id="@+id/view7"
-                    android:layout_width="350dp"
-                    android:layout_height="500dp"
-                    android:layout_marginTop="100dp"
-                    android:background="#F8F9FA"
-                    app:circularflow_angles="10sp"
-                    app:circularflow_defaultRadius="10sp"
-                    app:circularflow_radiusInDP="10sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_pago_tarjeta" />
+
+                <!-- <View
+                     android:id="@+id/view7"
+                     android:layout_width="350dp"
+                     android:layout_height="500dp"
+                     android:layout_marginTop="100dp"
+                     android:background="#F8F9FA"
+                     app:circularflow_angles="10sp"
+                     app:circularflow_defaultRadius="10sp"
+                     app:circularflow_radiusInDP="10sp"
+                     app:layout_constraintEnd_toEndOf="parent"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toBottomOf="@+id/btn_pago_tarjeta" /> -->
 
                 <View
                     android:id="@+id/view6"
                     android:layout_width="350dp"
-                    android:layout_height="500dp"
+                    android:layout_height="450dp"
                     android:layout_marginTop="100dp"
                     android:background="#F8F9FA"
                     app:circularflow_angles="10sp"
@@ -93,7 +97,7 @@
                 <View
                     android:id="@+id/view5"
                     android:layout_width="350dp"
-                    android:layout_height="500dp"
+                    android:layout_height="450dp"
                     android:layout_marginTop="100dp"
                     android:background="#F8F9FA"
                     app:circularflow_angles="10sp"
@@ -106,7 +110,7 @@
                 <View
                     android:id="@+id/view4"
                     android:layout_width="350dp"
-                    android:layout_height="500dp"
+                    android:layout_height="450dp"
                     android:layout_marginTop="100dp"
                     android:background="#F8F9FA"
                     app:circularflow_angles="10sp"
@@ -119,20 +123,19 @@
                 <View
                     android:id="@+id/view3"
                     android:layout_width="350dp"
-                    android:layout_height="500dp"
-                    android:background="#F8F9FA"
+                    android:layout_height="450dp"
+                    android:background="@color/col4"
                     app:circularflow_angles="10sp"
                     app:circularflow_defaultRadius="10sp"
                     app:circularflow_radiusInDP="10sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.491"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView20"
                     android:layout_width="305dp"
-                    android:layout_height="184dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:fontFamily="@font/poppins"
                     android:text="Tendrás acceso a tus cuentas y podrás revisar tus movimientos de dinero en cualquier momento y desde todos los dispositivos asociados"
@@ -155,14 +158,14 @@
 
                 <Button
                     android:id="@+id/btn_pago_servicios"
-                    android:layout_width="350dp"
+                    android:layout_width="300dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="50dp"
-                    android:backgroundTint="#395B64"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/col5"
                     android:fontFamily="@font/poppins"
                     android:text="Home Banking"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     app:cornerRadius="7sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -172,7 +175,7 @@
                 <TextView
                     android:id="@+id/textView21"
                     android:layout_width="303dp"
-                    android:layout_height="127dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:fontFamily="@font/poppins"
                     android:text="Podrás agregar servicios, hacer pagos únicos y recibir alertas de vencimientos"
@@ -195,14 +198,14 @@
 
                 <Button
                     android:id="@+id/btn_pago_cuentas"
-                    android:layout_width="350dp"
+                    android:layout_width="300dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="50dp"
-                    android:backgroundTint="#395B64"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/col5"
                     android:fontFamily="@font/poppins"
                     android:text="Pagos"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     app:cornerRadius="7sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -213,7 +216,7 @@
                     android:id="@+id/textView22"
                     android:layout_width="305dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="@font/poppins"
                     android:text="¿Te quedaste sin efectivo? No te preocupes, te préstamos en cómodas cuotas y si acreditas tu sueldo con nosotros accedes a tasas preferenciales"
                     android:textAlignment="center"
@@ -235,14 +238,14 @@
 
                 <Button
                     android:id="@+id/btn_pago_prestamos"
-                    android:layout_width="350dp"
+                    android:layout_width="300dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="50dp"
-                    android:backgroundTint="#395B64"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/col5"
                     android:fontFamily="@font/poppins"
                     android:text="Prestamos"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     app:cornerRadius="7sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -275,13 +278,14 @@
 
                 <Button
                     android:id="@+id/btn_pago_tarjeta"
-                    android:layout_width="350dp"
+                    android:layout_width="300dp"
                     android:layout_height="80dp"
-                    android:backgroundTint="#395B64"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/col5"
                     android:fontFamily="@font/poppins"
                     android:text="Transferencias"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     app:cornerRadius="7sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -289,67 +293,71 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view6" />
 
-                <TextView
-                    android:id="@+id/textView24"
-                    android:layout_width="305dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:fontFamily="@font/poppins"
-                    android:text="Todas tus transacciones se validarán con un token para mayor seguridad"
-                    android:textAlignment="center"
-                    android:textColor="#767676"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="@+id/view7"
-                    app:layout_constraintStart_toStartOf="@+id/view7"
-                    app:layout_constraintTop_toTopOf="@+id/view7" />
+                <!--
+                 <TextView
+                     android:id="@+id/textView24"
+                     android:layout_width="305dp"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="50dp"
+                     android:fontFamily="@font/poppins"
+                     android:text="Todas tus transacciones se validarán con un token para mayor seguridad"
+                     android:textAlignment="center"
+                     android:textColor="#767676"
+                     android:textSize="20sp"
+                     app:layout_constraintEnd_toEndOf="@+id/view7"
+                     app:layout_constraintStart_toStartOf="@+id/view7"
+                     app:layout_constraintTop_toTopOf="@+id/view7" />
 
-                <ImageView
-                    android:id="@+id/imageView20"
-                    android:layout_width="250dp"
-                    android:layout_height="250dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/view7"
-                    app:layout_constraintEnd_toEndOf="@+id/view7"
-                    app:layout_constraintStart_toStartOf="@+id/view7"
-                    app:layout_constraintTop_toBottomOf="@+id/textView24"
-                    app:srcCompat="@mipmap/token" />
+                 <ImageView
+                     android:id="@+id/imageView20"
+                     android:layout_width="250dp"
+                     android:layout_height="250dp"
+                     app:layout_constraintBottom_toBottomOf="@+id/view7"
+                     app:layout_constraintEnd_toEndOf="@+id/view7"
+                     app:layout_constraintStart_toStartOf="@+id/view7"
+                     app:layout_constraintTop_toBottomOf="@+id/textView24"
+                     app:srcCompat="@mipmap/token" />
 
-                <Button
-                    android:id="@+id/btn_pago_producto"
-                    android:layout_width="350dp"
-                    android:layout_height="80dp"
-                    android:layout_marginTop="50dp"
-                    android:backgroundTint="#395B64"
-                    android:fontFamily="@font/poppins"
-                    android:text="Validaciones"
-                    android:textColor="#FFFFFF"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    app:cornerRadius="7sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view7" />
+                 <Button
+                     android:id="@+id/btn_pago_producto"
+                     android:layout_width="300dp"
+                     android:layout_height="80dp"
+                     android:layout_marginTop="50dp"
+                     android:backgroundTint="@color/col5"
+                     android:fontFamily="@font/poppins"
+                     android:text="Validaciones"
+                     android:textColor="#FFFFFF"
+                     android:textSize="24sp"
+                     android:textStyle="bold"
+                     app:cornerRadius="7sp"
+                     app:layout_constraintEnd_toEndOf="parent"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toBottomOf="@+id/view7" /> -->
 
                 <View
-                    android:id="@+id/view8"
+                    android:id="@+id/view_bot"
                     android:layout_width="wrap_content"
                     android:layout_height="57dp"
-                    android:background="#E7F6F2"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="50dp"
+                    android:background="@color/col1"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btn_pago_tarjeta" />
 
                 <TextView
-                    android:id="@+id/textView25"
+                    android:id="@+id/textViewBot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/bankarg_des"
-                    android:textColor="#000000"
+                    android:textColor="@color/col2"
                     android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/view8"
-                    app:layout_constraintEnd_toEndOf="@+id/view8"
-                    app:layout_constraintStart_toStartOf="@+id/view8"
-                    app:layout_constraintTop_toTopOf="@+id/view8" />
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/view_bot"
+                    app:layout_constraintEnd_toEndOf="@+id/view_bot"
+                    app:layout_constraintStart_toStartOf="@+id/view_bot"
+                    app:layout_constraintTop_toTopOf="@+id/view_bot" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!--            HEADER END -->

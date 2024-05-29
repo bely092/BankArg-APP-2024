@@ -14,14 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="@color/col1"
-        android:fadeScrollbars="false"
-        android:isScrollContainer="false"
-        android:keepScreenOn="false"
-        android:nestedScrollingEnabled="false"
-        android:scrollbarSize="0dp"
-        android:scrollbarStyle="insideOverlay"
-        android:touchscreenBlocksFocus="false"
-        android:visibility="visible">
+        android:scrollbarSize="0dp">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -60,18 +54,23 @@
                 android:background="@drawable/baseline_person_pin_24"
                 android:clickable="true"
                 android:contextClickable="false"
+                android:focusable="true"
                 app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-                app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+                app:layout_constraintTop_toTopOf="@+id/linearLayout"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <!--   HEADER END -->
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="3700dp"
-                android:layout_marginTop="50dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="5dp"
                 android:background="@color/col6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
+                <!--
                 <View
                     android:id="@+id/view7"
                     android:layout_width="350dp"
@@ -109,13 +108,13 @@
                     app:circularflow_radiusInDP="10sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_pago_cuentas" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_pago_cuentas" /> -->
 
                 <View
                     android:id="@+id/view4"
                     android:layout_width="350dp"
-                    android:layout_height="500dp"
-                    android:layout_marginTop="100dp"
+                    android:layout_height="450dp"
+                    android:layout_marginTop="80dp"
                     android:background="@color/col2"
                     app:circularflow_angles="10sp"
                     app:circularflow_defaultRadius="10sp"
@@ -127,7 +126,8 @@
                 <View
                     android:id="@+id/view3"
                     android:layout_width="350dp"
-                    android:layout_height="500dp"
+                    android:layout_height="450dp"
+                    android:layout_marginTop="20dp"
                     android:background="@color/col2"
                     app:circularflow_angles="10sp"
                     app:circularflow_defaultRadius="10sp"
@@ -143,9 +143,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:fontFamily="@font/poppins"
-                    android:text="Podras agregar servicios, hacer pagos únicos y recibir alertas de vencimientos"
+                    android:text="@string/servicio"
                     android:textAlignment="center"
-                    android:textColor="#767676"
+                    android:textColor="@color/col1"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="@+id/view3"
                     app:layout_constraintStart_toStartOf="@+id/view3"
@@ -163,7 +163,7 @@
 
                 <Button
                     android:id="@+id/btn_pago_servicios"
-                    android:layout_width="350dp"
+                    android:layout_width="300dp"
                     android:layout_height="80dp"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="@color/col5"
@@ -183,9 +183,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:fontFamily="@font/poppins"
-                    android:text="Paga tus cuentas en un solo lugar"
+                    android:text="@string/cuentas"
                     android:textAlignment="center"
-                    android:textColor="#767676"
+                    android:textColor="@color/col1"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="@+id/view4"
                     app:layout_constraintStart_toStartOf="@+id/view4"
@@ -199,11 +199,11 @@
                     app:layout_constraintEnd_toEndOf="@+id/view4"
                     app:layout_constraintStart_toStartOf="@+id/view4"
                     app:layout_constraintTop_toBottomOf="@+id/textView21"
-                    app:srcCompat="@mipmap/pago_foreground" />
+                    app:srcCompat="@drawable/card" />
 
                 <Button
                     android:id="@+id/btn_pago_cuentas"
-                    android:layout_width="350dp"
+                    android:layout_width="300dp"
                     android:layout_height="80dp"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="@color/col5"
@@ -217,6 +217,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view4" />
 
+
+
+                <!--
                 <TextView
                     android:id="@+id/textView22"
                     android:layout_width="305dp"
@@ -339,32 +342,36 @@
                     app:cornerRadius="24dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view7" />
+                    app:layout_constraintTop_toBottomOf="@+id/view7" />  -->
+
+                <!--  Footer -->
 
                 <View
-                    android:id="@+id/view8"
+                    android:id="@+id/view_bot"
                     android:layout_width="wrap_content"
                     android:layout_height="57dp"
-                    android:background="@color/col2"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="100dp"
+                    android:background="@color/col1"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_pago_cuentas" />
 
                 <TextView
                     android:id="@+id/textView25"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/bankarg_des"
-                    android:textColor="@color/black"
+                    android:textColor="@color/col2"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    app:layout_constraintBottom_toBottomOf="@+id/view8"
-                    app:layout_constraintEnd_toEndOf="@+id/view8"
-                    app:layout_constraintStart_toStartOf="@+id/view8"
-                    app:layout_constraintTop_toTopOf="@+id/view8" />
+                    app:layout_constraintBottom_toBottomOf="@+id/view_bot"
+                    app:layout_constraintEnd_toEndOf="@+id/view_bot"
+                    app:layout_constraintStart_toStartOf="@+id/view_bot"
+                    app:layout_constraintTop_toTopOf="@+id/view_bot" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!--            HEADER END -->
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

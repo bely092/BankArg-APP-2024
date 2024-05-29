@@ -16,6 +16,12 @@
             android:name=".PagosActivity"
             android:exported="false" />
         <activity
+            android:name=".PagoServicioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PagoCuentasActivity"
+            android:exported="false" />
+        <activity
             android:name=".PersonasActivity"
             android:exported="false" />
         <activity

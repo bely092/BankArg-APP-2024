@@ -67,6 +67,8 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="servicio" translatable="false">Podras agregar servicios, hacer pagos únicos. Realiza el pago de tus productos de manera segura.</string>
+    <string name="cuentas" translatable="false">Paga tus préstamos en cómodas cuotas o realiza el pago de tus tarjetas de manera online.</string>
 
 </resources>
 
