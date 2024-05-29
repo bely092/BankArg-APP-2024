@@ -179,27 +179,56 @@ public class PersonasActivity extends AppCompatActivity {
         int tipoDoc = getSpinnerId(tipoDocSpinner, "Documentos", "id_tipo_doc");
         String nroDoc = nroDocEditText.getText().toString();
         int localidad = getSpinnerId(localidadSpinner, "Localidades", "cod_localidad");
-        int nroCalle = Integer.parseInt(nroCalleEditText.getText().toString());
+        String nroCalleStr = nroCalleEditText.getText().toString();
         String calle = calleEditText.getText().toString();
         String fechaNac = fechaNacEditText.getText().toString();
         int tipoSexo = getSpinnerId(tipoSexoSpinner, "Sexos", "id_tipo_sexo");
+
+        if (nombre.isEmpty() || apellido.isEmpty() || password.isEmpty() || nroDoc.isEmpty() ||
+                nroCalleStr.isEmpty() || calle.isEmpty() || fechaNac.isEmpty() || tipoDoc == -1 ||
+                localidad == -1 || tipoSexo == -1) {
+            Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        int nroCalle;
+        try {
+            nroCalle = Integer.parseInt(nroCalleStr);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Número de calle inválido", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         usuariosSQLiteHelper.insertarUsuario(nombre, apellido, password, tipoDoc, nroDoc, localidad, nroCalle, calle, fechaNac, tipoSexo);
         Toast.makeText(this, "Usuario guardado correctamente", Toast.LENGTH_SHORT).show();
     }
 
     private void actualizarUsuario() {
-        if (usuarioId != -1) { // Ensure a user is selected for update
             String nombre = nombreEditText.getText().toString();
             String apellido = apellidoEditText.getText().toString();
             String password = passwordEditText.getText().toString();
             int tipoDoc = getSpinnerId(tipoDocSpinner, "Documentos", "id_tipo_doc");
             String nroDoc = nroDocEditText.getText().toString();
             int localidad = getSpinnerId(localidadSpinner, "Localidades", "cod_localidad");
-            int nroCalle = Integer.parseInt(nroCalleEditText.getText().toString());
+            String nroCalleStr = nroCalleEditText.getText().toString();
             String calle = calleEditText.getText().toString();
             String fechaNac = fechaNacEditText.getText().toString();
             int tipoSexo = getSpinnerId(tipoSexoSpinner, "Sexos", "id_tipo_sexo");
+
+            if (nombre.isEmpty() || apellido.isEmpty() || password.isEmpty() || nroDoc.isEmpty() ||
+                    nroCalleStr.isEmpty() || calle.isEmpty() || fechaNac.isEmpty() || tipoDoc == -1 ||
+                    localidad == -1 || tipoSexo == -1) {
+                Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+        int nroCalle;
+        try {
+            nroCalle = Integer.parseInt(nroCalleStr);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Número de calle inválido", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
             int id = usuariosSQLiteHelper.buscarUsuarioId(nombre, apellido, nroDoc);
 
@@ -211,7 +240,6 @@ public class PersonasActivity extends AppCompatActivity {
             }
 
 //          usuariosSQLiteHelper.actualizarUsuario(usuarioId, nombre, apellido, password, tipoDoc, nroDoc, localidad, nroCalle, calle, fechaNac, tipoSexo);
-        }
     }
 
     private void LoadSpinnerData(String columnName, String tableName, Spinner spinner) {
