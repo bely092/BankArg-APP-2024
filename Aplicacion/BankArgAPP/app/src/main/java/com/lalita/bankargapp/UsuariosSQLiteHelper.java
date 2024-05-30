@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.lalita.bankargapp.Clases.User;
+import com.lalita.bankargapp.Clases.Usuario;
 import com.lalita.bankargapp.Clases.Usuarios;
 
 import java.util.ArrayList;
@@ -948,8 +949,8 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
     public int buscarUsuarioId(String nombre, String apellido, String nroDoc) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query("Usuarios", new String[]{"id_usuario"},
-                "nombre" + "=? AND " + "apellido" + "=? AND " + "nro_doc" + "=?",
-                new String[]{nombre, apellido, nroDoc}, null, null, null);
+                "nombre" + "=? AND " + "nro_doc" + "=?",
+                new String[]{nombre, nroDoc}, null, null, null);
 
         if (cursor != null && cursor.moveToFirst()) {
             @SuppressLint("Range") int userId = cursor.getInt(cursor.getColumnIndex("id_usuario"));
@@ -958,6 +959,40 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
         }
 
         return -1; // Return -1 if user is not found
+    }
+
+    public List<Usuario> getAllUsuarios() {
+        List<Usuario> usuarios = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT u.*, d.tipo_doc AS DocNombre, l.localidad AS LocalidadNombre, s.tipo AS SexoNombre " +
+                "FROM Usuarios u " +
+                "JOIN Documentos d ON u.id_tipo_doc = d.id_tipo_doc " +
+                "JOIN Localidades l ON u.cod_localidad = l.cod_localidad " +
+                "JOIN Sexos s ON u.id_tipo_sexo = s.id_tipo_sexo";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Usuario usuario = new Usuario(
+                        cursor.getInt(cursor.getColumnIndex("id_usuario")),
+                        cursor.getString(cursor.getColumnIndex("nombre")),
+                        cursor.getString(cursor.getColumnIndex("apellido")),
+                        cursor.getString(cursor.getColumnIndex("password")),
+                        cursor.getString(cursor.getColumnIndex("DocNombre")),
+                        cursor.getString(cursor.getColumnIndex("nro_doc")),
+                        cursor.getString(cursor.getColumnIndex("LocalidadNombre")),
+                        cursor.getInt(cursor.getColumnIndex("nro_calle")),
+                        cursor.getString(cursor.getColumnIndex("calle")),
+                        cursor.getString(cursor.getColumnIndex("fecha_nac")),
+                        cursor.getString(cursor.getColumnIndex("SexoNombre"))
+                );
+                usuarios.add(usuario);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return usuarios;
     }
 
     public List<String> getAllLabels(String columnName, String tableName) {
