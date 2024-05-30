@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,10 +19,13 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.lalita.bankargapp.Clases.Usuario;
+import com.lalita.bankargapp.Clases.UsuarioAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +41,8 @@ public class PersonasActivity extends AppCompatActivity {
     private Spinner tipoDocSpinner, localidadSpinner, tipoSexoSpinner;
     private Button saveButton, updateButton;
     private UsuariosSQLiteHelper usuariosSQLiteHelper;
+    private ListView listViewUsuarios;
+    private RecyclerView recyclerViewUsuarios;
     private int usuarioId = -1; // -1 means it's a new user
 
     @Override
@@ -66,6 +73,8 @@ public class PersonasActivity extends AppCompatActivity {
         tipoSexoSpinner = findViewById(R.id.tipo_sexo);
         saveButton = findViewById(R.id.btn_agregar);
         updateButton = findViewById(R.id.btn_editar);
+//        listViewUsuarios = findViewById(R.id.listViewUsuarios);
+        recyclerViewUsuarios = findViewById(R.id.recyclerUsuarios);
 
         usuariosSQLiteHelper = new UsuariosSQLiteHelper(this);
 
@@ -99,6 +108,9 @@ public class PersonasActivity extends AppCompatActivity {
             }
         });
 
+        recyclerViewUsuarios.setLayoutManager(new LinearLayoutManager(this));
+
+        loadUserData();
 
         /*---------------------Hooks------------------------*/
         drawerLayout=findViewById(R.id.drawer_layout);
@@ -179,39 +191,69 @@ public class PersonasActivity extends AppCompatActivity {
         int tipoDoc = getSpinnerId(tipoDocSpinner, "Documentos", "id_tipo_doc");
         String nroDoc = nroDocEditText.getText().toString();
         int localidad = getSpinnerId(localidadSpinner, "Localidades", "cod_localidad");
-        int nroCalle = Integer.parseInt(nroCalleEditText.getText().toString());
+        String nroCalleStr = nroCalleEditText.getText().toString();
         String calle = calleEditText.getText().toString();
         String fechaNac = fechaNacEditText.getText().toString();
         int tipoSexo = getSpinnerId(tipoSexoSpinner, "Sexos", "id_tipo_sexo");
 
+        if (nombre.isEmpty() || apellido.isEmpty() || password.isEmpty() || nroDoc.isEmpty() ||
+                nroCalleStr.isEmpty() || calle.isEmpty() || fechaNac.isEmpty() || tipoDoc == -1 ||
+                localidad == -1 || tipoSexo == -1) {
+            Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        int nroCalle;
+        try {
+            nroCalle = Integer.parseInt(nroCalleStr);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Número de calle inválido", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         usuariosSQLiteHelper.insertarUsuario(nombre, apellido, password, tipoDoc, nroDoc, localidad, nroCalle, calle, fechaNac, tipoSexo);
         Toast.makeText(this, "Usuario guardado correctamente", Toast.LENGTH_SHORT).show();
+        loadUserData();
     }
 
     private void actualizarUsuario() {
-        if (usuarioId != -1) { // Ensure a user is selected for update
             String nombre = nombreEditText.getText().toString();
             String apellido = apellidoEditText.getText().toString();
             String password = passwordEditText.getText().toString();
             int tipoDoc = getSpinnerId(tipoDocSpinner, "Documentos", "id_tipo_doc");
             String nroDoc = nroDocEditText.getText().toString();
             int localidad = getSpinnerId(localidadSpinner, "Localidades", "cod_localidad");
-            int nroCalle = Integer.parseInt(nroCalleEditText.getText().toString());
+            String nroCalleStr = nroCalleEditText.getText().toString();
             String calle = calleEditText.getText().toString();
             String fechaNac = fechaNacEditText.getText().toString();
             int tipoSexo = getSpinnerId(tipoSexoSpinner, "Sexos", "id_tipo_sexo");
+
+            if (nombre.isEmpty() || apellido.isEmpty() || password.isEmpty() || nroDoc.isEmpty() ||
+                    nroCalleStr.isEmpty() || calle.isEmpty() || fechaNac.isEmpty() || tipoDoc == -1 ||
+                    localidad == -1 || tipoSexo == -1) {
+                Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+        int nroCalle;
+        try {
+            nroCalle = Integer.parseInt(nroCalleStr);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Número de calle inválido", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
             int id = usuariosSQLiteHelper.buscarUsuarioId(nombre, apellido, nroDoc);
 
             if (id != -1) {
                 usuariosSQLiteHelper.actualizarUsuario(id, nombre, apellido, password, tipoDoc, nroDoc, localidad, nroCalle, calle, fechaNac, tipoSexo);
                 Toast.makeText(this, "Usuario actualizado correctamente", Toast.LENGTH_SHORT).show();
+                loadUserData();
             } else {
                 Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_SHORT).show();
             }
 
 //          usuariosSQLiteHelper.actualizarUsuario(usuarioId, nombre, apellido, password, tipoDoc, nroDoc, localidad, nroCalle, calle, fechaNac, tipoSexo);
-        }
     }
 
     private void LoadSpinnerData(String columnName, String tableName, Spinner spinner) {
@@ -226,6 +268,18 @@ public class PersonasActivity extends AppCompatActivity {
         List<Integer> ids = usuariosSQLiteHelper.getAllIds(COLUMN_ID, tableName);
         return ids.get(position);
     }
+
+    private void loadUserData() {
+        List<Usuario> usuarios = usuariosSQLiteHelper.getAllUsuarios();
+        UsuarioAdapter adapter = new UsuarioAdapter(usuarios);
+        recyclerViewUsuarios.setAdapter(adapter);
+    }
+
+//    private void loadUserData() {
+//        List<Usuario> usuarios = usuariosSQLiteHelper.getAllUsuarios();
+//        UsuarioAdapter adapter = new UsuarioAdapter(this, usuarios);
+//        listViewUsuarios.setAdapter(adapter);
+//    }
 
     private void loadSpinnerData(String COLUMN_NAME, String TABLE_NAME, Spinner SPINNER) {
         List<String> labels = getAllLabels(COLUMN_NAME, TABLE_NAME);
