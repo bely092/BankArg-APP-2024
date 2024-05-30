@@ -87,462 +87,494 @@
             <!--                android:id="@+id/fragment_container"/>-->
 
             <!-- Header Ends -->
-<!--            <View-->
-<!--                android:id="@+id/rectangle_3"-->
-<!--                android:layout_width="fill_parent"-->
-<!--                android:layout_height="83dp"-->
-<!--                android:layout_alignParentLeft="true"-->
-<!--                android:layout_alignParentTop="true"-->
-<!--                android:layout_marginTop="24dp"-->
-<!--                android:background="@color/col2"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.507"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/icono_usuar" />-->
+            <!--            <View-->
+            <!--                android:id="@+id/rectangle_3"-->
+            <!--                android:layout_width="fill_parent"-->
+            <!--                android:layout_height="83dp"-->
+            <!--                android:layout_alignParentLeft="true"-->
+            <!--                android:layout_alignParentTop="true"-->
+            <!--                android:layout_marginTop="24dp"-->
+            <!--                android:background="@color/col2"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintHorizontal_bias="0.507"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/icono_usuar" />-->
 
-<!--            <View-->
-<!--                android:id="@+id/local_atm"-->
-<!--                android:layout_width="48dp"-->
-<!--                android:layout_height="49dp"-->
-<!--                android:layout_alignParentLeft="true"-->
-<!--                android:layout_alignParentTop="true"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:background="@drawable/baseline_monetization_on_24"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/rectangle_3"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/rectangle_3"-->
-<!--                app:layout_constraintVertical_bias="0.47" />-->
+            <!--            <View-->
+            <!--                android:id="@+id/local_atm"-->
+            <!--                android:layout_width="48dp"-->
+            <!--                android:layout_height="49dp"-->
+            <!--                android:layout_alignParentLeft="true"-->
+            <!--                android:layout_alignParentTop="true"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:background="@drawable/baseline_monetization_on_24"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"-->
+            <!--                app:layout_constraintStart_toStartOf="@+id/rectangle_3"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/rectangle_3"-->
+            <!--                app:layout_constraintVertical_bias="0.47" />-->
 
-<!--            <View-->
-<!--                android:id="@+id/rectangle_2"-->
-<!--                android:layout_width="fill_parent"-->
-<!--                android:layout_height="57dp"-->
-<!--                android:layout_alignParentLeft="true"-->
-<!--                android:layout_alignParentTop="true"-->
-<!--                android:background="#E7F6F2"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent" />-->
+            <!--            <View-->
+            <!--                android:id="@+id/rectangle_2"-->
+            <!--                android:layout_width="fill_parent"-->
+            <!--                android:layout_height="57dp"-->
+            <!--                android:layout_alignParentLeft="true"-->
+            <!--                android:layout_alignParentTop="true"-->
+            <!--                android:background="#E7F6F2"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/bankarg_des"-->
-<!--                android:layout_width="433dp"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:layout_alignParentLeft="true"-->
-<!--                android:layout_alignParentTop="true"-->
-<!--                android:gravity="center_horizontal|center_vertical"-->
-<!--                android:text="@string/bankarg_des"-->
-<!--                android:textAppearance="@style/bankarg_des"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/rectangle_2"-->
-<!--                app:layout_constraintVertical_bias="1.0" />-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/bankarg_des"-->
+            <!--                android:layout_width="433dp"-->
+            <!--                android:layout_height="50dp"-->
+            <!--                android:layout_alignParentLeft="true"-->
+            <!--                android:layout_alignParentTop="true"-->
+            <!--                android:gravity="center_horizontal|center_vertical"-->
+            <!--                android:text="@string/bankarg_des"-->
+            <!--                android:textAppearance="@style/bankarg_des"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/rectangle_2"-->
+            <!--                app:layout_constraintVertical_bias="1.0" />-->
 
-<!--            <View-->
-<!--                android:id="@+id/icono_usuar"-->
-<!--                android:layout_width="170dp"-->
-<!--                android:layout_height="170dp"-->
-<!--                android:layout_alignParentLeft="true"-->
-<!--                android:layout_alignParentTop="true"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:layout_marginTop="38dp"-->
-<!--                android:background="@drawable/baseline_person_4_24"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />-->
+            <!--            <View-->
+            <!--                android:id="@+id/icono_usuar"-->
+            <!--                android:layout_width="170dp"-->
+            <!--                android:layout_height="170dp"-->
+            <!--                android:layout_alignParentLeft="true"-->
+            <!--                android:layout_alignParentTop="true"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:layout_marginTop="38dp"-->
+            <!--                android:background="@drawable/baseline_person_4_24"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/joaqu_n_bon"-->
-<!--                android:layout_width="269dp"-->
-<!--                android:layout_height="110dp"-->
-<!--                android:layout_alignParentLeft="true"-->
-<!--                android:layout_alignParentTop="true"-->
-<!--                android:layout_marginStart="8dp"-->
-<!--                android:layout_marginTop="72dp"-->
-<!--                android:layout_marginEnd="8dp"-->
-<!--                android:fontFamily="@font/poppins"-->
-<!--                android:gravity="center_horizontal|center_vertical"-->
-<!--                android:text="@string/joaqu_n_bon"-->
-<!--                android:textAppearance="@style/joaqu_n_bon"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.472"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/icono_usuar"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/joaqu_n_bon"-->
+            <!--                android:layout_width="269dp"-->
+            <!--                android:layout_height="110dp"-->
+            <!--                android:layout_alignParentLeft="true"-->
+            <!--                android:layout_alignParentTop="true"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginTop="72dp"-->
+            <!--                android:layout_marginEnd="8dp"-->
+            <!--                android:fontFamily="@font/poppins"-->
+            <!--                android:gravity="center_horizontal|center_vertical"-->
+            <!--                android:text="@string/joaqu_n_bon"-->
+            <!--                android:textAppearance="@style/joaqu_n_bon"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintHorizontal_bias="0.472"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/icono_usuar"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/balance"-->
-<!--                android:layout_width="122dp"-->
-<!--                android:layout_height="39dp"-->
-<!--                android:layout_marginStart="20dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:layout_marginBottom="8dp"-->
-<!--                android:fontFamily="@font/poppins"-->
-<!--                android:text="Balance:"-->
-<!--                android:textSize="28dp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/local_atm"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/rectangle_3"-->
-<!--                app:layout_constraintVertical_bias="0.392" />-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/balance"-->
+            <!--                android:layout_width="122dp"-->
+            <!--                android:layout_height="39dp"-->
+            <!--                android:layout_marginStart="20dp"-->
+            <!--                android:layout_marginTop="8dp"-->
+            <!--                android:layout_marginBottom="8dp"-->
+            <!--                android:fontFamily="@font/poppins"-->
+            <!--                android:text="Balance:"-->
+            <!--                android:textSize="28dp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/local_atm"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/rectangle_3"-->
+            <!--                app:layout_constraintVertical_bias="0.392" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/some_id"-->
-<!--                android:layout_width="167dp"-->
-<!--                android:layout_height="46dp"-->
-<!--                android:layout_alignParentLeft="true"-->
-<!--                android:layout_alignParentTop="true"-->
-<!--                android:layout_marginStart="8dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:layout_marginEnd="24dp"-->
-<!--                android:layout_marginBottom="8dp"-->
-<!--                android:fontFamily="@font/poppins"-->
-<!--                android:gravity="center_horizontal|center_vertical"-->
-<!--                android:text="@string/some_id"-->
-<!--                android:textAppearance="@style/some_id"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/rectangle_3"-->
-<!--                app:layout_constraintHorizontal_bias="0.262"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/balance"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/rectangle_3"-->
-<!--                app:layout_constraintVertical_bias="0.432" />-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/some_id"-->
+            <!--                android:layout_width="167dp"-->
+            <!--                android:layout_height="46dp"-->
+            <!--                android:layout_alignParentLeft="true"-->
+            <!--                android:layout_alignParentTop="true"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginTop="8dp"-->
+            <!--                android:layout_marginEnd="24dp"-->
+            <!--                android:layout_marginBottom="8dp"-->
+            <!--                android:fontFamily="@font/poppins"-->
+            <!--                android:gravity="center_horizontal|center_vertical"-->
+            <!--                android:text="@string/some_id"-->
+            <!--                android:textAppearance="@style/some_id"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"-->
+            <!--                app:layout_constraintEnd_toEndOf="@+id/rectangle_3"-->
+            <!--                app:layout_constraintHorizontal_bias="0.262"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/balance"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/rectangle_3"-->
+            <!--                app:layout_constraintVertical_bias="0.432" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/CVU"-->
-<!--                android:layout_width="192dp"-->
-<!--                android:layout_height="32dp"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:layout_marginTop="56dp"-->
-<!--                android:layout_marginEnd="8dp"-->
-<!--                android:fontFamily="@font/poppins"-->
-<!--                android:text="4562238744196"-->
-<!--                android:textColor="#000000"-->
-<!--                android:textSize="24dp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.016"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/tu_cvu_alia"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/CVU"-->
+            <!--                android:layout_width="192dp"-->
+            <!--                android:layout_height="32dp"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:layout_marginTop="56dp"-->
+            <!--                android:layout_marginEnd="8dp"-->
+            <!--                android:fontFamily="@font/poppins"-->
+            <!--                android:text="4562238744196"-->
+            <!--                android:textColor="#000000"-->
+            <!--                android:textSize="24dp"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintHorizontal_bias="0.016"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/tu_cvu_alia"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/Email"-->
-<!--                android:layout_width="260dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:layout_marginTop="24dp"-->
-<!--                android:layout_marginEnd="8dp"-->
-<!--                android:fontFamily="@font/poppins"-->
-<!--                android:text="nicoquinonero@gmail.com"-->
-<!--                android:textColor="#000000"-->
-<!--                android:textSize="24dp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.04"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/tu_cvu_alia"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/DNI" />-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/Email"-->
+            <!--                android:layout_width="260dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:layout_marginTop="24dp"-->
+            <!--                android:layout_marginEnd="8dp"-->
+            <!--                android:fontFamily="@font/poppins"-->
+            <!--                android:text="nicoquinonero@gmail.com"-->
+            <!--                android:textColor="#000000"-->
+            <!--                android:textSize="24dp"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintHorizontal_bias="0.04"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/tu_cvu_alia"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/DNI" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/Telefono"-->
-<!--                android:layout_width="192dp"-->
-<!--                android:layout_height="32dp"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:layout_marginTop="40dp"-->
-<!--                android:layout_marginEnd="8dp"-->
-<!--                android:fontFamily="@font/poppins"-->
-<!--                android:text="351223547"-->
-<!--                android:textColor="#000000"-->
-<!--                android:textSize="24dp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.016"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/tu_cvu_alia"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/Alias" />-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/Telefono"-->
+            <!--                android:layout_width="192dp"-->
+            <!--                android:layout_height="32dp"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:layout_marginTop="40dp"-->
+            <!--                android:layout_marginEnd="8dp"-->
+            <!--                android:fontFamily="@font/poppins"-->
+            <!--                android:text="351223547"-->
+            <!--                android:textColor="#000000"-->
+            <!--                android:textSize="24dp"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintHorizontal_bias="0.016"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/tu_cvu_alia"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/Alias" />-->
 
-<!--            <ImageButton-->
-<!--                android:id="@+id/imageButton7"-->
-<!--                android:layout_width="50dp"-->
-<!--                android:layout_height="55dp"-->
-<!--                android:layout_marginTop="96dp"-->
-<!--                android:background="@color/col6"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/Alias"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/rectangle_3"-->
-<!--                app:srcCompat="@drawable/baseline_content_copy_24" />-->
+            <!--            <ImageButton-->
+            <!--                android:id="@+id/imageButton7"-->
+            <!--                android:layout_width="50dp"-->
+            <!--                android:layout_height="55dp"-->
+            <!--                android:layout_marginTop="96dp"-->
+            <!--                android:background="@color/col6"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/Alias"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/rectangle_3"-->
+            <!--                app:srcCompat="@drawable/baseline_content_copy_24" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/DNI"-->
-<!--                android:layout_width="192dp"-->
-<!--                android:layout_height="32dp"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:layout_marginTop="35dp"-->
-<!--                android:layout_marginEnd="8dp"-->
-<!--                android:fontFamily="@font/poppins"-->
-<!--                android:text="31524679"-->
-<!--                android:textColor="#000000"-->
-<!--                android:textSize="24dp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.016"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/tu_cvu_alia"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/Telefono" />-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/DNI"-->
+            <!--                android:layout_width="192dp"-->
+            <!--                android:layout_height="32dp"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:layout_marginTop="35dp"-->
+            <!--                android:layout_marginEnd="8dp"-->
+            <!--                android:fontFamily="@font/poppins"-->
+            <!--                android:text="31524679"-->
+            <!--                android:textColor="#000000"-->
+            <!--                android:textSize="24dp"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintHorizontal_bias="0.016"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/tu_cvu_alia"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/Telefono" />-->
 
-<!--            <ImageButton-->
-<!--                android:id="@+id/imageButton5"-->
-<!--                android:layout_width="50dp"-->
-<!--                android:layout_height="55dp"-->
-<!--                android:layout_marginTop="44dp"-->
-<!--                android:background="@color/col6"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/CVU"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/rectangle_3"-->
-<!--                app:srcCompat="@drawable/baseline_content_copy_24" />-->
+            <!--            <ImageButton-->
+            <!--                android:id="@+id/imageButton5"-->
+            <!--                android:layout_width="50dp"-->
+            <!--                android:layout_height="55dp"-->
+            <!--                android:layout_marginTop="44dp"-->
+            <!--                android:background="@color/col6"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/CVU"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/rectangle_3"-->
+            <!--                app:srcCompat="@drawable/baseline_content_copy_24" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/tu_cvu_alia"-->
-<!--                android:layout_width="120dp"-->
-<!--                android:layout_height="338dp"-->
-<!--                android:layout_alignParentLeft="true"-->
-<!--                android:layout_alignParentTop="true"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:layout_marginTop="56dp"-->
-<!--                android:fontFamily="@font/poppins"-->
-<!--                android:gravity="top"-->
-<!--                android:text="@string/tu_cvu_alia"-->
-<!--                android:textAppearance="@style/tu_cvu_alia"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/tu_cvu_alia"-->
+            <!--                android:layout_width="120dp"-->
+            <!--                android:layout_height="338dp"-->
+            <!--                android:layout_alignParentLeft="true"-->
+            <!--                android:layout_alignParentTop="true"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:layout_marginTop="56dp"-->
+            <!--                android:fontFamily="@font/poppins"-->
+            <!--                android:gravity="top"-->
+            <!--                android:text="@string/tu_cvu_alia"-->
+            <!--                android:textAppearance="@style/tu_cvu_alia"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/Alias"-->
-<!--                android:layout_width="192dp"-->
-<!--                android:layout_height="32dp"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:layout_marginTop="30dp"-->
-<!--                android:layout_marginEnd="8dp"-->
-<!--                android:fontFamily="@font/poppins"-->
-<!--                android:text="Elmago"-->
-<!--                android:textColor="#000000"-->
-<!--                android:textSize="24dp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.016"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/tu_cvu_alia"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/CVU" />-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/Alias"-->
+            <!--                android:layout_width="192dp"-->
+            <!--                android:layout_height="32dp"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:layout_marginTop="30dp"-->
+            <!--                android:layout_marginEnd="8dp"-->
+            <!--                android:fontFamily="@font/poppins"-->
+            <!--                android:text="Elmago"-->
+            <!--                android:textColor="#000000"-->
+            <!--                android:textSize="24dp"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintHorizontal_bias="0.016"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/tu_cvu_alia"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/CVU" />-->
 
-<!--            <Button-->
-<!--                android:id="@+id/btn_editar"-->
-<!--                android:layout_width="260dp"-->
-<!--                android:layout_height="60dp"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:layout_marginTop="24dp"-->
-<!--                android:layout_marginEnd="16dp"-->
-<!--                android:layout_marginBottom="50dp"-->
-<!--                android:backgroundTint="@color/col1"-->
-<!--                android:text="Editar Datos"-->
-<!--                android:textSize="26dp"-->
-<!--                android:textColor="@color/col6"-->
-<!--                app:cornerRadius="10dp"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/rectangle_2"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/Email" />-->
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView2"
-                android:layout_width="349dp"
-                android:layout_height="900dp"
-                android:layout_margin="30dp"
-                android:background="@drawable/custom_edittext"
-                app:cardBackgroundColor="@color/col2"
-                app:cardCornerRadius="30dp"
-                app:cardElevation="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+            <!--            <Button-->
+            <!--                android:id="@+id/btn_editar"-->
+            <!--                android:layout_width="260dp"-->
+            <!--                android:layout_height="60dp"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:layout_marginTop="24dp"-->
+            <!--                android:layout_marginEnd="16dp"-->
+            <!--                android:layout_marginBottom="50dp"-->
+            <!--                android:backgroundTint="@color/col1"-->
+            <!--                android:text="Editar Datos"-->
+            <!--                android:textSize="26dp"-->
+            <!--                android:textColor="@color/col6"-->
+            <!--                app:cornerRadius="10dp"-->
+            <!--                app:layout_constraintBottom_toTopOf="@+id/rectangle_2"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/Email" />-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="1100dp"
+                android:background="#FFFFFF"
+                android:backgroundTint="#FFFFFF"
+                android:foregroundGravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="24dp">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView2"
+                    android:layout_width="349dp"
+                    android:layout_height="900dp"
+                    android:layout_marginTop="50sp"
+                    android:background="@drawable/custom_edittext"
+                    app:cardBackgroundColor="@color/col2"
+                    app:cardCornerRadius="30dp"
+                    app:cardElevation="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/loginText"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Personas"
-                        android:textAlignment="center"
-                        android:textColor="@color/col3"
-                        android:textSize="36sp"
-                        android:textStyle="bold" />
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="24dp">
 
-                    <EditText
-                        android:id="@+id/nombre"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="25dp"
-                        android:background="@drawable/custom_edittext"
-                        android:drawableLeft="@drawable/baseline_person_24"
-                        android:drawablePadding="8dp"
-                        android:hint="Nombre"
-                        android:padding="8dp"
-                        android:textColor="@color/col1"
-                        android:textColorHighlight="@color/cardview_dark_background"
-                        android:textColorHint="@color/col1" />
+                        <TextView
+                            android:id="@+id/loginText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Personas"
+                            android:textAlignment="center"
+                            android:textColor="@color/col3"
+                            android:textSize="36sp"
+                            android:textStyle="bold" />
 
-                    <EditText
-                        android:id="@+id/apellido"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/custom_edittext"
-                        android:drawableLeft="@drawable/baseline_lock_person_24"
-                        android:drawablePadding="8dp"
-                        android:hint="Apellido"
-                        android:padding="8dp"
-                        android:textColor="@color/col1"
-                        android:textColorHighlight="@color/cardview_dark_background"
-                        android:textColorHint="@color/col1" />
+                        <EditText
+                            android:id="@+id/nombre"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="25dp"
+                            android:background="@drawable/custom_edittext"
+                            android:drawableLeft="@drawable/baseline_person_24"
+                            android:drawablePadding="8dp"
+                            android:hint="Nombre"
+                            android:padding="8dp"
+                            android:textColor="@color/col1"
+                            android:textColorHighlight="@color/cardview_dark_background"
+                            android:textColorHint="@color/col1" />
 
-                    <EditText
-                        android:id="@+id/password"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/custom_edittext"
-                        android:drawableLeft="@drawable/baseline_lock_person_24"
-                        android:drawablePadding="8dp"
-                        android:hint="Password"
-                        android:inputType="textPassword"
-                        android:padding="8dp"
-                        android:textColor="@color/col1"
-                        android:textColorHighlight="@color/cardview_dark_background"
-                        android:textColorHint="@color/col1" />
+                        <EditText
+                            android:id="@+id/apellido"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/custom_edittext"
+                            android:drawableLeft="@drawable/baseline_lock_person_24"
+                            android:drawablePadding="8dp"
+                            android:hint="Apellido"
+                            android:padding="8dp"
+                            android:textColor="@color/col1"
+                            android:textColorHighlight="@color/cardview_dark_background"
+                            android:textColorHint="@color/col1" />
 
-                    <Spinner
-                        android:id="@+id/tipo_doc"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/custom_edittext"
-                        android:drawablePadding="8dp"
-                        android:hint="Tipo Documento"
-                        android:padding="8dp"
-                        android:textColor="@color/col1"
-                        android:textColorHighlight="@color/cardview_dark_background"
-                        android:textColorHint="@color/col1"
-                        android:spinnerMode="dropdown"/>
+                        <EditText
+                            android:id="@+id/password"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/custom_edittext"
+                            android:drawableLeft="@drawable/baseline_lock_person_24"
+                            android:drawablePadding="8dp"
+                            android:hint="Password"
+                            android:inputType="textPassword"
+                            android:padding="8dp"
+                            android:textColor="@color/col1"
+                            android:textColorHighlight="@color/cardview_dark_background"
+                            android:textColorHint="@color/col1" />
 
-                    <EditText
-                        android:id="@+id/nro_doc"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/custom_edittext"
-                        android:drawableLeft="@drawable/baseline_lock_person_24"
-                        android:drawablePadding="8dp"
-                        android:hint="Numero de Documento"
-                        android:padding="8dp"
-                        android:textColor="@color/col1"
-                        android:textColorHighlight="@color/cardview_dark_background"
-                        android:textColorHint="@color/col1" />
+                        <Spinner
+                            android:id="@+id/tipo_doc"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/custom_edittext"
+                            android:drawablePadding="8dp"
+                            android:hint="Tipo Documento"
+                            android:padding="8dp"
+                            android:spinnerMode="dropdown"
+                            android:textColor="@color/col1"
+                            android:textColorHighlight="@color/cardview_dark_background"
+                            android:textColorHint="@color/col1" />
 
-                    <Spinner
-                        android:id="@+id/Localidad"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/custom_edittext"
-                        android:drawablePadding="8dp"
-                        android:hint="Localidad"
-                        android:padding="8dp"
-                        android:textColor="@color/col1"
-                        android:textColorHighlight="@color/cardview_dark_background"
-                        android:textColorHint="@color/col1"
-                        android:spinnerMode="dropdown"/>
+                        <EditText
+                            android:id="@+id/nro_doc"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/custom_edittext"
+                            android:drawableLeft="@drawable/baseline_lock_person_24"
+                            android:drawablePadding="8dp"
+                            android:hint="Numero de Documento"
+                            android:padding="8dp"
+                            android:textColor="@color/col1"
+                            android:textColorHighlight="@color/cardview_dark_background"
+                            android:textColorHint="@color/col1" />
 
-                    <EditText
-                        android:id="@+id/nro_calle"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/custom_edittext"
-                        android:drawableLeft="@drawable/baseline_lock_person_24"
-                        android:drawablePadding="8dp"
-                        android:hint="Numero de calle"
-                        android:padding="8dp"
-                        android:textColor="@color/col1"
-                        android:textColorHighlight="@color/cardview_dark_background"
-                        android:textColorHint="@color/col1" />
+                        <Spinner
+                            android:id="@+id/Localidad"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/custom_edittext"
+                            android:drawablePadding="8dp"
+                            android:hint="Localidad"
+                            android:padding="8dp"
+                            android:spinnerMode="dropdown"
+                            android:textColor="@color/col1"
+                            android:textColorHighlight="@color/cardview_dark_background"
+                            android:textColorHint="@color/col1" />
 
-                    <EditText
-                        android:id="@+id/calle"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/custom_edittext"
-                        android:drawableLeft="@drawable/baseline_lock_person_24"
-                        android:drawablePadding="8dp"
-                        android:hint="Calle"
-                        android:padding="8dp"
-                        android:textColor="@color/col1"
-                        android:textColorHighlight="@color/cardview_dark_background"
-                        android:textColorHint="@color/col1" />
+                        <EditText
+                            android:id="@+id/nro_calle"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/custom_edittext"
+                            android:drawableLeft="@drawable/baseline_lock_person_24"
+                            android:drawablePadding="8dp"
+                            android:hint="Numero de calle"
+                            android:padding="8dp"
+                            android:textColor="@color/col1"
+                            android:textColorHighlight="@color/cardview_dark_background"
+                            android:textColorHint="@color/col1" />
 
-                    <EditText
-                        android:id="@+id/fecha_nac"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/custom_edittext"
-                        android:drawableLeft="@drawable/baseline_lock_person_24"
-                        android:drawablePadding="8dp"
-                        android:hint="Fecha Nac - AAAA-MM-DD"
-                        android:padding="8dp"
-                        android:textColor="@color/col1"
-                        android:textColorHighlight="@color/cardview_dark_background"
-                        android:textColorHint="@color/col1" />
+                        <EditText
+                            android:id="@+id/calle"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/custom_edittext"
+                            android:drawableLeft="@drawable/baseline_lock_person_24"
+                            android:drawablePadding="8dp"
+                            android:hint="Calle"
+                            android:padding="8dp"
+                            android:textColor="@color/col1"
+                            android:textColorHighlight="@color/cardview_dark_background"
+                            android:textColorHint="@color/col1" />
 
-                    <Spinner
-                        android:id="@+id/tipo_sexo"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/custom_edittext"
-                        android:drawablePadding="8dp"
-                        android:hint="Tipo Sexo"
-                        android:padding="8dp"
-                        android:textColor="@color/col1"
-                        android:textColorHighlight="@color/cardview_dark_background"
-                        android:textColorHint="@color/col1"
-                        android:spinnerMode="dropdown"/>
+                        <EditText
+                            android:id="@+id/fecha_nac"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/custom_edittext"
+                            android:drawableLeft="@drawable/baseline_lock_person_24"
+                            android:drawablePadding="8dp"
+                            android:hint="Fecha Nac - AAAA-MM-DD"
+                            android:padding="8dp"
+                            android:textColor="@color/col1"
+                            android:textColorHighlight="@color/cardview_dark_background"
+                            android:textColorHint="@color/col1" />
 
-                    <Button
-                        android:id="@+id/btn_editar"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginTop="20dp"
-                        android:backgroundTint="@color/col3"
-                        android:text="Editar"
-                        android:textColor="@color/col2"
-                        android:textSize="26sp"
-                        android:textStyle="bold"
-                        app:cornerRadius="24dp" />
+                        <Spinner
+                            android:id="@+id/tipo_sexo"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/custom_edittext"
+                            android:drawablePadding="8dp"
+                            android:hint="Tipo Sexo"
+                            android:padding="8dp"
+                            android:spinnerMode="dropdown"
+                            android:textColor="@color/col1"
+                            android:textColorHighlight="@color/cardview_dark_background"
+                            android:textColorHint="@color/col1" />
 
-                    <Button
-                        android:id="@+id/btn_agregar"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginTop="20dp"
-                        android:backgroundTint="@color/col3"
-                        android:text="Agregar"
-                        android:textColor="@color/col2"
-                        android:textSize="26sp"
-                        android:textStyle="bold"
-                        app:cornerRadius="24dp" />
+                        <Button
+                            android:id="@+id/btn_editar"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginTop="20dp"
+                            android:backgroundTint="@color/col3"
+                            android:text="Editar"
+                            android:textColor="@color/col2"
+                            android:textSize="26sp"
+                            android:textStyle="bold"
+                            app:cornerRadius="24dp" />
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        <Button
+                            android:id="@+id/btn_agregar"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginTop="20dp"
+                            android:backgroundTint="@color/col3"
+                            android:text="Agregar"
+                            android:textColor="@color/col2"
+                            android:textSize="26sp"
+                            android:textStyle="bold"
+                            app:cornerRadius="24dp" />
 
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <View
+                    android:id="@+id/view8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="57dp"
+                    android:background="@color/col2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView25"
+                    style="@style/bankarg_des"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bankarg_des"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/view8"
+                    app:layout_constraintEnd_toEndOf="@+id/view8"
+                    app:layout_constraintStart_toStartOf="@+id/view8"
+                    app:layout_constraintTop_toTopOf="@+id/view8" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

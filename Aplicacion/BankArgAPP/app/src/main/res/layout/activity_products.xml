@@ -345,7 +345,6 @@
                     android:text="@string/bankarg_des"
                     android:textColor="#000000"
                     android:textSize="14sp"
-                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/view8"
                     app:layout_constraintEnd_toEndOf="@+id/view8"
                     app:layout_constraintStart_toStartOf="@+id/view8"

@@ -124,35 +124,6 @@
                 app:layout_constraintVertical_bias="0.47" />
 
             <View
-                android:id="@+id/rectangle_2"
-                android:layout_width="fill_parent"
-                android:layout_height="57dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:background="@color/col1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/bankarg_des"
-                android:layout_width="433dp"
-                android:layout_height="50dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="@string/bankarg_des"
-                android:textAppearance="@style/bankarg_des"
-                android:textColor="@color/col2"
-                android:textSize="14sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/rectangle_2"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <View
                 android:id="@+id/icono_usuar"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
@@ -268,14 +239,16 @@
 
             <ImageButton
                 android:id="@+id/imageButton7"
-                android:layout_width="50dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="112dp"
+                android:layout_width="55dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="50dp"
                 android:background="@color/col6"
+                android:contentDescription="copiar alias"
+                app:layout_constraintBottom_toBottomOf="@+id/Alias"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/Alias"
-                app:layout_constraintTop_toBottomOf="@+id/rectangle_3"
+                app:layout_constraintTop_toBottomOf="@+id/CVU"
                 app:srcCompat="@drawable/baseline_content_copy_24" />
 
             <TextView
@@ -296,14 +269,16 @@
 
             <ImageButton
                 android:id="@+id/imageButton5"
-                android:layout_width="50dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="56dp"
+                android:layout_width="55dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="5dp"
                 android:background="@color/col6"
+                android:contentDescription="copiar cbu"
+                app:layout_constraintBottom_toBottomOf="@+id/CVU"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/CVU"
-                app:layout_constraintTop_toBottomOf="@+id/rectangle_3"
+                app:layout_constraintTop_toTopOf="@+id/CVU"
                 app:srcCompat="@drawable/baseline_content_copy_24" />
 
             <TextView
@@ -358,6 +333,27 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Email" />
 
+            <View
+                android:id="@+id/view8"
+                android:layout_width="wrap_content"
+                android:layout_height="57dp"
+                android:background="@color/col2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textView25"
+                style="@style/bankarg_des"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bankarg_des"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/view8"
+                app:layout_constraintEnd_toEndOf="@+id/view8"
+                app:layout_constraintStart_toStartOf="@+id/view8"
+                app:layout_constraintTop_toTopOf="@+id/view8" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

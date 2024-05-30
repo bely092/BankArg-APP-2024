@@ -23,7 +23,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.062"
-        app:srcCompat="@drawable/logo_no_background_1" />
+        app:srcCompat="@drawable/logo_no_background_1"
+        android:contentDescription="logo bankarg"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
@@ -106,11 +107,11 @@
                 android:clickable="true"
                 android:onClick="onClick"
                 android:padding="8dp"
-                android:text="No estas registrado? registrate ahora"
+                android:text="No estas registrado? Registrate ahora"
                 android:textAlignment="center"
                 android:textColor="@color/col2"
                 android:textColorLink="@color/col3"
-                android:textSize="12sp"
+                android:textSize="15sp"
                 android:textStyle="italic" />
 
         </LinearLayout>
