@@ -2,24 +2,18 @@ package com.lalita.bankargapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.MenuItem;
-
 import android.os.Bundle;
 import android.view.View;
-<<<<<<< HEAD
 import android.widget.Button;
-=======
->>>>>>> Belen
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -31,7 +25,6 @@ public class TransferActivity extends AppCompatActivity {
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
 
-    // Configurar el botón de Transferir
     Button btnTransferir;
 
     @SuppressLint("WrongViewCast")
@@ -40,8 +33,7 @@ public class TransferActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer);
 
-        /*--- Boton en el tool bar que lleva al perfil---*/
-
+        // Botón en el tool bar que lleva al perfil
         View btnPerfil = findViewById(R.id.account_cir);
         btnPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,25 +43,22 @@ public class TransferActivity extends AppCompatActivity {
             }
         });
 
-        /*---------------------Hooks------------------------*/
-        drawerLayout=findViewById(R.id.drawer_layout);
-        toolbar=findViewById(R.id.toolbar);
+        // Hooks
+        drawerLayout = findViewById(R.id.drawer_layout);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav,
-                R.string.close_nav);
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
-
                 TransferActivity activity = TransferActivity.this;
+
                 if (itemId == R.id.nav_home) {
                     Intent intent = new Intent(activity, HomeActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Home is selected");
@@ -119,21 +108,19 @@ public class TransferActivity extends AppCompatActivity {
                 }
 
                 return true;
-            }
+                }
+
         });
 
-        btnTransferir = findViewById(R.id.button11);
-
+        btnTransferir = findViewById(R.id.button13);
         btnTransferir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(TransferActivity.this, TransferirActivity.class);
                 startActivity(intent);
             }
         });
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
