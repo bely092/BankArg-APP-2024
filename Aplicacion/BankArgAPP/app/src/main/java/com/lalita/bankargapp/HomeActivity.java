@@ -32,6 +32,17 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        /*--- Boton en el tool bar que lleva al perfil---*/
+
+        View btnPerfil = findViewById(R.id.account_cir);
+        btnPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, PerfilActivity.class);
+                startActivity(intent);
+            }
+        });
+
         btnSoporte = findViewById(R.id.btn_soporte);
         btnTransferencias = findViewById(R.id.btn_tranferencias);
         btnPerfil = findViewById(R.id.btn_perfil);

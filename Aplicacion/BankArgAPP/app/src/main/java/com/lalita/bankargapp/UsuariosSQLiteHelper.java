@@ -1,5 +1,6 @@
 package com.lalita.bankargapp;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.lalita.bankargapp.Clases.User;
+import com.lalita.bankargapp.Clases.Usuario;
 import com.lalita.bankargapp.Clases.Usuarios;
 
 import java.util.ArrayList;
@@ -16,7 +18,7 @@ import java.util.List;
 
 public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "BankArgAPP.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     // Definir la estructura de la tabla "user".
     private static final String CREATE_TABLE_USER = "CREATE TABLE if not exists User (" +
@@ -85,12 +87,12 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO User (username, password) VALUES ('valen', '1234')");
         db.execSQL("INSERT INTO User (username, password) VALUES ('user', '1234')");
 
-        db.execSQL("CREATE TABLE Documentos (id_tipo_doc INTEGER PRIMARY KEY AUTOINCREMENT, tipo_doc TEXT);");
-        db.execSQL("CREATE TABLE Sexos (id_tipo_sexo INTEGER PRIMARY KEY AUTOINCREMENT, tipo TEXT);");
-        db.execSQL("CREATE TABLE paises (cod_pais INTEGER PRIMARY KEY AUTOINCREMENT, pais TEXT);");
-        db.execSQL("CREATE TABLE provincias (cod_provincia INTEGER PRIMARY KEY AUTOINCREMENT, provincia TEXT, cod_pais INTEGER, FOREIGN KEY (cod_pais) REFERENCES paises (cod_pais));");
-        db.execSQL("CREATE TABLE localidades (cod_localidad INTEGER PRIMARY KEY AUTOINCREMENT, localidad TEXT, cod_provincia INTEGER, FOREIGN KEY (cod_provincia) REFERENCES provincias (cod_provincia));");
-        db.execSQL("CREATE TABLE Usuarios (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, apellido TEXT, password TEXT, id_tipo_doc INTEGER, nro_doc TEXT, cod_localidad INTEGER, nro_calle INTEGER, calle TEXT, fecha_nac TEXT, id_tipo_sexo INTEGER, FOREIGN KEY (id_tipo_doc) REFERENCES Documentos (id_tipo_doc), FOREIGN KEY (cod_localidad) REFERENCES localidades (cod_localidad), FOREIGN KEY (id_tipo_sexo) REFERENCES Sexos (id_tipo_sexo));");
+        db.execSQL("CREATE TABLE if not exists Documentos (id_tipo_doc INTEGER PRIMARY KEY AUTOINCREMENT, tipo_doc TEXT);");
+        db.execSQL("CREATE TABLE if not exists Sexos (id_tipo_sexo INTEGER PRIMARY KEY AUTOINCREMENT, tipo TEXT);");
+        db.execSQL("CREATE TABLE if not exists paises (cod_pais INTEGER PRIMARY KEY AUTOINCREMENT, pais TEXT);");
+        db.execSQL("CREATE TABLE if not exists provincias (cod_provincia INTEGER PRIMARY KEY AUTOINCREMENT, provincia TEXT, cod_pais INTEGER, FOREIGN KEY (cod_pais) REFERENCES paises (cod_pais));");
+        db.execSQL("CREATE TABLE if not exists localidades (cod_localidad INTEGER PRIMARY KEY AUTOINCREMENT, localidad TEXT, cod_provincia INTEGER, FOREIGN KEY (cod_provincia) REFERENCES provincias (cod_provincia));");
+        db.execSQL("CREATE TABLE if not exists Usuarios (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, apellido TEXT, password TEXT, id_tipo_doc INTEGER, nro_doc TEXT, cod_localidad INTEGER, nro_calle INTEGER, calle TEXT, fecha_nac TEXT, id_tipo_sexo INTEGER, FOREIGN KEY (id_tipo_doc) REFERENCES Documentos (id_tipo_doc), FOREIGN KEY (cod_localidad) REFERENCES localidades (cod_localidad), FOREIGN KEY (id_tipo_sexo) REFERENCES Sexos (id_tipo_sexo));");
 
         insertarPais(db, "Argentina");
         insertarPais(db, "Brasil");
@@ -906,6 +908,123 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
         values.put("fecha_nac", fechaNac);
         values.put("id_tipo_sexo", idTipoSexo);
         db.insert("Usuarios", null, values);
+    }
+
+    public void insertarUsuario(String nombre, String apellido, String password, int tipoDoc, String nroDoc, int localidad, int nroCalle, String calle, String fechaNac, int tipoSexo) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("nombre", nombre);
+        values.put("apellido", apellido);
+        values.put("password", password);
+        values.put("id_tipo_doc", tipoDoc);
+        values.put("nro_doc", nroDoc);
+        values.put("cod_localidad", localidad);
+        values.put("nro_calle", nroCalle);
+        values.put("calle", calle);
+        values.put("fecha_nac", fechaNac);
+        values.put("id_tipo_sexo", tipoSexo);
+
+        db.insert("Usuarios", null, values);
+        db.close();
+    }
+
+    public void actualizarUsuario(int id, String nombre, String apellido, String password, int tipoDoc, String nroDoc, int localidad, int nroCalle, String calle, String fechaNac, int tipoSexo) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("nombre", nombre);
+        values.put("apellido", apellido);
+        values.put("password", password);
+        values.put("id_tipo_doc", tipoDoc);
+        values.put("nro_doc", nroDoc);
+        values.put("cod_localidad", localidad);
+        values.put("nro_calle", nroCalle);
+        values.put("calle", calle);
+        values.put("fecha_nac", fechaNac);
+        values.put("id_tipo_sexo", tipoSexo);
+
+        db.update("Usuarios", values, "id_usuario" + " = ?", new String[]{String.valueOf(id)});
+        db.close();
+    }
+
+    public int buscarUsuarioId(String nombre, String apellido, String nroDoc) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query("Usuarios", new String[]{"id_usuario"},
+                "nombre" + "=? AND " + "nro_doc" + "=?",
+                new String[]{nombre, nroDoc}, null, null, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            @SuppressLint("Range") int userId = cursor.getInt(cursor.getColumnIndex("id_usuario"));
+            cursor.close();
+            return userId;
+        }
+
+        return -1; // Return -1 if user is not found
+    }
+
+    public List<Usuario> getAllUsuarios() {
+        List<Usuario> usuarios = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT u.*, d.tipo_doc AS DocNombre, l.localidad AS LocalidadNombre, s.tipo AS SexoNombre " +
+                "FROM Usuarios u " +
+                "JOIN Documentos d ON u.id_tipo_doc = d.id_tipo_doc " +
+                "JOIN Localidades l ON u.cod_localidad = l.cod_localidad " +
+                "JOIN Sexos s ON u.id_tipo_sexo = s.id_tipo_sexo";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Usuario usuario = new Usuario(
+                        cursor.getInt(cursor.getColumnIndex("id_usuario")),
+                        cursor.getString(cursor.getColumnIndex("nombre")),
+                        cursor.getString(cursor.getColumnIndex("apellido")),
+                        cursor.getString(cursor.getColumnIndex("password")),
+                        cursor.getString(cursor.getColumnIndex("DocNombre")),
+                        cursor.getString(cursor.getColumnIndex("nro_doc")),
+                        cursor.getString(cursor.getColumnIndex("LocalidadNombre")),
+                        cursor.getInt(cursor.getColumnIndex("nro_calle")),
+                        cursor.getString(cursor.getColumnIndex("calle")),
+                        cursor.getString(cursor.getColumnIndex("fecha_nac")),
+                        cursor.getString(cursor.getColumnIndex("SexoNombre"))
+                );
+                usuarios.add(usuario);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return usuarios;
+    }
+
+    public List<String> getAllLabels(String columnName, String tableName) {
+        List<String> labels = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " + columnName + " FROM " + tableName + " ORDER BY " + columnName, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+
+        return labels;
+    }
+
+    public List<Integer> getAllIds(String COLUMN_ID, String tableName) {
+        List<Integer> ids = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " + COLUMN_ID + " FROM " + tableName, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                ids.add(cursor.getInt(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+
+        return ids;
     }
 
     public Usuarios findUserByUsernameAndPassword(String username, String password) {

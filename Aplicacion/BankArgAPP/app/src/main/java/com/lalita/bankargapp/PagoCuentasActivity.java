@@ -8,37 +8,26 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.MenuItem;
-
+import android.widget.Toast;
 import android.os.Bundle;
 import android.view.View;
-<<<<<<< HEAD
-import android.widget.Button;
-=======
->>>>>>> Belen
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class TransferActivity extends AppCompatActivity {
-
+public class PagoCuentasActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
 
-    // Configurar el botón de Transferir
-    Button btnTransferir;
 
-    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_transfer);
+        setContentView(R.layout.activity_pago_cuentas);
 
         /*--- Boton en el tool bar que lleva al perfil---*/
 
@@ -46,10 +35,11 @@ public class TransferActivity extends AppCompatActivity {
         btnPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TransferActivity.this, PerfilActivity.class);
+                Intent intent = new Intent(PagoCuentasActivity.this, PerfilActivity.class);
                 startActivity(intent);
             }
         });
+
 
         /*---------------------Hooks------------------------*/
         drawerLayout=findViewById(R.id.drawer_layout);
@@ -69,7 +59,7 @@ public class TransferActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
 
-                TransferActivity activity = TransferActivity.this;
+                PagoCuentasActivity activity = PagoCuentasActivity.this;
                 if (itemId == R.id.nav_home) {
                     Intent intent = new Intent(activity, HomeActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Home is selected");
@@ -121,35 +111,13 @@ public class TransferActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-        btnTransferir = findViewById(R.id.button11);
-
-        btnTransferir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(TransferActivity.this, TransferirActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (toggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
 }
+
+
+
+
+
+

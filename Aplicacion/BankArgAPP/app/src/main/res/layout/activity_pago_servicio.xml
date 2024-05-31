@@ -8,9 +8,7 @@
     android:layout_height="match_parent"
     android:background="@color/col1"
     android:fitsSystemWindows="false"
-    tools:context=".LoanActivity">
-
-    <!--    tools:openDrawer="start"-->
+    tools:context=".PagoServicioActivity">
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -19,9 +17,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/col6"
             tools:context=".MainActivity">
+
+            <!-- Header -->
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -39,11 +39,6 @@
                     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                     app:buttonGravity="center_vertical" />
 
-                <!--                                <FrameLayout-->
-                <!--                                    android:id="@+id/fragment_container"-->
-                <!--                                    android:layout_width="match_parent"-->
-                <!--                                    android:layout_height="match_parent" />-->
-
             </LinearLayout>
 
             <View
@@ -58,8 +53,8 @@
                 app:layout_constraintEnd_toEndOf="@+id/linearLayout"
                 app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
-
             <!--            HEADER END -->
+
 
             <TextView
                 android:id="@+id/pago_servicio"
@@ -70,15 +65,13 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/poppins"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="Solicitud de Préstamo"
-                android:textColor="@color/col1"
-                android:textSize="24sp"
-                android:textStyle="italic"
+                android:text="Pago de Servicios"
+                android:textSize="28sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-            <!-- Auto layout, variables, and unit scale are not yet supported -->
             <View
                 android:id="@+id/real_estate"
                 android:layout_width="200dp"
@@ -86,151 +79,192 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/real_estate_agent"
+                android:background="@mipmap/token"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pago_servicio" />
 
             <TextView
-                android:id="@+id/monto_a_sol"
+                android:id="@+id/monto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="24dp"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentTop="false"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="Monto a solicitar:"
-                android:textAppearance="@style/monto_a_sol"
+                android:text="Servicio:"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/real_estate" />
 
-            <EditText
-                android:id="@+id/cuantoqueregato"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="20dp"
-                android:background="?android:attr/fastScrollPreviewBackgroundRight"
-                android:backgroundTint="@color/col2"
-                android:fontFamily="@font/poppins"
-                android:hint="Monto"
-                android:inputType="number"
-                android:padding="8dp"
-                android:textAlignment="textStart"
-                android:textColor="@color/col1"
-                android:textColorHighlight="@color/cardview_dark_background"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/monto_a_sol" />
 
-
-            <TextView
-                android:id="@+id/cantidad_de"
-                android:layout_width="367dp"
+            <RadioGroup
+                android:id="@+id/select"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
-                android:fontFamily="@font/poppins"
-                android:gravity="center_vertical"
-                android:text="Ingrese la cantidad de cuotas en las que desea devolver el préstamo:"
-                android:textAppearance="@style/cantidad_de"
-                android:textSize="16sp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cuantoqueregato" />
+                app:layout_constraintTop_toBottomOf="@+id/monto">
+
+                <RadioButton
+                    android:id="@+id/radio_agua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Agua" />
+
+                <RadioButton
+                    android:id="@+id/radio_gas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Gas" />
+
+                <RadioButton
+                    android:id="@+id/radio_luz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Luz" />
+
+                <RadioButton
+                    android:id="@+id/radio_internet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Internet" />
+
+
+                <RadioButton
+                    android:id="@+id/radio_otro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Otro" />
+
+            </RadioGroup>
 
             <EditText
-                android:id="@+id/rectangle_3"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:id="@+id/numero_monto"
+                android:layout_width="350dp"
+                android:layout_height="55dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
                 android:background="?android:attr/fastScrollPreviewBackgroundRight"
                 android:backgroundTint="@color/col2"
                 android:fontFamily="@font/poppins"
-                android:hapticFeedbackEnabled="false"
-                android:hint="Cuotas"
+                android:hint="Ingrese Monto"
                 android:inputType="number"
-                android:padding="8dp"
-                android:textAlignment="textStart"
+                android:padding="10dp"
+                android:textAlignment="center"
                 android:textColor="@color/col1"
                 android:textColorHighlight="@color/cardview_dark_background"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cantidad_de" />
+                app:layout_constraintTop_toBottomOf="@+id/select" />
+
+            <EditText
+                android:id="@+id/codigo_empresa"
+                android:layout_width="350dp"
+                android:layout_height="55dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:background="?android:attr/fastScrollPreviewBackgroundRight"
+                android:backgroundTint="@color/col2"
+                android:fontFamily="@font/poppins"
+                android:hint="Empresa"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:textColor="@color/col1"
+                android:textColorHighlight="@color/cardview_dark_background"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/numero_monto" />
+
+            <EditText
+                android:id="@+id/codigo_pago"
+                android:layout_width="350dp"
+                android:layout_height="55dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:background="?android:attr/fastScrollPreviewBackgroundRight"
+                android:backgroundTint="@color/col2"
+                android:fontFamily="@font/poppins"
+                android:hint="Ingrese Codigo de Pago"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:textColor="@color/col1"
+                android:textColorHighlight="@color/cardview_dark_background"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/codigo_empresa" />
 
             <Button
-                android:id="@+id/Solicitar"
-                android:layout_width="200dp"
-                android:layout_height="60dp"
+                android:id="@+id/btn_pagar_servicio"
+                android:layout_width="220dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="24dp"
-                android:backgroundTint="@color/col1"
+                android:elevation="2dp"
                 android:fontFamily="@font/poppins"
-                android:text="Solicitar"
-                android:textSize="16sp"
-                app:cornerRadius="10dp"
-                app:layout_constraintBottom_toTopOf="@+id/rectangle_2"
+                android:text="PAGAR"
+                android:textColor="@color/col6"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />
+                app:layout_constraintTop_toBottomOf="@+id/codigo_pago" />
 
 
-            <!--            FOOTER START -->
+            <!-- footer -->
+
+
             <View
-                android:id="@+id/rectangle_2"
+                android:id="@+id/view_bot"
                 android:layout_width="wrap_content"
                 android:layout_height="57dp"
                 android:layout_marginTop="50dp"
                 android:background="@color/col1"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Solicitar" />
+                app:layout_constraintTop_toBottomOf="@id/btn_pagar_servicio" />
 
             <TextView
-                android:id="@+id/bankarg_des"
+                android:id="@+id/textViewBot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/bankarg_des"
                 android:textColor="@color/col2"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="@+id/rectangle_2"
-                app:layout_constraintEnd_toEndOf="@+id/rectangle_2"
-                app:layout_constraintStart_toStartOf="@+id/rectangle_2"
-                app:layout_constraintTop_toTopOf="@+id/rectangle_2" />
-            <!-- FOOTER END -->
-
+                app:layout_constraintBottom_toBottomOf="@+id/view_bot"
+                app:layout_constraintEnd_toEndOf="@+id/view_bot"
+                app:layout_constraintStart_toStartOf="@+id/view_bot"
+                app:layout_constraintTop_toTopOf="@+id/view_bot" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+           </ScrollView>
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:backgroundTint="@color/col1"
-        app:headerLayout="@layout/header"
-        app:itemIconTint="@color/col6"
-        app:itemTextColor="@color/col6"
-        app:menu="@menu/main_menu"
-        app:subheaderColor="@color/col2" />
-
-</androidx.drawerlayout.widget.DrawerLayout>
+           <com.google.android.material.navigation.NavigationView
+               android:id="@+id/nav_view"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:layout_gravity="start"
+               android:backgroundTint="@color/col1"
+               app:headerLayout="@layout/header"
+               app:itemIconTint="@color/col6"
+               app:itemTextColor="@color/col6"
+               app:menu="@menu/main_menu"
+               app:subheaderColor="@color/col2" />
+       </androidx.drawerlayout.widget.DrawerLayout>
