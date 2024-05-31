@@ -16,11 +16,16 @@ import android.view.MenuItem;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.lalita.bankargapp.Clases.ExpandableListAdapter;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SupportActivity extends AppCompatActivity {
 
@@ -28,13 +33,16 @@ public class SupportActivity extends AppCompatActivity {
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
+    private ExpandableListView expLV;
+    private ExpandableListAdapter adapter;
+    private ArrayList<String> listCategorias;
+    private Map<String, ArrayList<String>> mapChild;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_support);
-
         /*---------------------Hooks------------------------*/
         drawerLayout=findViewById(R.id.drawer_layout);
         toolbar=findViewById(R.id.toolbar);
@@ -44,6 +52,13 @@ public class SupportActivity extends AppCompatActivity {
                 R.string.close_nav);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        /*---------------------Acordeon------------------------*/
+        expLV = (ExpandableListView) findViewById(R.id.expLV);
+        listCategorias = new ArrayList<>();
+        mapChild = new HashMap<>();
+
+        cargarDatos();
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -105,6 +120,7 @@ public class SupportActivity extends AppCompatActivity {
                 return true;
             }
         });
+
     }
 
     @Override
@@ -140,5 +156,31 @@ public class SupportActivity extends AppCompatActivity {
             }
         }, anio, mes, dia);
         dpd.show();
+    }
+
+    private void cargarDatos(){
+
+        ArrayList<String> listQueEs = new ArrayList<>();
+        ArrayList<String> listComoSeUsa = new ArrayList<>();
+        ArrayList<String> listOtrasPreguntas = new ArrayList<>();
+
+        listCategorias.add("¿Que es BankArg?");
+        listCategorias.add("¿Como se usa BankArg?");
+        listCategorias.add("Otras Preguntas");
+
+        listQueEs.add("BankArg es la solucion digital y de vanguardia para todos tus tramites y gestiones bancarias.");
+        listQueEs.add("BankArg fue desarrollada por un grupo de estudiantes del ISPC... Aprende mas sobre nosotros aqui.");
+
+        listComoSeUsa.add("Registrarte es facil, rapido y seguro...");
+        listComoSeUsa.add("En BankArg creemos que: !La informacion es poder¡...");
+
+        listOtrasPreguntas.add("¿No pudimos aclarar todas tus dudas? No dudes en contactarnos...");
+
+        mapChild.put(listCategorias.get(0), listQueEs);
+        mapChild.put(listCategorias.get(1), listComoSeUsa);
+        mapChild.put(listCategorias.get(2), listOtrasPreguntas);
+
+        adapter = new ExpandableListAdapter(this, listCategorias, mapChild);
+        expLV.setAdapter(adapter);
     }
 }
