@@ -11,7 +11,8 @@
 
     <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbarSize="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -92,8 +93,8 @@
                 android:id="@+id/cardView2"
                 android:layout_width="349dp"
                 android:layout_height="1200dp"
-                android:background="@drawable/custom_edittext"
                 android:layout_margin="30dp"
+                android:background="@drawable/custom_edittext"
                 app:cardBackgroundColor="@color/col2"
                 app:cardCornerRadius="30dp"
                 app:cardElevation="20dp"

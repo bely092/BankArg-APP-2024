@@ -6,18 +6,20 @@
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    android:background="@color/col1"
+    android:fitsSystemWindows="false"
     tools:context=".LoanActivity">
 
     <!--    tools:openDrawer="start"-->
 
     <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbarSize="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/col6"
             tools:context=".MainActivity">
 
@@ -69,7 +71,9 @@
                 android:fontFamily="@font/poppins"
                 android:gravity="center_horizontal|center_vertical"
                 android:text="Solicitud de Préstamo"
-                android:textAppearance="@style/solicitud_d"
+                android:textColor="@color/col1"
+                android:textSize="24sp"
+                android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
@@ -77,8 +81,8 @@
             <!-- Auto layout, variables, and unit scale are not yet supported -->
             <View
                 android:id="@+id/real_estate"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="8dp"
@@ -89,31 +93,39 @@
 
             <TextView
                 android:id="@+id/monto_a_sol"
-                android:layout_width="243dp"
-                android:layout_height="64dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
                 android:fontFamily="@font/poppins"
                 android:gravity="center_horizontal|center_vertical"
                 android:text="Monto a solicitar:"
                 android:textAppearance="@style/monto_a_sol"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/real_estate" />
 
             <EditText
                 android:id="@+id/cuantoqueregato"
-                android:layout_width="350dp"
-                android:layout_height="55dp"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                android:background="?android:attr/fastScrollPreviewBackgroundRight"
+                android:backgroundTint="@color/col2"
                 android:fontFamily="@font/poppins"
                 android:hint="Monto"
+                android:inputType="number"
                 android:padding="8dp"
+                android:textAlignment="textStart"
                 android:textColor="@color/col1"
                 android:textColorHighlight="@color/cardview_dark_background"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/monto_a_sol" />
@@ -122,47 +134,55 @@
             <TextView
                 android:id="@+id/cantidad_de"
                 android:layout_width="367dp"
-                android:layout_height="114dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:fontFamily="@font/poppins"
                 android:gravity="center_vertical"
-                android:text="Cantidad de cuotas en las que desea devolver el préstamo:"
+                android:text="Ingrese la cantidad de cuotas en las que desea devolver el préstamo:"
                 android:textAppearance="@style/cantidad_de"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cuantoqueregato" />
 
             <EditText
                 android:id="@+id/rectangle_3"
-                android:layout_width="350dp"
-                android:layout_height="55dp"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_edittext"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                android:background="?android:attr/fastScrollPreviewBackgroundRight"
+                android:backgroundTint="@color/col2"
                 android:fontFamily="@font/poppins"
+                android:hapticFeedbackEnabled="false"
                 android:hint="Cuotas"
+                android:inputType="number"
                 android:padding="8dp"
+                android:textAlignment="textStart"
                 android:textColor="@color/col1"
                 android:textColorHighlight="@color/cardview_dark_background"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cantidad_de" />
 
             <Button
                 android:id="@+id/Solicitar"
-                android:layout_width="260dp"
+                android:layout_width="200dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="24dp"
                 android:backgroundTint="@color/col1"
                 android:fontFamily="@font/poppins"
                 android:text="Solicitar"
-                android:textSize="26dp"
-                android:textColor="@color/col6"
+                android:textSize="16sp"
                 app:cornerRadius="10dp"
                 app:layout_constraintBottom_toTopOf="@+id/rectangle_2"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -173,31 +193,27 @@
             <!--            FOOTER START -->
             <View
                 android:id="@+id/rectangle_2"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="57dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="600dp"
-                android:background="#E7F6F2"
+                android:layout_marginTop="50dp"
+                android:background="@color/col1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/Solicitar" />
 
             <TextView
                 android:id="@+id/bankarg_des"
-                android:layout_width="433dp"
-                android:layout_height="50dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:gravity="center_horizontal|center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/bankarg_des"
-                android:textAppearance="@style/bankarg_des"
-                android:textSize="21sp"
+                android:textColor="@color/col2"
+                android:textSize="14sp"
+                android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="@+id/rectangle_2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                 />
+                app:layout_constraintEnd_toEndOf="@+id/rectangle_2"
+                app:layout_constraintStart_toStartOf="@+id/rectangle_2"
+                app:layout_constraintTop_toTopOf="@+id/rectangle_2" />
             <!-- FOOTER END -->
 
 

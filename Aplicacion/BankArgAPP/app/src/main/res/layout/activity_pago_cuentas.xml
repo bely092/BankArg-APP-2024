@@ -97,7 +97,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins"
                 android:text="Pagar:"
-                android:textSize="20dp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/real_estate" />
 
@@ -137,6 +137,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="20dp"
+                android:background="?android:attr/fastScrollPreviewBackgroundRight"
+                android:backgroundTint="@color/col2"
                 android:fontFamily="@font/poppins"
                 android:hint="Ingrese Monto"
                 android:inputType="number"
@@ -144,6 +146,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/col1"
                 android:textColorHighlight="@color/cardview_dark_background"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/select" />
@@ -156,6 +159,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="10dp"
+                android:background="?android:attr/fastScrollPreviewBackgroundRight"
+                android:backgroundTint="@color/col2"
                 android:fontFamily="@font/poppins"
                 android:hint="Ingrese Codigo de Pago"
                 android:inputType="number"
@@ -163,14 +168,15 @@
                 android:textAlignment="center"
                 android:textColor="@color/col1"
                 android:textColorHighlight="@color/cardview_dark_background"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/numero_monto" />
 
             <Button
                 android:id="@+id/btn_pagar_cuentas"
-                android:layout_width="260dp"
-                android:layout_height="60dp"
+                android:layout_width="220dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
@@ -178,7 +184,7 @@
                 android:fontFamily="@font/poppins"
                 android:text="PAGAR"
                 android:textColor="@color/col6"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/codigo_pago" />

@@ -10,7 +10,8 @@
 
     <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbarSize="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -252,7 +253,7 @@
                     android:id="@+id/view"
                     android:layout_width="wrap_content"
                     android:layout_height="57dp"
-                    android:background="#E7F6F2"
+                    android:background="@color/col1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -262,8 +263,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/bankarg_des"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
+                    android:textColor="@color/col2"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/view"
