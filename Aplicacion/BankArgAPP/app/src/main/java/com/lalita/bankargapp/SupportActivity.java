@@ -180,7 +180,7 @@ public class SupportActivity extends AppCompatActivity {
         mapChild.put(listCategorias.get(1), listComoSeUsa);
         mapChild.put(listCategorias.get(2), listOtrasPreguntas);
 
-        adapter = new ExpandableListAdapter(this, listCategorias, mapChild);
+        adapter = new ExpandableListAdapter(listCategorias, mapChild, this);
         expLV.setAdapter(adapter);
     }
 }

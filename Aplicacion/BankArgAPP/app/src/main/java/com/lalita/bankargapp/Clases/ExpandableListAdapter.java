@@ -71,7 +71,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        String item = getChild(groupPosition, childPosition);
+        String item = (String) getChild(groupPosition, childPosition);
         convertView = LayoutInflater.from(context).inflate(R.layout.list_child, null);
         TextView tvChild = convertView.findViewById(R.id.tvChild);
         tvChild.setText(item);

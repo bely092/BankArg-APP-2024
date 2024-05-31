@@ -10,4 +10,4 @@
         android:id="@+id/tvGroup"
         android:padding="15dp"
         android:textSize="14sp"/>
-</LinearLayout>"/>
+</LinearLayout>
