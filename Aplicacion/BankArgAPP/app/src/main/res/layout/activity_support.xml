@@ -88,15 +88,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/soporte">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="lista desplegable" />
                 <ExpandableListView
+                    android:id="@+id/expLV"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id= "@+id/expLV" >
-                </ExpandableListView>
+                    android:layout_height="match_parent"></ExpandableListView>
             </LinearLayout>
 
             <TextView
