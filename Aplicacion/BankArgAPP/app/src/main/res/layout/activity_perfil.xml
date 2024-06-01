@@ -97,6 +97,60 @@
             <!--                android:id="@+id/fragment_container"/>-->
 
             <!-- Header Ends -->
+
+            <!-- ventana balance -->
+
+
+            <View
+                android:id="@+id/Dinerotransferir"
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="24dp"
+                android:background="@color/col1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.507"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/icono_usuar" />
+
+
+            <TextView
+                android:id="@+id/balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="52dp"
+                android:drawableTint="@color/col2"
+                android:fontFamily="@font/poppins"
+                android:text=" Balance: "
+                android:textColor="@color/col3"
+                android:textSize="28sp"
+                android:textStyle="normal"
+                app:drawableLeftCompat="@drawable/baseline_monetization_on_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/icono_usuar" />
+
+
+            <TextView
+                android:id="@+id/some_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="52dp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/some_id"
+                android:textAppearance="@style/some_id"
+                android:textColor="@color/col2"
+                android:textSize="28sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toEndOf="@+id/balance"
+                app:layout_constraintTop_toBottomOf="@id/icono_usuar" />
+
+            <!--
+
             <View
                 android:id="@+id/Dinerotransferir"
                 android:layout_width="wrap_content"
@@ -123,64 +177,6 @@
                 app:layout_constraintTop_toTopOf="@+id/Dinerotransferir"
                 app:layout_constraintVertical_bias="0.47" />
 
-            <View
-                android:id="@+id/rectangle_2"
-                android:layout_width="fill_parent"
-                android:layout_height="57dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:background="@color/col1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/bankarg_des"
-                android:layout_width="433dp"
-                android:layout_height="50dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="@string/bankarg_des"
-                android:textAppearance="@style/bankarg_des"
-                android:textColor="@color/col2"
-                android:textSize="14sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/rectangle_2"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <View
-                android:id="@+id/icono_usuar"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="38dp"
-                android:background="@drawable/baseline_person_4_24"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-            <TextView
-                android:id="@+id/joaqu_n_bon"
-                android:layout_width="251dp"
-                android:layout_height="120dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="38dp"
-                android:layout_marginEnd="2dp"
-                android:fontFamily="@font/poppins"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="@string/joaqu_n_bon"
-                android:textAppearance="@style/joaqu_n_bon"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/icono_usuar"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
             <TextView
                 android:id="@+id/balance"
@@ -216,7 +212,42 @@
                 app:layout_constraintHorizontal_bias="0.262"
                 app:layout_constraintStart_toEndOf="@+id/balance"
                 app:layout_constraintTop_toTopOf="@+id/Dinerotransferir"
-                app:layout_constraintVertical_bias="0.432" />
+                app:layout_constraintVertical_bias="0.432" /> -->
+
+            <!-- ventana balance -->
+
+
+
+            <View
+                android:id="@+id/icono_usuar"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="38dp"
+                android:background="@drawable/baseline_person_4_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+            <TextView
+                android:id="@+id/joaqu_n_bon"
+                android:layout_width="251dp"
+                android:layout_height="120dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="2dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/joaqu_n_bon"
+                android:textAppearance="@style/joaqu_n_bon"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/icono_usuar"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
 
             <TextView
                 android:id="@+id/CVU"
@@ -269,7 +300,7 @@
             <ImageButton
                 android:id="@+id/imageButton7"
                 android:layout_width="50dp"
-                android:layout_height="32dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="112dp"
                 android:background="@color/col6"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -297,8 +328,8 @@
             <ImageButton
                 android:id="@+id/imageButton5"
                 android:layout_width="50dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="56dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="45dp"
                 android:background="@color/col6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -357,6 +388,35 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Email" />
+
+            <View
+                android:id="@+id/rectangle_2"
+                android:layout_width="fill_parent"
+                android:layout_height="57dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="@color/col1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/bankarg_des"
+                android:layout_width="433dp"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/bankarg_des"
+                android:textAppearance="@style/bankarg_des"
+                android:textColor="@color/col2"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/rectangle_2"
+                app:layout_constraintVertical_bias="1.0" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
