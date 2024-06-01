@@ -1,5 +1,4 @@
 package com.lalita.bankargapp;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -8,73 +7,39 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.MenuItem;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class BankingActivity extends AppCompatActivity {
+
+public class HistorialActivity extends AppCompatActivity {
+
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
-
-    Button btnTransferencia, btnPagos, btnPerfil, btnLoan;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_banking);
 
         /*--- Boton en el tool bar que lleva al perfil---*/
 
         View btnPerfil = findViewById(R.id.account_cir);
-
         btnPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BankingActivity.this, PerfilActivity.class);
+                Intent intent = new Intent(HistorialActivity.this, PerfilActivity.class);
                 startActivity(intent);
             }
         });
-
-        btnTransferencia = findViewById(R.id.button13);
-        btnPagos = findViewById(R.id.button12);
-        btnLoan = findViewById(R.id.button14);
-
-        btnTransferencia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BankingActivity.this, TransferActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnPagos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BankingActivity.this, PagosActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnLoan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BankingActivity.this, LoanActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
 
         /*---------------------Hooks------------------------*/
         drawerLayout=findViewById(R.id.drawer_layout);
@@ -94,7 +59,7 @@ public class BankingActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
 
-                BankingActivity activity = BankingActivity.this;
+                HistorialActivity activity = HistorialActivity.this;
                 if (itemId == R.id.nav_home) {
                     Intent intent = new Intent(activity, HomeActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Home is selected");
@@ -146,7 +111,6 @@ public class BankingActivity extends AppCompatActivity {
                 return true;
             }
         });
-
     }
 
     @Override
@@ -166,4 +130,6 @@ public class BankingActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
+
 }

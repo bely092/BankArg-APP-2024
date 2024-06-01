@@ -25,7 +25,7 @@ public class TransferActivity extends AppCompatActivity {
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
 
-    Button btnTransferir;
+    Button btnTransferir, btnHistorial;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -117,6 +117,15 @@ public class TransferActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TransferActivity.this, TransferirActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnHistorial = findViewById(R.id.button12);
+        btnHistorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TransferActivity.this, HistorialActivity.class);
                 startActivity(intent);
             }
         });

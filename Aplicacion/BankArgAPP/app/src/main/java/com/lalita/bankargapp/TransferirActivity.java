@@ -17,6 +17,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import android.app.AlertDialog;
+import android.widget.Button;
+
 public class TransferirActivity extends AppCompatActivity {
 
 
@@ -28,6 +31,26 @@ public class TransferirActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transferir);
+
+
+        Button transferButton = findViewById(R.id.Transferir);
+        transferButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                new AlertDialog.Builder(TransferirActivity.this)
+                        .setTitle("Confirmación")
+                        .setMessage("¿Estás seguro de que deseas enviar el dinero?")
+                        .setPositiveButton("Sí", (dialog, which) -> {
+                            Toast.makeText(TransferirActivity.this, "Dinero enviado", Toast.LENGTH_SHORT).show();
+                        })
+                        .setNegativeButton("No", (dialog, which) -> {
+                            dialog.dismiss();
+                        })
+                        .create()
+                        .show();
+            }
+        });
 
         /*--- Boton en el tool bar que lleva al perfil---*/
 
@@ -129,4 +152,6 @@ public class TransferirActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
+
 }
