@@ -98,7 +98,7 @@
 
             <!-- Header Ends -->
             <View
-                android:id="@+id/rectangle_3"
+                android:id="@+id/Dinerotransferir"
                 android:layout_width="wrap_content"
                 android:layout_height="83dp"
                 android:layout_alignParentLeft="true"
@@ -118,9 +118,9 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="16dp"
                 android:background="@drawable/baseline_monetization_on_24"
-                app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"
-                app:layout_constraintStart_toStartOf="@+id/rectangle_3"
-                app:layout_constraintTop_toTopOf="@+id/rectangle_3"
+                app:layout_constraintBottom_toBottomOf="@+id/Dinerotransferir"
+                app:layout_constraintStart_toStartOf="@+id/Dinerotransferir"
+                app:layout_constraintTop_toTopOf="@+id/Dinerotransferir"
                 app:layout_constraintVertical_bias="0.47" />
 
             <View
@@ -191,9 +191,9 @@
                 android:textAlignment="textEnd"
                 android:textSize="26sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"
+                app:layout_constraintBottom_toBottomOf="@+id/Dinerotransferir"
                 app:layout_constraintStart_toEndOf="@+id/local_atm"
-                app:layout_constraintTop_toTopOf="@+id/rectangle_3"
+                app:layout_constraintTop_toTopOf="@+id/Dinerotransferir"
                 app:layout_constraintVertical_bias="0.486" />
 
             <TextView
@@ -211,11 +211,11 @@
                 android:text="@string/some_id"
                 android:textAppearance="@style/some_id"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"
-                app:layout_constraintEnd_toEndOf="@+id/rectangle_3"
+                app:layout_constraintBottom_toBottomOf="@+id/Dinerotransferir"
+                app:layout_constraintEnd_toEndOf="@+id/Dinerotransferir"
                 app:layout_constraintHorizontal_bias="0.262"
                 app:layout_constraintStart_toEndOf="@+id/balance"
-                app:layout_constraintTop_toTopOf="@+id/rectangle_3"
+                app:layout_constraintTop_toTopOf="@+id/Dinerotransferir"
                 app:layout_constraintVertical_bias="0.432" />
 
             <TextView
@@ -232,7 +232,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.016"
                 app:layout_constraintStart_toEndOf="@+id/tu_cvu_alia"
-                app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />
+                app:layout_constraintTop_toBottomOf="@+id/Dinerotransferir" />
 
             <TextView
                 android:id="@+id/Email"
@@ -275,7 +275,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/Alias"
-                app:layout_constraintTop_toBottomOf="@+id/rectangle_3"
+                app:layout_constraintTop_toBottomOf="@+id/Dinerotransferir"
                 app:srcCompat="@drawable/baseline_content_copy_24" />
 
             <TextView
@@ -303,7 +303,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/CVU"
-                app:layout_constraintTop_toBottomOf="@+id/rectangle_3"
+                app:layout_constraintTop_toBottomOf="@+id/Dinerotransferir"
                 app:srcCompat="@drawable/baseline_content_copy_24" />
 
             <TextView
@@ -321,7 +321,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />
+                app:layout_constraintTop_toBottomOf="@+id/Dinerotransferir" />
 
             <TextView
                 android:id="@+id/Alias"

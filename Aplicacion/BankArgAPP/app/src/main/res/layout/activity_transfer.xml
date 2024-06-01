@@ -64,7 +64,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
                 <View
-                    android:id="@+id/rectangle_3"
+                    android:id="@+id/Dinerotransferir"
                     android:layout_width="fill_parent"
                     android:layout_height="83dp"
                     android:layout_alignParentLeft="true"
@@ -84,9 +84,9 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="16dp"
                     android:background="@drawable/baseline_monetization_on_24"
-                    app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"
-                    app:layout_constraintStart_toStartOf="@+id/rectangle_3"
-                    app:layout_constraintTop_toTopOf="@+id/rectangle_3"
+                    app:layout_constraintBottom_toBottomOf="@+id/Dinerotransferir"
+                    app:layout_constraintStart_toStartOf="@+id/Dinerotransferir"
+                    app:layout_constraintTop_toTopOf="@+id/Dinerotransferir"
                     app:layout_constraintVertical_bias="0.47" />
 
 
@@ -102,9 +102,9 @@
                     android:textColor="#000000"
                     android:textSize="28dp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"
+                    app:layout_constraintBottom_toBottomOf="@+id/Dinerotransferir"
                     app:layout_constraintStart_toEndOf="@+id/local_atm"
-                    app:layout_constraintTop_toTopOf="@+id/rectangle_3"
+                    app:layout_constraintTop_toTopOf="@+id/Dinerotransferir"
                     app:layout_constraintVertical_bias="0.392" />
 
                 <TextView
@@ -122,11 +122,11 @@
                     android:text="@string/some_id"
                     android:textAppearance="@style/some_id"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"
-                    app:layout_constraintEnd_toEndOf="@+id/rectangle_3"
+                    app:layout_constraintBottom_toBottomOf="@+id/Dinerotransferir"
+                    app:layout_constraintEnd_toEndOf="@+id/Dinerotransferir"
                     app:layout_constraintHorizontal_bias="0.262"
                     app:layout_constraintStart_toEndOf="@+id/balance"
-                    app:layout_constraintTop_toTopOf="@+id/rectangle_3"
+                    app:layout_constraintTop_toTopOf="@+id/Dinerotransferir"
                     app:layout_constraintVertical_bias="0.432" />
 
 
@@ -166,7 +166,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/button12" />
 
                 <TextView
-                    android:id="@+id/textView28"
+                    android:id="@+id/btn_transferir"
                     android:layout_width="89dp"
                     android:layout_height="29dp"
                     android:layout_marginTop="5dp"
@@ -231,7 +231,7 @@
                     android:text=""
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />
+                    app:layout_constraintTop_toBottomOf="@+id/Dinerotransferir" />
 
                 <Button
                     android:id="@+id/button12"
@@ -242,7 +242,7 @@
                     android:text=""
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/button11"
-                    app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />
+                    app:layout_constraintTop_toBottomOf="@+id/Dinerotransferir" />
 
                 <Button
                     android:id="@+id/button13"
@@ -253,7 +253,7 @@
                     android:text=""
                     app:layout_constraintEnd_toStartOf="@+id/button11"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />
+                    app:layout_constraintTop_toBottomOf="@+id/Dinerotransferir" />
 
                 <ImageButton
                     android:id="@+id/ellipse_7"
