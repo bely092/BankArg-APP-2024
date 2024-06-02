@@ -78,38 +78,73 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-            <RelativeLayout
+            <?xml version="1.0" encoding="utf-8"?>
+            <LinearLayout
+                android:id="@+id/tabla1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintTop_toBottomOf="@+id/soporte"
-                tools:context=".SupportActivity">
+                android:layout_height="431dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/soporte">
 
-                <ExpandableListView
-                    android:id="@+id/expLV"
+                <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/expLV"
-                    android:divider="@android:color/darker_gray"
-                    android:dividerHeight="0.5dp"
-                    android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
-                    android:indicatorRight="?android:attr/expandableListPreferredItemIndicatorRight" />
+                    android:stretchColumns="1">
 
-            </RelativeLayout>
+                    <TextView
+                        android:padding="8dp"
+                        android:text="¿Qué es BankArg?"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:padding="8dp"
+                        android:text="BankArg es la solución digital y de vanguardia para todos tus trámites y gestiones bancarias." />
+
+                    <TextView
+                        android:padding="8dp"
+                        android:text="BankArg fue desarrollada por un grupo de estudiantes del ISPC... Aprende más sobre nosotros aquí." />
+
+                    <TextView
+                        android:padding="8dp"
+                        android:text="¿Cómo se usa BankArg?"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:padding="8dp"
+                        android:text="Registrarte es facil, rapido y seguro!
+Solo necesitas ingresar tus datos personales y estaras usando BankArg en unos instantes." />
+
+                    <TextView
+                        android:padding="8dp"
+                        android:text="En BankArg creemos que: !La informacion es poder¡ Sobre todo aquella de una fuente segura y confiable.
+Y por eso hemos te recomendamos visitar este enlace si aun estas aprendiendo las bases de la economia financiera." />
+
+                    <TextView
+                        android:padding="8dp"
+                        android:text="Otras preguntas"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:padding="8dp"
+                        android:text="¿No pudimos aclarar todas tus dudas? No dudes en contactarnos , para que puedamos seguir mejorando esta seccion" />
+                </TableLayout>
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/describe_tu"
                 android:layout_width="255dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="16dp"
-                android:layout_marginBottom="398dp"
                 android:gravity="center_horizontal|center_vertical"
                 android:text="Describe tu consulta:"
                 android:textAppearance="@style/describe_tu"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/tabla1" />
 
             <EditText
                 android:id="@+id/tu_consulta"
