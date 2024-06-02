@@ -1,6 +1,7 @@
 package com.lalita.bankargapp.Clases;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,20 +62,24 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        String tituloCategoria = (String) getGroup(groupPosition);
-        convertView = LayoutInflater.from(context).inflate(R.layout.list_group,null);
-        TextView tvGroup = convertView.findViewById(R.id.tvGroup);
-        tvGroup.setText(tituloCategoria);
+        String groupTitle = (String) getGroup(groupPosition);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.list_group, parent, false);
+        }
+        TextView textView = convertView.findViewById(R.id.listTitle);
+        textView.setTypeface(null, Typeface.BOLD);
+        textView.setText(groupTitle);
         return convertView;
-
     }
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        String item = (String) getChild(groupPosition, childPosition);
-        convertView = LayoutInflater.from(context).inflate(R.layout.list_child, null);
-        TextView tvChild = convertView.findViewById(R.id.tvChild);
-        tvChild.setText(item);
+        String childTitle = (String) getChild(groupPosition, childPosition);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.list_child, parent, false);
+        }
+        TextView textView = convertView.findViewById(R.id.expandableListItem);
+        textView.setText(childTitle);
         return convertView;
     }
 

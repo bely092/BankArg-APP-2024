@@ -43,6 +43,14 @@ public class SupportActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_support);
+
+        /*---------------------Acordeon------------------------*/
+        expLV = (ExpandableListView) findViewById(R.id.expLV);
+        listCategorias = new ArrayList<>();
+        mapChild = new HashMap<>();
+
+        cargarDatos();
+
         /*---------------------Hooks------------------------*/
         drawerLayout=findViewById(R.id.drawer_layout);
         toolbar=findViewById(R.id.toolbar);
@@ -52,13 +60,6 @@ public class SupportActivity extends AppCompatActivity {
                 R.string.close_nav);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
-        /*---------------------Acordeon------------------------*/
-        expLV = (ExpandableListView) findViewById(R.id.expLV);
-        listCategorias = new ArrayList<>();
-        mapChild = new HashMap<>();
-
-        cargarDatos();
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
