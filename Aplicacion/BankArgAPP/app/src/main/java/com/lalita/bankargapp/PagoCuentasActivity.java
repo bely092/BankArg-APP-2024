@@ -11,6 +11,7 @@ import androidx.core.view.GravityCompat;
 import android.content.Intent;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 import android.os.Bundle;
 import android.view.View;
@@ -39,6 +40,20 @@ public class PagoCuentasActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        /*--- Ventana emergente de aviso ---*/
+        Button btnPagar = findViewById(R.id.btn_pagar_cuentas);
+        btnPagar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(PagoCuentasActivity.this, "Servicio no disponible en estos momentos", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+
+
 
 
         /*---------------------Hooks------------------------*/

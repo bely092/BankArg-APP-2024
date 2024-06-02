@@ -43,6 +43,38 @@ public class TransferActivity extends AppCompatActivity {
             }
         });
 
+
+        // Botones de acciones> transferir, agregar e historial
+
+
+
+        btnTransferir = findViewById(R.id.button13);
+        btnTransferir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TransferActivity.this, TransferirActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btnAgregar = findViewById(R.id.button11);
+        btnAgregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TransferActivity.this, PersonasActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btnHistorial = findViewById(R.id.button12);
+        btnHistorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TransferActivity.this, BankingActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // Hooks
         drawerLayout = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
@@ -112,15 +144,10 @@ public class TransferActivity extends AppCompatActivity {
 
         });
 
-        btnTransferir = findViewById(R.id.button13);
-        btnTransferir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(TransferActivity.this, TransferirActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

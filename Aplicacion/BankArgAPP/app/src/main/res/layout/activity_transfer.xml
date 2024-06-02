@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
@@ -71,7 +72,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="24dp"
-                    android:background="@color/col1"
+                    android:background="@drawable/gradient_banking"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.507"
                     app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +98,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="50dp"
-                    android:drawableTint="@color/col2"
+                    android:drawableTint="@color/col6"
                     android:fontFamily="@font/poppins"
                     android:text=" Balance: "
                     android:textColor="@color/col3"
@@ -124,7 +125,7 @@
                     android:fontFamily="@font/poppins"
                     android:text="@string/some_id"
                     android:textAppearance="@style/some_id"
-                    android:textColor="@color/col2"
+                    android:textColor="@color/col6"
                     android:textSize="26sp"
                     android:textStyle="normal"
                     app:layout_constraintStart_toEndOf="@+id/balance"
@@ -234,17 +235,19 @@
                     android:layout_width="120dp"
                     android:layout_height="130dp"
                     android:layout_marginStart="2dp"
-
                     android:layout_marginTop="50dp"
-                    android:backgroundTint="@color/col1"
                     android:text="Transferir"
                     android:textAlignment="center"
                     android:textSize="16sp"
                     android:textStyle="normal"
-                    app:icon="@drawable/send_money"
+
+                    android:backgroundTint="@color/col1"
                     app:iconGravity="textTop"
                     app:iconSize="50dp"
                     app:iconTint="@color/col3"
+
+                    app:icon="@drawable/send_money"
+
                     app:layout_constraintEnd_toStartOf="@+id/button11"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/Dinerotransferir" />

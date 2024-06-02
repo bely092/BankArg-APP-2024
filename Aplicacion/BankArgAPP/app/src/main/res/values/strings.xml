@@ -69,6 +69,9 @@
     </string>
     <string name="servicio" translatable="false">Podras agregar servicios, hacer pagos únicos. Realiza el pago de tus productos de manera segura.</string>
     <string name="cuentas" translatable="false">Paga tus préstamos en cómodas cuotas o realiza el pago de tus tarjetas de manera online.</string>
+    <string name="sobrenos" translatable="false">Nos hemos dedicado a brindar un servicio de calidad, basado en la confiabilidad y la seguridad.</string>
+    <string name="sobreprod" translatable="false"> Nuestros productos ofrecen opciones para satisfacer las necesidades financieras de nuestros clientes.</string>
+    <string name="sobretran" translatable="false">Nuestro enfoque profesional garantiza que los pagos sean faciles y convenientes, segun las circunstancias.</string>
 
 </resources>
 

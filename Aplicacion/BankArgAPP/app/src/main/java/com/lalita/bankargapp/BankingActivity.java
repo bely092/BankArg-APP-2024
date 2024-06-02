@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -40,6 +41,36 @@ public class BankingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        Button btn_transferir = findViewById(R.id.button13);
+        btn_transferir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BankingActivity.this, TransferActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btn_pagos = findViewById(R.id.button12);
+        btn_pagos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BankingActivity.this, PagosActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btn_prestamos = findViewById(R.id.button14);
+        btn_prestamos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BankingActivity.this, LoanActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         /*---------------------Hooks------------------------*/
         drawerLayout=findViewById(R.id.drawer_layout);
