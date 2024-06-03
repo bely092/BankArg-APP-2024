@@ -303,8 +303,9 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="112dp"
                 android:background="@color/col6"
+                android:contentDescription="copiar alias"
+                app:layout_constraintBottom_toBottomOf="@+id/Alias"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/Alias"
                 app:layout_constraintTop_toBottomOf="@+id/Dinerotransferir"
                 app:srcCompat="@drawable/baseline_content_copy_24" />
@@ -331,8 +332,9 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="45dp"
                 android:background="@color/col6"
+                android:contentDescription="copiar cbu"
+                app:layout_constraintBottom_toBottomOf="@+id/CVU"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/CVU"
                 app:layout_constraintTop_toBottomOf="@+id/Dinerotransferir"
                 app:srcCompat="@drawable/baseline_content_copy_24" />

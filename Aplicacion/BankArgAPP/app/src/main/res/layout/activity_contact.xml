@@ -185,7 +185,7 @@
                 android:fontFamily="@font/poppins"
                 android:hint="Escribi el mensaje que quieras dejarnos aca."
                 android:minHeight="250dp"
-                android:padding="8dp"
+                android:padding="15sp"
                 android:textColor="@color/col1"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:textColorHint="@color/col1"
@@ -227,6 +227,7 @@
 
             <TextView
                 android:id="@+id/bankarg_des"
+                style="@style/bankarg_des"
                 android:layout_width="433dp"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"

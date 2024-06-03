@@ -9,8 +9,8 @@
 
     <Button
         android:id="@+id/btn_main_in"
-        android:layout_width="200dp"
-        android:layout_height="55dp"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
         android:layout_marginTop="60dp"
         android:backgroundTint="@color/col1"
         android:fontFamily="@font/poppins"
@@ -23,7 +23,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton3"
-        app:layout_constraintVertical_bias="0.097" />
+        app:layout_constraintVertical_bias="0.097"
+        android:contentDescription="acceder"/>
 
     <ImageButton
         android:id="@+id/imageButton2"
@@ -33,7 +34,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/rectangle_2" />
+        app:srcCompat="@drawable/rectangle_2"
+        android:contentDescription="logo bankarg"/>
 
     <ImageButton
         android:id="@+id/imageButton3"
@@ -45,7 +47,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageButton2"
-        app:srcCompat="@drawable/vector" />
+        app:srcCompat="@drawable/vector"
+        android:contentDescription="decoracion"/>
 
     <ImageButton
         android:id="@+id/imageButton6"
@@ -60,7 +63,8 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageButton2"
-        app:srcCompat="@drawable/logo_no_background_1" />
+        app:srcCompat="@drawable/logo_no_background_1"
+        android:contentDescription="logo bankarg"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,8 +8,9 @@
 
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    app:barrierMargin="30dp"
     tools:context=".TransferActivity">
-<!--    tools:openDrawer="start">-->
+    <!--    tools:openDrawer="start">-->
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -268,6 +269,7 @@
 
                 <TextView
                     android:id="@+id/bankarg_des"
+                    style="@style/bankarg_des"
                     android:layout_width="433dp"
                     android:layout_height="50dp"
                     android:layout_alignParentLeft="true"
@@ -317,6 +319,80 @@
                                    app:layout_constraintEnd_toEndOf="@+id/button12"
                                    app:layout_constraintStart_toStartOf="@+id/button12"
                                    app:layout_constraintTop_toTopOf="@+id/button12" /> -->
+                <Button
+                    android:id="@+id/button11"
+                    style="@style/button_operacion"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginTop="50dp"
+                    android:contentDescription="agregar un contacto"
+                    android:text=""
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />
+
+                <Button
+                    android:id="@+id/button12"
+                    style="@style/button_operacion"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginTop="50dp"
+                    android:contentDescription="historial"
+                    android:text=""
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/button11"
+                    app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />
+
+                <Button
+                    android:id="@+id/button13"
+                    style="@style/button_operacion"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginTop="50dp"
+                    android:contentDescription="transferir"
+                    android:text=""
+                    app:layout_constraintEnd_toStartOf="@+id/button11"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />
+
+                <ImageButton
+                    android:id="@+id/ellipse_7"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/send_money"
+                    android:contentDescription="transferir"
+                    app:layout_constraintBottom_toBottomOf="@+id/button13"
+                    app:layout_constraintEnd_toEndOf="@+id/button13"
+                    app:layout_constraintStart_toStartOf="@+id/button13"
+                    app:layout_constraintTop_toTopOf="@+id/button13" />
+
+                <ImageButton
+                    android:id="@+id/ellipse_"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/baseline_person_add_alt_24"
+                    android:contentDescription="agregar"
+                    app:layout_constraintBottom_toBottomOf="@+id/button11"
+                    app:layout_constraintEnd_toEndOf="@+id/button11"
+                    app:layout_constraintStart_toStartOf="@+id/button11"
+                    app:layout_constraintTop_toTopOf="@+id/button11" />
+
+                <ImageButton
+                    android:id="@+id/ellipse_2"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/baseline_manage_history_24"
+                    android:contentDescription="historial"
+                    app:layout_constraintBottom_toBottomOf="@+id/button12"
+                    app:layout_constraintEnd_toEndOf="@+id/button12"
+                    app:layout_constraintStart_toStartOf="@+id/button12"
+                    app:layout_constraintTop_toTopOf="@+id/button12" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
