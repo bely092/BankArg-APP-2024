@@ -73,7 +73,7 @@
                     android:id="@+id/view11"
                     android:layout_width="350dp"
                     android:layout_height="570dp"
-                    android:layout_marginTop="50sp"
+                    android:layout_marginTop="48dp"
                     android:background="#F8F9FA"
                     app:circularflow_angles="10sp"
                     app:circularflow_defaultRadius="10sp"
