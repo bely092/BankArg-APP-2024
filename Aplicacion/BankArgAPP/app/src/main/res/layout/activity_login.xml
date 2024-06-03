@@ -41,7 +41,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="381dp"
             android:layout_gravity="center_horizontal"
             android:background="#2C3133"
             android:orientation="vertical"
@@ -102,7 +102,7 @@
             <TextView
                 android:id="@+id/signupText"
                 android:layout_width="293dp"
-                android:layout_height="49dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:clickable="true"
                 android:onClick="onClick"
@@ -113,6 +113,22 @@
                 android:textColorLink="@color/col3"
                 android:textSize="15sp"
                 android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/webText"
+                android:layout_width="292dp"
+                android:layout_height="58dp"
+                android:clickable="true"
+                android:onClick="onClick"
+                android:padding="8dp"
+                android:text="Prefieres la version Web? Click Aqui!"
+                android:textAlignment="center"
+                android:textColor="@color/col2"
+                android:textColorLink="@color/col3"
+                android:textSize="15sp"
+                android:textStyle="italic"
+                android:visibility="visible"
+                tools:visibility="visible" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

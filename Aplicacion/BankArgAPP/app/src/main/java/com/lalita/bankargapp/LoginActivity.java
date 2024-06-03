@@ -94,5 +94,15 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        TextView textViewWeb = findViewById(R.id.webText);
+
+        textViewWeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, Web.class);
+                startActivity(intent);
+            }
+        });
     }
 }
