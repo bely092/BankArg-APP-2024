@@ -23,24 +23,18 @@
 
             <LinearLayout
                 android:id="@+id/linearLayout"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginBottom="195dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toTopOf="@+id/describe_tu"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="102dp"
                     android:background="@color/col1"
-                    android:paddingTop="5dp"
+                    android:elevation="4dp"
                     android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                    app:buttonGravity="center_vertical" />
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
                 <!--                                <FrameLayout-->
                 <!--                                    android:id="@+id/fragment_container"-->
@@ -55,7 +49,7 @@
                 android:layout_height="60.96dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/baseline_person_pin_24"
                 app:layout_constraintEnd_toEndOf="@+id/linearLayout"
@@ -78,73 +72,71 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-            <?xml version="1.0" encoding="utf-8"?>
-            <LinearLayout
-                android:id="@+id/tabla1"
-                android:layout_width="match_parent"
-                android:layout_height="431dp"
-                android:orientation="vertical"
+            <Button
+                android:id="@+id/que_es"
+                android:layout_width="310dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:gravity="center_horizontal|center_vertical"
+                android:textColor="@color/col6"
+                android:backgroundTint="@color/col3"
+                android:text="¿Que es BankArg?"
+                android:textAppearance="@style/faq_pregunt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/soporte">
+                app:layout_constraintTop_toBottomOf="@+id/soporte"
+                app:cornerRadius="10dp"/>
 
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:stretchColumns="1">
+            <Button
+                android:id="@+id/como_se_usa"
+                android:layout_width="310dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:gravity="center_horizontal|center_vertical"
+                android:textColor="@color/col6"
+                android:backgroundTint="@color/col3"
+                android:text="¿Como se usa BankArg?"
+                android:textAppearance="@style/faq_pregunt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/que_es"
+                app:cornerRadius="10dp"
+                />
 
-                    <TextView
-                        android:padding="8dp"
-                        android:text="¿Qué es BankArg?"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:padding="8dp"
-                        android:text="BankArg es la solución digital y de vanguardia para todos tus trámites y gestiones bancarias." />
-
-                    <TextView
-                        android:padding="8dp"
-                        android:text="BankArg fue desarrollada por un grupo de estudiantes del ISPC... Aprende más sobre nosotros aquí." />
-
-                    <TextView
-                        android:padding="8dp"
-                        android:text="¿Cómo se usa BankArg?"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:padding="8dp"
-                        android:text="Registrarte es facil, rapido y seguro!
-Solo necesitas ingresar tus datos personales y estaras usando BankArg en unos instantes." />
-
-                    <TextView
-                        android:padding="8dp"
-                        android:text="En BankArg creemos que: !La informacion es poder¡ Sobre todo aquella de una fuente segura y confiable.
-Y por eso hemos te recomendamos visitar este enlace si aun estas aprendiendo las bases de la economia financiera." />
-
-                    <TextView
-                        android:padding="8dp"
-                        android:text="Otras preguntas"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:padding="8dp"
-                        android:text="¿No pudimos aclarar todas tus dudas? No dudes en contactarnos , para que puedamos seguir mejorando esta seccion" />
-                </TableLayout>
-            </LinearLayout>
-
+            <Button
+                android:id="@+id/otras_preguntas"
+                android:layout_width="310dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:gravity="center_horizontal|center_vertical"
+                android:textColor="@color/col6"
+                android:backgroundTint="@color/col3"
+                android:text="Otras preguntas"
+                android:textAppearance="@style/faq_pregunt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/como_se_usa"
+                app:cornerRadius="10dp"/>
 
             <TextView
                 android:id="@+id/describe_tu"
                 android:layout_width="255dp"
-                android:layout_height="wrap_content"
+                android:layout_height="64dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:gravity="center_horizontal|center_vertical"
                 android:text="Describe tu consulta:"
                 android:textAppearance="@style/describe_tu"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tabla1" />
+                app:layout_constraintTop_toBottomOf="@+id/otras_preguntas" />
 
             <EditText
                 android:id="@+id/tu_consulta"
@@ -158,7 +150,7 @@ Y por eso hemos te recomendamos visitar este enlace si aun estas aprendiendo las
                 app:layout_constraintTop_toBottomOf="@+id/describe_tu" />
 
             <Button
-                android:id="@+id/btn_editar"
+                android:id="@+id/Enviar"
                 android:layout_width="260dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="16dp"
@@ -166,8 +158,8 @@ Y por eso hemos te recomendamos visitar este enlace si aun estas aprendiendo las
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/col1"
                 android:text="Enviar"
-                android:textColor="@color/col6"
                 android:textSize="26dp"
+                android:textColor="@color/col6"
                 app:cornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -182,12 +174,12 @@ Y por eso hemos te recomendamos visitar este enlace si aun estas aprendiendo las
                 android:onClick="abrirCalendario"
                 android:text="Seleccionar fecha:"
                 android:textAppearance="@style/seleccionar_fecha"
-                android:textColor="@color/col6"
                 android:textSize="26dp"
+                android:textColor="@color/col6"
                 app:cornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_editar" />
+                app:layout_constraintTop_toBottomOf="@+id/Enviar" />
 
             <Button
                 android:id="@+id/Solicitar_turno"
@@ -199,12 +191,14 @@ Y por eso hemos te recomendamos visitar este enlace si aun estas aprendiendo las
                 android:backgroundTint="@color/col1"
                 android:fontFamily="@font/poppins"
                 android:text="Solicitar turno"
-                android:textColor="@color/col6"
                 android:textSize="26dp"
+                android:textColor="@color/col6"
                 app:cornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/seleccionar_fecha" />
+
+
 
 
             <!--            FOOTER START -->
@@ -214,7 +208,7 @@ Y por eso hemos te recomendamos visitar este enlace si aun estas aprendiendo las
                 android:layout_height="57dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="600dp"
+                android:layout_marginTop="700dp"
                 android:background="#E7F6F2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

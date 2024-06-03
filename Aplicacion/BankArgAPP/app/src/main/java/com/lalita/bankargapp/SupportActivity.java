@@ -8,13 +8,16 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.MenuItem;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
@@ -32,6 +35,9 @@ public class SupportActivity extends AppCompatActivity {
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
+    private Button BtnQueEs;
+    private Button BtnComoSeUsa;
+    private Button BtnOtrasPreguntas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +53,63 @@ public class SupportActivity extends AppCompatActivity {
                 R.string.close_nav);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        /* FAQ */
+
+        BtnQueEs = (Button) findViewById(R.id.que_es);
+
+        BtnQueEs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertaQue = new AlertDialog.Builder(SupportActivity.this);
+                alertaQue.setMessage("BankArg es la solucion digital y de vanguardia para todos tus tramites y gestiones bancarias")
+                        .setCancelable(false)
+                        .setPositiveButton("Okey", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.cancel();
+                            }
+                        });
+
+            }
+        });
+
+
+        BtnComoSeUsa = (Button) findViewById(R.id.como_se_usa);
+        BtnComoSeUsa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertaComo = new AlertDialog.Builder(SupportActivity.this);
+                alertaComo.setMessage("Registrarte es facil, rapido y seguro! Solo necesitas ingresar tus datos personales y estaras usando BankArg en unos instantes.")
+                        .setCancelable(false)
+                        .setPositiveButton("Okey", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.cancel();
+                            }
+                        });
+
+            }
+        });
+
+
+        BtnOtrasPreguntas = (Button) findViewById(R.id.otras_preguntas);
+        BtnOtrasPreguntas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertaOtras = new AlertDialog.Builder(SupportActivity.this);
+                alertaOtras.setMessage("¿No pudimos aclarar todas tus dudas? No dudes en contactarnos, para que podamos seguir mejorando esta seccion")
+                        .setCancelable(false)
+                        .setPositiveButton("Okey", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.cancel();
+                            }
+                        });
+
+            }
+        });
+
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
