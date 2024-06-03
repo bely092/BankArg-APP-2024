@@ -225,39 +225,8 @@
                 app:layout_constraintTop_toTopOf="@+id/rectangle_2" />
             <!-- FOOTER END -->
 
-                <TextView
-                    android:id="@+id/textView19"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/bankarg_des"
-                    android:textColor="#000000"
-                    app:layout_constraintBottom_toBottomOf="@+id/view2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/view2"
-                    app:layout_constraintTop_toTopOf="@+id/view2" />
-
-
-                <!-- FOOTER END -->
-                <Button
-                    android:id="@+id/Solicitar"
-                    android:layout_width="350sp"
-                    android:layout_height="80sp"
-                    android:layout_marginTop="30sp"
-                    android:backgroundTint="@color/col1"
-                    android:fontFamily="@font/poppins"
-                    android:text="Solicitar"
-                    android:textColor="@color/col6"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    app:cornerRadius="7sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 
