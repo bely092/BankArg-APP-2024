@@ -56,21 +56,23 @@ public class SupportActivity extends AppCompatActivity {
 
         /* FAQ */
 
-        BtnQueEs = (Button) findViewById(R.id.que_es);
+        BtnQueEs = findViewById(R.id.que_es);
 
         BtnQueEs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder alertaQue = new AlertDialog.Builder(SupportActivity.this);
-                alertaQue.setMessage("BankArg es la solucion digital y de vanguardia para todos tus tramites y gestiones bancarias")
+                alertaQue.setMessage("-Es la solucion digital y de vanguardia para todos tus tramites y gestiones bancarias \n -Fue desarrollada por un grupo de estudiantes del ISPC como proyecto integrador de los saberes adquiridos durante el cursado de la Tecnicatura Superior en Desarrollo Web y Aplicaciones Digitales.")
                         .setCancelable(false)
-                        .setPositiveButton("Okey", new DialogInterface.OnClickListener() {
+                        .setNegativeButton("Genial", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.cancel();
                             }
                         });
-
+                AlertDialog titulo = alertaQue.create();
+                titulo.setTitle("BankArg");
+                titulo.show();
             }
         });
 
@@ -80,15 +82,17 @@ public class SupportActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder alertaComo = new AlertDialog.Builder(SupportActivity.this);
-                alertaComo.setMessage("Registrarte es facil, rapido y seguro! Solo necesitas ingresar tus datos personales y estaras usando BankArg en unos instantes.")
+                alertaComo.setMessage("-Registrarte es facil, rapido y seguro! Solo necesitas ingresar tus datos personales y estaras usando BankArg en unos instantes. \n -En BankArg creemos que: !La informacion es poder¡ Sobre todo aquella de una fuente segura y confiable.")
                         .setCancelable(false)
-                        .setPositiveButton("Okey", new DialogInterface.OnClickListener() {
+                        .setNegativeButton("Genial", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.cancel();
                             }
                         });
-
+                AlertDialog titulo = alertaComo.create();
+                titulo.setTitle("BankArg");
+                titulo.show();
             }
         });
 
@@ -100,12 +104,15 @@ public class SupportActivity extends AppCompatActivity {
                 AlertDialog.Builder alertaOtras = new AlertDialog.Builder(SupportActivity.this);
                 alertaOtras.setMessage("¿No pudimos aclarar todas tus dudas? No dudes en contactarnos, para que podamos seguir mejorando esta seccion")
                         .setCancelable(false)
-                        .setPositiveButton("Okey", new DialogInterface.OnClickListener() {
+                        .setNegativeButton("Gracias", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.cancel();
                             }
                         });
+                AlertDialog titulo = alertaOtras.create();
+                titulo.setTitle("BankArg");
+                titulo.show();
 
             }
         });
