@@ -61,7 +61,7 @@ public class TransferActivity extends AppCompatActivity {
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TransferActivity.this, PersonasActivity.class);
+                Intent intent = new Intent(TransferActivity.this, AgregarPersonasActivity.class);
                 startActivity(intent);
             }
         });
