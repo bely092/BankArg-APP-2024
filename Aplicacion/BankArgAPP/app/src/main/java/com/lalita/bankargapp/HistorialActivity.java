@@ -14,14 +14,12 @@ import android.view.MenuItem;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
-import android.app.AlertDialog;
-import android.widget.Button;
 
-public class TransferirActivity extends AppCompatActivity {
+
+public class HistorialActivity extends AppCompatActivity {
 
 
     DrawerLayout drawerLayout;
@@ -31,27 +29,6 @@ public class TransferirActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_transferir);
-
-
-        Button transferButton = findViewById(R.id.Transferir);
-        transferButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                new AlertDialog.Builder(TransferirActivity.this)
-                        .setTitle("Confirmación")
-                        .setMessage("¿Estás seguro de que deseas enviar el dinero?")
-                        .setPositiveButton("Sí", (dialog, which) -> {
-                            Toast.makeText(TransferirActivity.this, "Dinero enviado", Toast.LENGTH_SHORT).show();
-                        })
-                        .setNegativeButton("No", (dialog, which) -> {
-                            dialog.dismiss();
-                        })
-                        .create()
-                        .show();
-            }
-        });
 
         /*--- Boton en el tool bar que lleva al perfil---*/
 
@@ -59,18 +36,8 @@ public class TransferirActivity extends AppCompatActivity {
         btnPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TransferirActivity.this, PerfilActivity.class);
+                Intent intent = new Intent(HistorialActivity.this, PerfilActivity.class);
                 startActivity(intent);
-            }
-        });
-
-        /*--- Ventana emergente de aviso ---*/
-        Button btnPagar = findViewById(R.id.Transferir);
-        btnPagar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(TransferirActivity.this, "Servicio no disponible en estos momentos", Toast.LENGTH_SHORT).show();
-
             }
         });
 
@@ -92,7 +59,7 @@ public class TransferirActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
 
-                TransferirActivity activity = TransferirActivity.this;
+                HistorialActivity activity = HistorialActivity.this;
                 if (itemId == R.id.nav_home) {
                     Intent intent = new Intent(activity, HomeActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Home is selected");

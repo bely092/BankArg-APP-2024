@@ -26,6 +26,9 @@ public class BankingActivity extends AppCompatActivity {
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
 
+    Button btnTransferencia, btnPagos, btnPerfil, btnLoan;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +37,7 @@ public class BankingActivity extends AppCompatActivity {
         /*--- Boton en el tool bar que lleva al perfil---*/
 
         View btnPerfil = findViewById(R.id.account_cir);
+
         btnPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,6 +146,7 @@ public class BankingActivity extends AppCompatActivity {
                 return true;
             }
         });
+
     }
 
     @Override
