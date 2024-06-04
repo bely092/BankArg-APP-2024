@@ -8,19 +8,26 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.MenuItem;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SupportActivity extends AppCompatActivity {
 
@@ -28,7 +35,9 @@ public class SupportActivity extends AppCompatActivity {
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
-
+    private Button BtnQueEs;
+    private Button BtnComoSeUsa;
+    private Button BtnOtrasPreguntas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +64,70 @@ public class SupportActivity extends AppCompatActivity {
                 R.string.close_nav);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        /* FAQ */
+
+        BtnQueEs = findViewById(R.id.que_es);
+
+        BtnQueEs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertaQue = new AlertDialog.Builder(SupportActivity.this);
+                alertaQue.setMessage("-Es la solucion digital y de vanguardia para todos tus tramites y gestiones bancarias \n -Fue desarrollada por un grupo de estudiantes del ISPC como proyecto integrador de los saberes adquiridos durante el cursado de la Tecnicatura Superior en Desarrollo Web y Aplicaciones Digitales.")
+                        .setCancelable(false)
+                        .setNegativeButton("Genial", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.cancel();
+                            }
+                        });
+                AlertDialog titulo = alertaQue.create();
+                titulo.setTitle("BankArg");
+                titulo.show();
+            }
+        });
+
+
+        BtnComoSeUsa = (Button) findViewById(R.id.como_se_usa);
+        BtnComoSeUsa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertaComo = new AlertDialog.Builder(SupportActivity.this);
+                alertaComo.setMessage("-Registrarte es facil, rapido y seguro! Solo necesitas ingresar tus datos personales y estaras usando BankArg en unos instantes. \n -En BankArg creemos que: !La informacion es poder¡ Sobre todo aquella de una fuente segura y confiable.")
+                        .setCancelable(false)
+                        .setNegativeButton("Genial", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.cancel();
+                            }
+                        });
+                AlertDialog titulo = alertaComo.create();
+                titulo.setTitle("BankArg");
+                titulo.show();
+            }
+        });
+
+
+        BtnOtrasPreguntas = (Button) findViewById(R.id.otras_preguntas);
+        BtnOtrasPreguntas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertaOtras = new AlertDialog.Builder(SupportActivity.this);
+                alertaOtras.setMessage("¿No pudimos aclarar todas tus dudas? No dudes en contactarnos, para que podamos seguir mejorando esta seccion")
+                        .setCancelable(false)
+                        .setNegativeButton("Gracias", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.cancel();
+                            }
+                        });
+                AlertDialog titulo = alertaOtras.create();
+                titulo.setTitle("BankArg");
+                titulo.show();
+
+            }
+        });
+
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -116,6 +189,7 @@ public class SupportActivity extends AppCompatActivity {
                 return true;
             }
         });
+
     }
 
     @Override
@@ -152,4 +226,5 @@ public class SupportActivity extends AppCompatActivity {
         }, anio, mes, dia);
         dpd.show();
     }
+
 }
