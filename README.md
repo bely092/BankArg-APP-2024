@@ -1,6 +1,8 @@
 ## Proyecto:
 
-<center><img src="https://i.ibb.co/Y2MJ84J/logo-no-background.png" alt="logo-no-background" border="0" Width="450" Height="400"></center>
+
+
+<img src="https://i.ibb.co/LN7NcnR/logo-white.png" alt="logo-white" border="0" Width="400" Height="400">
 
 <br>
 
