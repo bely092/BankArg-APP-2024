@@ -1,5 +1,14 @@
-# Indice
+## Proyecto:
+
+<center><img src="https://i.ibb.co/Y2MJ84J/logo-no-background.png" alt="logo-no-background" border="0" Width="450" Height="400"></center>
+
 <br>
+
+# Indice
+
+<br>
+
+<center>
 
 |Topic|Description|
 |---|---|
@@ -14,11 +23,9 @@
 |[Testing](https://github.com/ISPC-BankArg-2024/.github/wiki/09-Testing)|Todo lo de testing del proyecto|
 |[Videos](https://github.com/ISPC-BankArg-2024/.github/wiki/10-Videos)|Todos los videos de los proyectos|
 |[Retrospective Sprint](https://github.com/ISPC-BankArg-2024/.github/wiki/11-Retrospective-Sprint)|Tablero Ideaboard|
+</center>
 
 <br>
-
-
-
 
 ## Personal Involucrado
 
@@ -39,6 +46,8 @@
 <br>
 
 
-### [Figma de APP](https://www.figma.com/file/AhjScpyVarUiVG0H8JI1IR/BankArg-Dise%C3%B1o-y-prototipado?type=design&node-id=0%3A1&mode=design&t=0lbUY3KUcLKTkotq-1)
-### [Mapa](https://github.com/ISPC-BankArg-2024/BankArg-APP-2024/blob/main/Documentacion/Mapa/BankArg-Web-Mapa.pdf)
-### <center>[Proyecto Kangbang](https://github.com/orgs/ISPC-BankArg-2024/projects/1/views/1)</center>
+## <center>[Figma de APP](https://www.figma.com/file/AhjScpyVarUiVG0H8JI1IR/BankArg-Dise%C3%B1o-y-prototipado?type=design&node-id=0%3A1&mode=design&t=0lbUY3KUcLKTkotq-1)</center>
+ 
+## <center>[Mapa](https://github.com/ISPC-BankArg-2024/BankArg-APP-2024/blob/main/Documentacion/Mapa/BankArg-Web-Mapa.pdf)</center>
+
+## <center>[Proyecto Kangbang](https://github.com/orgs/ISPC-BankArg-2024/projects/1/views/1)</center>
