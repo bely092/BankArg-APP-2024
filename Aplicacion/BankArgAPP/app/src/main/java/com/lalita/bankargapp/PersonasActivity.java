@@ -61,6 +61,16 @@ public class PersonasActivity extends AppCompatActivity {
             }
         });
 
+        /*--- lleva al home ---*/
+        View btnHome = findViewById(R.id.view8);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PersonasActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         nombreEditText = findViewById(R.id.nombre);
         apellidoEditText = findViewById(R.id.apellido);
         passwordEditText = findViewById(R.id.password);

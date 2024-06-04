@@ -74,6 +74,17 @@ public class BankingActivity extends AppCompatActivity {
             }
         });
 
+        /*--- lleva al home ---*/
+        View btnHome = findViewById(R.id.view10);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BankingActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
 
         /*---------------------Hooks------------------------*/

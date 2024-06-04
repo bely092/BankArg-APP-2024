@@ -44,6 +44,17 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
 
+
+        /*--- lleva al home ---*/
+        View btnHome = findViewById(R.id.view_bot);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProductActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         btnBanking = findViewById(R.id.btn_pago_servicios);
         btnLoan = findViewById(R.id.btn_pago_prestamos);
         btnTransfer = findViewById(R.id.btn_pago_tarjeta);

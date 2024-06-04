@@ -57,6 +57,16 @@ public class TransferActivity extends AppCompatActivity {
             }
         });
 
+        /*--- lleva al home ---*/
+        View btnHome = findViewById(R.id.rectangle_2);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TransferActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         Button btnAgregar = findViewById(R.id.button11);
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
