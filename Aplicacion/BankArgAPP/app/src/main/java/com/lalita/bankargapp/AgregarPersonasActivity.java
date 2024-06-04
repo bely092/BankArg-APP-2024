@@ -162,7 +162,8 @@ public class AgregarPersonasActivity extends AppCompatActivity {
             return;
         }
 
-        Toast.makeText(this, "Persona agregada: " + nombre, Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "Persona agregada: " + nombre, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Servicio no disponible en estos momentos", Toast.LENGTH_LONG).show();
     }
 
     @Override

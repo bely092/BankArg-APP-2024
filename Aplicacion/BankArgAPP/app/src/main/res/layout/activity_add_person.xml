@@ -71,25 +71,25 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-            <View
-                android:id="@+id/vista_agregarpers"
-                android:layout_width="match_parent"
-                android:layout_height="500dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/agregar" />
+<!--            <View-->
+<!--                android:id="@+id/vista_agregarpers"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="500dp"-->
+<!--                android:layout_alignParentLeft="true"-->
+<!--                android:layout_alignParentTop="true"-->
+<!--                android:layout_marginStart="24dp"-->
+<!--                android:layout_marginEnd="24dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/agregar" />-->
 
             <EditText
                 android:id="@+id/nombrePers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="64dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="64dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
@@ -102,17 +102,18 @@
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:textColorHint="@color/col1"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/vista_agregarpers"
-                app:layout_constraintStart_toStartOf="@+id/vista_agregarpers"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextAlias" />
+
 
             <EditText
                 android:id="@+id/editTextCBU"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="64dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="64dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
@@ -125,18 +126,17 @@
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:textColorHint="@color/col1"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/vista_agregarpers"
-                app:layout_constraintStart_toStartOf="@+id/vista_agregarpers"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/agregar" />
-
 
             <EditText
                 android:id="@+id/editTextAlias"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="64dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="64dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
@@ -149,16 +149,16 @@
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:textColorHint="@color/col1"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/vista_agregarpers"
-                app:layout_constraintStart_toStartOf="@+id/vista_agregarpers"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextCBU" />
 
             <Button
                 android:id="@+id/buttonAddPerson"
                 android:layout_width="260dp"
                 android:layout_height="60dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="50dp"
                 android:backgroundTint="@color/col1"
@@ -169,7 +169,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/rectangle_2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/vista_agregarpers" />
+                app:layout_constraintTop_toBottomOf="@+id/nombrePers" />
 
 
             <!--            FOOTER START -->

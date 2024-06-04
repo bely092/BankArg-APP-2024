@@ -38,6 +38,7 @@ public class SupportActivity extends AppCompatActivity {
     private Button BtnQueEs;
     private Button BtnComoSeUsa;
     private Button BtnOtrasPreguntas;
+    private Button btnSolicitarTurno, btnEnviar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +97,26 @@ public class SupportActivity extends AppCompatActivity {
                 AlertDialog titulo = alertaQue.create();
                 titulo.setTitle("BankArg");
                 titulo.show();
+            }
+        });
+
+        /*--- Ventana emergente de aviso ---*/
+        btnEnviar = findViewById(R.id.Enviar);
+        btnEnviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(SupportActivity.this, "Servicio no disponible en estos momentos", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        /*--- Ventana emergente de aviso ---*/
+        btnSolicitarTurno = findViewById(R.id.Solicitar_turno);
+        btnSolicitarTurno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(SupportActivity.this, "Servicio no disponible en estos momentos", Toast.LENGTH_SHORT).show();
+
             }
         });
 
