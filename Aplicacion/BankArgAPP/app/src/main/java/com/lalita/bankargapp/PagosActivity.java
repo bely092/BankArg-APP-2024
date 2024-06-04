@@ -63,6 +63,16 @@ public class PagosActivity extends AppCompatActivity {
             }
         });
 
+        /*--- lleva al home ---*/
+        View btnHome = findViewById(R.id.view_bot);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PagosActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         /*---------------------Hooks------------------------*/
         drawerLayout=findViewById(R.id.drawer_layout);

@@ -49,6 +49,16 @@ public class PagoServicioActivity extends AppCompatActivity {
             }
         });
 
+        /*--- lleva al home ---*/
+        View btnHome = findViewById(R.id.view_bot);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PagoServicioActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         /*---------------------Hooks------------------------*/

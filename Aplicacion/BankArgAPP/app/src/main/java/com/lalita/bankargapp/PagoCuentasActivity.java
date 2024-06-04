@@ -51,6 +51,16 @@ public class PagoCuentasActivity extends AppCompatActivity {
             }
         });
 
+        /*--- lleva al home ---*/
+        View btnHome = findViewById(R.id.view_bot);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PagoCuentasActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
 

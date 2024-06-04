@@ -57,18 +57,20 @@
 
             <TextView
                 android:id="@+id/agregar"
-                android:layout_width="468dp"
-                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:fontFamily="@font/poppins"
                 android:gravity="center_horizontal|center_vertical"
                 android:text="Agrega un contacto"
                 android:textAppearance="@style/env_anos_un"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
             <View
                 android:id="@+id/vista_agregarpers"
                 android:layout_width="match_parent"
@@ -77,7 +79,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
-                android:background="@color/col4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/agregar" />
@@ -100,7 +101,7 @@
                 android:textColor="@color/col1"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:textColorHint="@color/col1"
-                android:textSize="24dp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/vista_agregarpers"
                 app:layout_constraintStart_toStartOf="@+id/vista_agregarpers"
                 app:layout_constraintTop_toBottomOf="@+id/editTextAlias" />
@@ -123,7 +124,7 @@
                 android:textColor="@color/col1"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:textColorHint="@color/col1"
-                android:textSize="24dp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/vista_agregarpers"
                 app:layout_constraintStart_toStartOf="@+id/vista_agregarpers"
                 app:layout_constraintTop_toBottomOf="@+id/agregar" />
@@ -147,7 +148,7 @@
                 android:textColor="@color/col1"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:textColorHint="@color/col1"
-                android:textSize="24dp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/vista_agregarpers"
                 app:layout_constraintStart_toStartOf="@+id/vista_agregarpers"
                 app:layout_constraintTop_toBottomOf="@+id/editTextCBU" />
@@ -164,7 +165,7 @@
                 android:text="Agregar Persona"
                 android:textColor="@color/col6"
                 android:textSize="20sp"
-                app:cornerRadius="10dp"
+                app:cornerRadius="24dp"
                 app:layout_constraintBottom_toTopOf="@+id/rectangle_2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -186,7 +187,7 @@
             <TextView
                 android:id="@+id/bankarg_des"
                 style="@style/bankarg_des"
-                android:layout_width="433dp"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"

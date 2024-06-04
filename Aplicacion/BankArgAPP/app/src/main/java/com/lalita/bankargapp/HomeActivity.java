@@ -98,6 +98,16 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        /*--- lleva al home ---*/
+        View btnHome = findViewById(R.id.view2);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         /*---------------------Hooks------------------------*/
         drawerLayout=findViewById(R.id.drawer_layout);
         toolbar=findViewById(R.id.toolbar);
