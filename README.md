@@ -32,16 +32,16 @@
 
 ## Personal Involucrado
 
-| Nombre              | Rol        | Usuario de Github | Responsabilidad | Información de contacto          |
-|---------------------|------------|-------------------|-----------------|---------------------------------|
-| Ezequiel Giampaoli  | Developer / Scrum Master  | egiam             | Developer       | ezegiampaoli@gmail.com          |
-| Maria Laura Peralta | Developer  | PeraltaMariaL-ISPC| Developer       | lali.635@gmail.com              |
-| Valentin ALterio    | Developer  | Valealterio       | Developer       | alteriovalentin01@gmail.com     |
-| Joaquin Bonvechi    | Developer  | JoacoBonvechi     | Developer       | joacobonvechi2272002@gmail.com  |
-| Rodrigo Leiva       | Developer  | rodrileiv         | Developer       | rodrigoleiva1995@hotmail.com   |
-| Paula Cabrera       | Developer / Scrum Master  | paulac23          | Developer       | paucabrera95@gmail.com         |
-| Roberto Carlos Osores | Developer | roberto-osores   | Developer       | osoresroberto@gmail.com        |
-| Belen Riquelme      | Developer  | bely092           | Developer       | koen.lion92@gmail.com          |
+| Nombre              | Rol        | Usuario de Github | Responsabilidad |
+|---------------------|------------|-------------------|-----------------|
+| Ezequiel Giampaoli  | Developer / Scrum Master  | egiam             | Developer       |
+| Maria Laura Peralta | Developer  | PeraltaMariaL-ISPC| Developer       |
+| Valentin ALterio    | Developer  | Valealterio       | Developer       |
+| Joaquin Bonvechi    | Developer  | JoacoBonvechi     | Developer       |
+| Rodrigo Leiva       | Developer  | rodrileiv         | Developer       |
+| Paula Cabrera       | Developer / Scrum Master  | paulac23          | Developer       |
+| Roberto Carlos Osores | Developer | roberto-osores   | Developer       |
+| Belen Riquelme      | Developer  | bely092           | Developer       |
 
 
 <br>
