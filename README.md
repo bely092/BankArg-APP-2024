@@ -40,8 +40,6 @@
 | Joaquin Bonvechi    | Developer  | JoacoBonvechi     | Developer       | joacobonvechi2272002@gmail.com  |
 | Rodrigo Leiva       | Developer  | rodrileiv         | Developer       | rodrigoleiva1995@hotmail.com   |
 | Paula Cabrera       | Developer / Scrum Master  | paulac23          | Developer       | paucabrera95@gmail.com         |
-| Brian Galarza       | Abandono | galarzabrian      | Abandono | briangalarza71@gmail.com       |
-| David Spuler        | Abandono | davidspuler       | Abandono | davidspuler68@gmail.com        |
 | Roberto Carlos Osores | Developer | roberto-osores   | Developer       | osoresroberto@gmail.com        |
 | Belen Riquelme      | Developer  | bely092           | Developer       | koen.lion92@gmail.com          |
 
