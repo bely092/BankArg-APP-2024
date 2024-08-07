@@ -8,6 +8,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 
+import android.content.ClipData;
+import android.content.Context;
+import android.content.ClipboardManager;
+
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -16,9 +20,13 @@ import android.view.MenuItem;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+
+
 
 public class PerfilActivity extends AppCompatActivity {
 
@@ -54,6 +62,43 @@ public class PerfilActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        /*--- botón copiar CVU ---*/
+
+        ImageButton copyText = findViewById(R.id.imageButton5);
+        copyText.setOnClickListener(view -> {
+            // TextView que contiene el CVU
+            TextView texto = findViewById(R.id.CVU);
+            String textToCopy = texto.getText().toString();
+
+            // portapapeles
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("copiado", textToCopy);
+            clipboard.setPrimaryClip(clip);
+
+            // mensaje salio ok
+            Toast.makeText(this, "CVU copiado", Toast.LENGTH_SHORT).show();
+        });
+
+
+
+        /*--- botón copiar Alias ---*/
+
+        ImageButton copTexto = findViewById(R.id.imageButton7);
+        copTexto.setOnClickListener(view -> {
+            // TextView que contiene Alias
+            TextView texto = findViewById(R.id.Alias);
+            String textToCopy = texto.getText().toString();
+
+            // portapapeles
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("copiado", textToCopy);
+            clipboard.setPrimaryClip(clip);
+
+            // mensaje salio ok
+            Toast.makeText(this, "Alias copiado", Toast.LENGTH_SHORT).show();
+        });
+
 
         /*---------------------Hooks------------------------*/
         drawerLayout=findViewById(R.id.drawer_layout);
