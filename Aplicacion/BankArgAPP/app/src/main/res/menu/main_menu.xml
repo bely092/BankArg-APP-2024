@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_product"
             android:icon="@drawable/baseline_house_24"
             android:title="Inicio" />
 
@@ -12,7 +12,7 @@
             android:id="@+id/nav_banking"
             android:icon="@drawable/baseline_account_balance_24"
             android:title="Home Banking" />
-
+         <!--
         <item
             android:id="@+id/nav_product"
             android:icon="@drawable/baseline_assignment_24"
@@ -29,6 +29,11 @@
             android:title="Perfil" />
 
         <item
+            android:id="@+id/nav_transfer"
+            android:icon="@drawable/baseline_currency_exchange_24"
+            android:title="Transferencias" /> -->
+
+        <item
             android:id="@+id/nav_contact"
             android:icon="@drawable/baseline_phone_android_24"
             android:title="Contactanos" />
@@ -38,10 +43,7 @@
             android:icon="@drawable/baseline_build_24"
             android:title="Soporte" />
 
-        <item
-            android:id="@+id/nav_transfer"
-            android:icon="@drawable/baseline_currency_exchange_24"
-            android:title="Transferencias" />
+
 
     </group>
 

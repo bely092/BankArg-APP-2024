@@ -217,7 +217,6 @@
             <!-- ventana balance -->
 
 
-
             <View
                 android:id="@+id/icono_usuar"
                 android:layout_width="120dp"
@@ -301,13 +300,14 @@
                 android:id="@+id/imageButton7"
                 android:layout_width="50dp"
                 android:layout_height="48dp"
-                android:layout_marginTop="112dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="60dp"
                 android:background="@color/col6"
                 android:contentDescription="copiar alias"
-                app:layout_constraintBottom_toBottomOf="@+id/Alias"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/Alias"
-                app:layout_constraintTop_toBottomOf="@+id/Dinerotransferir"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton5"
                 app:srcCompat="@drawable/baseline_content_copy_24" />
 
             <TextView
@@ -330,10 +330,11 @@
                 android:id="@+id/imageButton5"
                 android:layout_width="50dp"
                 android:layout_height="48dp"
-                android:layout_marginTop="45dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="60dp"
                 android:background="@color/col6"
                 android:contentDescription="copiar cbu"
-                app:layout_constraintBottom_toBottomOf="@+id/CVU"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/CVU"
                 app:layout_constraintTop_toBottomOf="@+id/Dinerotransferir"
@@ -419,6 +420,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/rectangle_2"
                 app:layout_constraintVertical_bias="1.0" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="20dp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

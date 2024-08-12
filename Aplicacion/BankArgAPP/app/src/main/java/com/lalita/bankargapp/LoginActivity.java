@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                     // User exists, login successful
                     Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, ProductActivity.class);
                     startActivities(new Intent[]{intent});
                 } else {
                     // User doesn't exist or incorrect password

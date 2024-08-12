@@ -25,7 +25,7 @@ public class TransferActivity extends AppCompatActivity {
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
 
-    Button btnTransferir, btnHistorial;
+    Button btnTransferir;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -35,12 +35,9 @@ public class TransferActivity extends AppCompatActivity {
 
         // Botón en el tool bar que lleva al perfil
         View btnPerfil = findViewById(R.id.account_cir);
-        btnPerfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TransferActivity.this, PerfilActivity.class);
-                startActivity(intent);
-            }
+        btnPerfil.setOnClickListener(view -> {
+            Intent intent = new Intent(TransferActivity.this, PerfilActivity.class);
+            startActivity(intent);
         });
 
 
@@ -49,40 +46,28 @@ public class TransferActivity extends AppCompatActivity {
 
 
         btnTransferir = findViewById(R.id.button13);
-        btnTransferir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(TransferActivity.this, TransferirActivity.class);
-                startActivity(intent);
-            }
+        btnTransferir.setOnClickListener(v -> {
+            Intent intent = new Intent(TransferActivity.this, TransferirActivity.class);
+            startActivity(intent);
         });
 
         /*--- lleva al home ---*/
         View btnHome = findViewById(R.id.rectangle_2);
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TransferActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
+        btnHome.setOnClickListener(view -> {
+            Intent intent = new Intent(TransferActivity.this, HomeActivity.class);
+            startActivity(intent);
         });
 
         Button btnAgregar = findViewById(R.id.button11);
-        btnAgregar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TransferActivity.this, AgregarPersonasActivity.class);
-                startActivity(intent);
-            }
+        btnAgregar.setOnClickListener(view -> {
+            Intent intent = new Intent(TransferActivity.this, AgregarPersonasActivity.class);
+            startActivity(intent);
         });
 
         Button btnHistorial = findViewById(R.id.button12);
-        btnHistorial.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TransferActivity.this, BankingActivity.class);
-                startActivity(intent);
-            }
+        btnHistorial.setOnClickListener(view -> {
+            Intent intent = new Intent(TransferActivity.this, BankingActivity.class);
+            startActivity(intent);
         });
 
         // Hooks
@@ -100,33 +85,19 @@ public class TransferActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
                 TransferActivity activity = TransferActivity.this;
-
-                if (itemId == R.id.nav_home) {
-                    Intent intent = new Intent(activity, HomeActivity.class);
+                if (itemId == R.id.nav_product) {
+                    Intent intent = new Intent(activity, ProductActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Home is selected");
                     startActivities(new Intent[]{intent});
                     drawerLayout.closeDrawer(GravityCompat.START);
+
                 } else if (itemId == R.id.nav_banking) {
                     Intent intent = new Intent(activity, BankingActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Banking is selected");
                     startActivities(new Intent[]{intent});
                     drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_product) {
-                    Intent intent = new Intent(activity, ProductActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Product is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_loan) {
-                    Intent intent = new Intent(activity, LoanActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Loan is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_profile) {
-                    Intent intent = new Intent(activity, PerfilActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Perfil is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_contact) {
+                }
+                else if (itemId == R.id.nav_contact) {
                     Intent intent = new Intent(activity, ContactActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Contact is selected");
                     startActivities(new Intent[]{intent});
@@ -134,11 +105,6 @@ public class TransferActivity extends AppCompatActivity {
                 } else if (itemId == R.id.nav_support) {
                     Intent intent = new Intent(activity, SupportActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Support is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_transfer) {
-                    Intent intent = new Intent(activity, TransferActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Transfer is selected");
                     startActivities(new Intent[]{intent});
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (itemId == R.id.nav_logout) {
@@ -150,27 +116,8 @@ public class TransferActivity extends AppCompatActivity {
                 }
 
                 return true;
-                }
-
+            }
         });
-
-        // btnTransferir = findViewById(R.id.button13);
-        // btnTransferir.setOnClickListener(new View.OnClickListener() {
-        //     @Override
-        //     public void onClick(View v) {
-        //         Intent intent = new Intent(TransferActivity.this, TransferirActivity.class);
-        //         startActivity(intent);
-        //     }
-        // });
-
-        // btnHistorial = findViewById(R.id.button12);
-        // btnHistorial.setOnClickListener(new View.OnClickListener() {
-        //     @Override
-        //     public void onClick(View v) {
-        //         Intent intent = new Intent(TransferActivity.this, HistorialActivity.class);
-        //         startActivity(intent);
-        //     }
-        // });
     }
 
 
