@@ -26,7 +26,10 @@
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
@@ -66,31 +69,32 @@
                 android:text="Agrega un contacto"
                 android:textAppearance="@style/env_anos_un"
                 android:textSize="24sp"
-                android:textStyle="bold"
+                android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-<!--            <View-->
-<!--                android:id="@+id/vista_agregarpers"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="500dp"-->
-<!--                android:layout_alignParentLeft="true"-->
-<!--                android:layout_alignParentTop="true"-->
-<!--                android:layout_marginStart="24dp"-->
-<!--                android:layout_marginEnd="24dp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/agregar" />-->
+            <!--            <View-->
+            <!--                android:id="@+id/vista_agregarpers"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="500dp"-->
+            <!--                android:layout_alignParentLeft="true"-->
+            <!--                android:layout_alignParentTop="true"-->
+            <!--                android:layout_marginStart="24dp"-->
+            <!--                android:layout_marginEnd="24dp"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/agregar" />-->
 
             <EditText
                 android:id="@+id/nombrePers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="60dp"
-                android:background="@drawable/custom_edittext"
+                android:layout_marginEnd="32dp"
+                android:background="?android:attr/fastScrollPreviewBackgroundRight"
+                android:backgroundTint="@color/col4"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:fontFamily="@font/poppins"
@@ -111,10 +115,11 @@
                 android:id="@+id/editTextCBU"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="60dp"
-                android:background="@drawable/custom_edittext"
+                android:layout_marginEnd="32dp"
+                android:background="?android:attr/fastScrollPreviewBackgroundRight"
+                android:backgroundTint="@color/col4"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:fontFamily="@font/poppins"
@@ -134,10 +139,11 @@
                 android:id="@+id/editTextAlias"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="60dp"
-                android:background="@drawable/custom_edittext"
+                android:layout_marginEnd="32dp"
+                android:background="?android:attr/fastScrollPreviewBackgroundRight"
+                android:backgroundTint="@color/col4"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:fontFamily="@font/poppins"
@@ -157,14 +163,14 @@
                 android:id="@+id/buttonAddPerson"
                 android:layout_width="260dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="50dp"
                 android:backgroundTint="@color/col1"
-                android:text="Agregar Persona"
+                android:text="Agregar"
                 android:textColor="@color/col6"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 app:cornerRadius="24dp"
                 app:layout_constraintBottom_toTopOf="@+id/rectangle_2"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -173,16 +179,15 @@
 
 
             <!--            FOOTER START -->
+
             <View
                 android:id="@+id/rectangle_2"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="57dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
+                android:layout_marginTop="300dp"
+
                 android:background="@color/col1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/buttonAddPerson" />
 
             <TextView
                 android:id="@+id/bankarg_des"
@@ -198,9 +203,11 @@
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.492"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/buttonAddPerson"
-                app:layout_constraintTop_toTopOf="@+id/rectangle_2" />
+                app:layout_constraintTop_toTopOf="@+id/rectangle_2"
+                app:layout_constraintVertical_bias="0.44" />
             <!-- FOOTER END -->
 
 

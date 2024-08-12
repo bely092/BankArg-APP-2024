@@ -1,6 +1,7 @@
 package com.lalita.bankargapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.annotation.NonNull;
@@ -9,14 +10,19 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.MenuItem;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+
+import java.text.BreakIterator;
 
 public class ContactActivity extends AppCompatActivity {
 
@@ -50,6 +56,48 @@ public class ContactActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
+        /*--- Enviar Correo ---*/
+
+
+        /*---EditText mail =  findViewById(R.id.email);---*/
+        EditText nombre = findViewById(R.id.nombre);
+        EditText mensaje = findViewById(R.id.mensaje);
+
+
+        View btn_enviar = findViewById(R.id.btn_editar);
+        btn_enviar.setOnClickListener(v -> {
+            /*---String email = mail.getText().toString().trim();---*/
+            String email= "contacto.bankarg@gmail.com";
+            String asunto = nombre.getText().toString().trim();
+            String contenido = mensaje.getText().toString().trim();
+
+
+            if (email.isEmpty() || asunto.isEmpty() || contenido.isEmpty()) {
+                Toast.makeText(v.getContext(), "Completa los campos", Toast.LENGTH_SHORT).show();
+            } else {
+                /*---intent.setData(Uri.parse("mailto:" + email));---*/
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("message/rfc822");
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+                intent.putExtra(Intent.EXTRA_SUBJECT, asunto);
+                intent.putExtra(Intent.EXTRA_TEXT, contenido);
+
+                try {
+                    startActivity(Intent.createChooser(intent, "Elige una aplicación para enviar el correo"));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(v.getContext(), "No hay aplicaciones de correo instaladas", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+    });
+
+
+
+
+
 
 
 

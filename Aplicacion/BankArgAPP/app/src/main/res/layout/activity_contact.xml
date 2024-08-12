@@ -64,62 +64,55 @@
             <TextView
                 android:id="@+id/env_anos_un"
                 android:layout_width="wrap_content"
-                android:layout_height="150dp"
+                android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppins"
                 android:gravity="center_horizontal|center_vertical"
                 android:text="Envianos un Correo"
                 android:textAppearance="@style/env_anos_un"
                 android:textSize="24sp"
-                android:textStyle="bold"
+                android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-            <View
-                android:id="@+id/vista_contacto"
-                android:layout_width="match_parent"
-                android:layout_height="600dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:text="Porfavor describe tu consulta detalladamente. Incluye tu nombre y en la brevedad te responderemos"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/env_anos_un" />
 
-
-            <EditText
-                android:id="@+id/nombre"
+            <View
+                android:id="@+id/vista_contacto"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/baseline_person_24"
-                android:drawablePadding="8dp"
-                android:fontFamily="@font/poppins"
-                android:hint="Nombre"
-                android:minHeight="60dp"
-                android:padding="8dp"
-                android:textColor="@color/col1"
-                android:textColorHighlight="@color/cardview_dark_background"
-                android:textColorHint="@color/col1"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/vista_contacto"
-                app:layout_constraintStart_toStartOf="@+id/vista_contacto"
-                app:layout_constraintTop_toBottomOf="@+id/env_anos_un" />
+                android:layout_height="500dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="257dp"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <!--
             <EditText
                 android:id="@+id/apellido"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/custom_edittext"
+                android:background="?android:attr/fastScrollPreviewBackgroundRight"
+                android:backgroundTint="@color/col4"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:fontFamily="@font/poppins"
@@ -130,22 +123,51 @@
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:textColorHint="@color/col1"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/vista_contacto"
-                app:layout_constraintStart_toStartOf="@+id/vista_contacto"
-                app:layout_constraintTop_toBottomOf="@+id/nombre" />
+                tools:layout_editor_absoluteY="352dp" /> -->
 
+
+            <EditText
+                android:id="@+id/nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="275dp"
+                android:layout_marginEnd="32dp"
+                android:background="?android:attr/fastScrollPreviewBackgroundRight"
+                android:backgroundTint="@color/col4"
+                android:drawableLeft="@drawable/baseline_person_24"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/poppins"
+                android:hint="Nombre - Asunto"
+                android:minHeight="60dp"
+                android:padding="8dp"
+                android:textColor="@color/col1"
+                android:textColorHighlight="@color/cardview_dark_background"
+                android:textColorHint="@color/col1"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <!--
             <EditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="344dp"
                 android:layout_marginEnd="32dp"
-                android:background="@drawable/custom_edittext"
+                android:autoText="false"
+                android:background="?android:attr/fastScrollPreviewBackgroundRight"
+                android:backgroundTint="@color/col4"
+                android:clickable="false"
+                android:contextClickable="false"
                 android:drawableLeft="@drawable/baseline_mail_outline_24"
                 android:drawablePadding="8dp"
+                android:enabled="false"
                 android:fontFamily="@font/poppins"
-                android:hint="Email"
+                android:hint="contacto.bankarg@gmail.com"
                 android:minHeight="60dp"
                 android:padding="8dp"
                 android:textColor="@color/col1"
@@ -154,36 +176,36 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/vista_contacto"
                 app:layout_constraintStart_toStartOf="@+id/vista_contacto"
-                app:layout_constraintTop_toBottomOf="@+id/apellido" />
-
+                app:layout_constraintTop_toTopOf="parent" /> -->
 
             <TextView
                 android:id="@+id/lbl_mensaje"
                 android:layout_width="175dp"
-                android:layout_height="52dp"
+                android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="355dp"
                 android:fontFamily="@font/poppins"
                 android:gravity="start|bottom"
-                android:text="Mensaje"
+                android:text="Mensaje:"
                 android:textAppearance="@style/mensaje"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/vista_contacto"
-                app:layout_constraintTop_toBottomOf="@+id/email" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/mensaje"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
+                android:layout_marginTop="428dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/custom_edittext"
+                android:backgroundTint="@color/col4"
                 android:drawablePadding="8dp"
                 android:fontFamily="@font/poppins"
-                android:hint="Escribi el mensaje que quieras dejarnos aca."
                 android:minHeight="250dp"
                 android:padding="15sp"
                 android:textColor="@color/col1"
@@ -192,7 +214,8 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/vista_contacto"
                 app:layout_constraintStart_toStartOf="@+id/vista_contacto"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_mensaje" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
                 android:id="@+id/btn_editar"
@@ -242,6 +265,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_editar"
                 app:layout_constraintTop_toTopOf="@+id/rectangle_2" />
+
             <!-- FOOTER END -->
 
 
