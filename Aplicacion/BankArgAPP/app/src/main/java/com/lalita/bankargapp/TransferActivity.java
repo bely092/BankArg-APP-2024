@@ -54,7 +54,7 @@ public class TransferActivity extends AppCompatActivity {
         /*--- lleva al home ---*/
         View btnHome = findViewById(R.id.rectangle_2);
         btnHome.setOnClickListener(view -> {
-            Intent intent = new Intent(TransferActivity.this, HomeActivity.class);
+            Intent intent = new Intent(TransferActivity.this, ProductActivity.class);
             startActivity(intent);
         });
 

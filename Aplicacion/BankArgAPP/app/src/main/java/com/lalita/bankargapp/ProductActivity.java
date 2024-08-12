@@ -50,7 +50,7 @@ public class ProductActivity extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ProductActivity.this, HomeActivity.class);
+                Intent intent = new Intent(ProductActivity.this, ProductActivity.class);
                 startActivity(intent);
             }
         });

@@ -92,7 +92,7 @@ public class PerfilActivity extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PerfilActivity.this, HomeActivity.class);
+                Intent intent = new Intent(PerfilActivity.this, ProductActivity.class);
                 startActivity(intent);
             }
         });

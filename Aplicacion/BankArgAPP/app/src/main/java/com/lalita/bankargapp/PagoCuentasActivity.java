@@ -56,7 +56,7 @@ public class PagoCuentasActivity extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PagoCuentasActivity.this, HomeActivity.class);
+                Intent intent = new Intent(PagoCuentasActivity.this, ProductActivity.class);
                 startActivity(intent);
             }
         });

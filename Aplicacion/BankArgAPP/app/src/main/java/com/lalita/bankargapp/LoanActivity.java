@@ -57,7 +57,7 @@ public class LoanActivity extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoanActivity.this, HomeActivity.class);
+                Intent intent = new Intent(LoanActivity.this, ProductActivity.class);
                 startActivity(intent);
             }
         });

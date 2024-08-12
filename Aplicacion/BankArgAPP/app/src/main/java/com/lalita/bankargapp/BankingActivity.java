@@ -79,7 +79,7 @@ public class BankingActivity extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BankingActivity.this, HomeActivity.class);
+                Intent intent = new Intent(BankingActivity.this, ProductActivity.class);
                 startActivity(intent);
             }
         });
