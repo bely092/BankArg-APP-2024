@@ -18,7 +18,7 @@ import java.util.List;
 
 public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "BankArgAPP.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     // Definir la estructura de la tabla "user".
     private static final String CREATE_TABLE_USER = "CREATE TABLE if not exists User (" +
@@ -34,6 +34,11 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
         Log.d("DB_CREATION", "Database created or upgraded");
         // Ejecutar la creación de la tabla "user".
         db.execSQL(CREATE_TABLE_USER);
+
+        // Crear tabla 'contacto'
+        createContactoTable(db);
+
+
 
 //        Por alguna razon me da error: table Usuarios not exist
 //        db.execSQL("CREATE TABLE if not exists Documentos (id_tipo_doc INTEGER PRIMARY KEY AUTOINCREMENT, tipo_doc TEXT)");
@@ -857,11 +862,53 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
+
+
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // En caso de actualizaciones futuras de la base de datos, puedes realizar cambios en las tablas aquí.
+
+        if (oldVersion < 4) {
+            // Crear la nueva tabla 'contacto' cuando se actualiza a la versión 4
+            createContactoTable(db);
+        }
+        // Aquí podrías agregar más condiciones si necesitas manejar futuras actualizaciones
 
     }
+
+
+
+
+
+
+    // Esto Pertenece a la Pantalla de Agregar Contactos
+
+    private void createContactoTable(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE IF NOT EXISTS contacto (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "CBU TEXT, " +
+                "nombre TEXT)");
+    }
+
+    public boolean eliminarContacto(String cbu) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete("contacto", "CBU = ?", new String[]{cbu}) > 0;
+    }
+
+    public boolean insertarContacto(String cbu, String nombre) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("CBU", cbu);
+        contentValues.put("nombre", nombre);
+
+        long result = db.insert("contacto", null, contentValues);
+        return result != -1; // Retorna true si salio bien
+    }
+
+
+    // FIN  Agregar Contactos
+
+
 
     private void insertarPais(SQLiteDatabase db, String pais) {
         ContentValues values = new ContentValues();

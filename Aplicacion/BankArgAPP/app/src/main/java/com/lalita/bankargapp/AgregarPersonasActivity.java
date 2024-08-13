@@ -1,6 +1,9 @@
 package com.lalita.bankargapp;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -16,15 +19,29 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.lalita.bankargapp.Clases.Contacto;
+import com.lalita.bankargapp.Clases.ContactosAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AgregarPersonasActivity extends AppCompatActivity {
 
     private EditText editTextCBU;
-    private EditText editTextAlias;
+    //private EditText editTextAlias;
     private EditText nombrePers;
     private Button buttonAddPerson;
+
+    UsuariosSQLiteHelper miBase;
+
+
+    RecyclerView recyclerViewContactos;
+    ContactosAdapter contactoAdapter;
+    List<Contacto> contactoList;
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -37,9 +54,22 @@ public class AgregarPersonasActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_person);
 
         editTextCBU = findViewById(R.id.editTextCBU);
-        editTextAlias = findViewById(R.id.editTextAlias);
+        //editTextAlias = findViewById(R.id.editTextAlias);
         nombrePers = findViewById(R.id.nombrePers);
         buttonAddPerson = findViewById(R.id.buttonAddPerson);
+
+        recyclerViewContactos = findViewById(R.id.recyclerViewContactos);
+
+
+        // Inicializar la base de datos
+        miBase = new UsuariosSQLiteHelper(this);
+
+        // Configurar el RecyclerView
+        recyclerViewContactos.setLayoutManager(new LinearLayoutManager(this));
+        contactoList = getAllContactos();
+        contactoAdapter = new ContactosAdapter(contactoList, this::eliminarContacto);
+        recyclerViewContactos.setAdapter(contactoAdapter);
+
 
         buttonAddPerson.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,29 +154,103 @@ public class AgregarPersonasActivity extends AppCompatActivity {
         });
     }
 
+
+    // Aca arranca la funcion Para Agregar un contacto
     private void addPerson() {
-        String cbu = editTextCBU.getText().toString().trim();
-        String alias = editTextAlias.getText().toString().trim();
+        String CBU = editTextCBU.getText().toString().trim();
         String nombre = nombrePers.getText().toString().trim();
 
-        if (TextUtils.isEmpty(cbu)) {
+        if (TextUtils.isEmpty(CBU)) {
             editTextCBU.setError("CBU/CVU es requerido");
             return;
         }
-
-        if (TextUtils.isEmpty(alias)) {
-            editTextAlias.setError("Alias es requerido");
-            return;
-        }
-
         if (TextUtils.isEmpty(nombre)) {
             nombrePers.setError("Nombre es requerido");
             return;
         }
 
-//        Toast.makeText(this, "Persona agregada: " + nombre, Toast.LENGTH_LONG).show();
-        Toast.makeText(this, "Servicio no disponible en estos momentos", Toast.LENGTH_LONG).show();
+        if (validarCampos(CBU, nombre)) {
+            agregarContacto(CBU, nombre);
+        }
+
+
     }
+
+
+    //Verifico los campos
+
+    private boolean validarCampos(String cbu, String nombre) {
+        // Validar que el nombre solo contenga letras
+        if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            Toast.makeText(this, "El nombre solo debe contener letras", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        // Valido que el CBU contenga exactamente 22 numeros
+        if (!cbu.matches("\\d{22}")) {
+            Toast.makeText(this, "El CBU debe contener 22 dígitos", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
+    }
+
+    //Agrego el contacto
+
+
+    private void agregarContacto(String cbu, String nombreContacto) {
+        boolean insertado = miBase.insertarContacto(cbu, nombreContacto);
+        if (insertado) {
+            contactoList.add(new Contacto(cbu, nombreContacto));
+            contactoAdapter.notifyDataSetChanged();
+            Toast.makeText(this, "Contacto agregado", Toast.LENGTH_SHORT).show();
+            //Con esto se limpian los campos del formulario
+            editTextCBU.setText("");
+            nombrePers.setText("");
+        } else {
+            Toast.makeText(this, "Error al agregar el contacto", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+
+    // Mostrar Contactos que esten Cargados
+    private List<Contacto> getAllContactos() {
+        List<Contacto> contactos = new ArrayList<>();
+        SQLiteDatabase db = miBase.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT CBU, nombre FROM contacto", null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String cbu = cursor.getString(0);
+                String nombre = cursor.getString(1);
+                contactos.add(new Contacto(cbu, nombre));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return contactos;
+    }
+
+
+    //Borrar contacto
+
+    private void eliminarContacto(Contacto contacto) {
+        boolean eliminado = miBase.eliminarContacto(contacto.getCbu());
+        if (eliminado) {
+            contactoList.remove(contacto);
+            contactoAdapter.notifyDataSetChanged();
+            Toast.makeText(this, "Contacto eliminado", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Error al eliminar el contacto", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+
+
+
+
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
