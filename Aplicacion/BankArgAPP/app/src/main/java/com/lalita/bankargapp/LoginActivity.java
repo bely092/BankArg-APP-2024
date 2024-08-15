@@ -2,6 +2,7 @@ package com.lalita.bankargapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -67,20 +68,27 @@ public class LoginActivity extends AppCompatActivity {
 //                        inputUsername+"' and password='"+inputPassword+"'",null);
 
                 // Consulta para validar el login usando un rawQuery con argumentos
-                fila = db.rawQuery("SELECT email FROM Usuarios2 WHERE email=? AND password=?",
+                fila = db.rawQuery("SELECT id_usuario, email FROM Usuarios2 WHERE email=? AND password=?",
                         new String[]{inputUsername, inputPassword});
 
-
                 if (fila.moveToFirst()) {
-                    // Login exitoso
-                    Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                    // Obtener el id_usuario del usuario que ha iniciado sesión
+                    int idUsuario = fila.getInt(0); // El id_usuario es el primer campo en la consulta
 
-                    // Redirigir a la pantalla de productos
+                    // Guardar id_usuario en SharedPreferences
+                    SharedPreferences preferences = getSharedPreferences("user_session", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putInt("id_usuario", idUsuario);
+                    editor.apply();
+
+                    Toast.makeText(LoginActivity.this, "¡Login exitoso!", Toast.LENGTH_SHORT).show();
+
+                    // Navegar a la siguiente pantalla
                     Intent intent = new Intent(LoginActivity.this, ProductActivity.class);
-                    startActivities(new Intent[]{intent});
+                    startActivity(intent);
                 } else {
                     // Fallo en el login
-                    Toast.makeText(LoginActivity.this, "Credenciales incorrectas. Inténtalo de nuevo!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Credenciales incorrectas. Inténtalo de nuevo.", Toast.LENGTH_SHORT).show();
                 }
                 fila.close();
 

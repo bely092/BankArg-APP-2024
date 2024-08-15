@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -101,13 +102,31 @@ public class RegisterActivity extends AppCompatActivity {
                 boolean registrationSuccessful = dbHelper.insertarUsuario2(db, inputNombre, inputApellido, inputEmail, inputPassword);
 
                 if (registrationSuccessful) {
-                    // Registro exitoso
-                    Toast.makeText(RegisterActivity.this, "¡Registro exitoso!", Toast.LENGTH_SHORT).show();
-                    // Navegar a la pantalla de login
-                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                    startActivity(intent);
+                    // Recuperar el id del nuevo usuario registrado
+                    Cursor cursor = db.rawQuery("SELECT id_usuario FROM Usuarios2 WHERE email=?", new String[]{inputEmail});
+                    if (cursor.moveToFirst()) {
+                        int idUsuario = cursor.getInt(0); // Obtener id_usuario del nuevo usuario registrado
+
+                        // Insertar una cuenta para el usuario recién registrado
+                        boolean accountCreated = dbHelper.insertarCuenta(db, idUsuario, 1, 0.0); // Aquí 1 es el id_tipo_cuenta (Ahorros, por ejemplo) y 0.0 es el saldo inicial
+
+                        if (accountCreated) {
+                            // Guardar id_usuario en SharedPreferences
+                            SharedPreferences preferences = getSharedPreferences("user_session", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putInt("id_usuario", idUsuario);
+                            editor.apply();
+
+                            Toast.makeText(RegisterActivity.this, "¡Registro y cuenta creados exitosamente!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(RegisterActivity.this, ProductActivity.class);
+                            startActivity(intent);
+                        } else {
+                            // Error al crear la cuenta
+                            Toast.makeText(RegisterActivity.this, "Error al crear la cuenta. Inténtalo nuevamente.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    cursor.close();
                 } else {
-                    // Fallo en el registro
                     Toast.makeText(RegisterActivity.this, "Error en el registro. Inténtalo nuevamente.", Toast.LENGTH_SHORT).show();
                 }
 

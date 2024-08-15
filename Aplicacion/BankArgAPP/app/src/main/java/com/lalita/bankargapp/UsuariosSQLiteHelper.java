@@ -1083,7 +1083,7 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put("id_usuario", id_usuario);
         values.put("id_tipo_cuenta", id_tipo_cuenta);
-        values.put("saldo", saldo);
+        values.put("saldo", saldo); // Saldo inicial (0.0)
         long result = db.insert("Cuentas", null, values);
         return result != -1;
     }
