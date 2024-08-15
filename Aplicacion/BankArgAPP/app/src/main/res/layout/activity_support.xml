@@ -52,7 +52,7 @@
                 android:layout_height="60.96dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/baseline_person_pin_24"
                 app:layout_constraintEnd_toEndOf="@+id/linearLayout"
@@ -60,151 +60,201 @@
 
 
             <!--            HEADER END -->
-
             <TextView
                 android:id="@+id/soporte"
-                android:layout_width="wrap_content"
-                android:layout_height="127dp"
+                android:layout_width="369dp"
+                android:layout_height="67dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="Preguntas Frecuentes"
+                android:text="Soporte"
                 android:textAppearance="@style/soporte"
+                android:textStyle="bold"
                 android:textSize="26sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-            <Button
-                android:id="@+id/que_es"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:backgroundTint="@color/col3"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="¿Que es BankArg?"
-                android:textAppearance="@style/faq_pregunt"
-                android:textColor="@color/col6"
-                android:textSize="16sp"
-                app:cornerRadius="0dp"
+            <LinearLayout
+                android:id="@+id/cont_preguntas_frecuentes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/soporte" />
+                app:layout_constraintTop_toBottomOf="@+id/soporte">
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/black"/>
 
-            <Button
-                android:id="@+id/como_se_usa"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:backgroundTint="@color/col3"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="¿Como se usa BankArg?"
-                android:textAppearance="@style/faq_pregunt"
-                android:textColor="@color/col6"
-                android:textSize="16sp"
-                app:cornerRadius="0dp"
+                <TextView
+                    android:id="@+id/preguntas_frecuentes"
+                    android:layout_width="match_parent"
+                    android:layout_height="127dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="Preguntas frecuentes"
+                    android:textAppearance="@style/soporte"
+                    android:textSize="26sp"
+                    tools:layout_editor_absoluteX="160dp"
+                    tools:layout_editor_absoluteY="126dp" />
+
+                <Button
+                    android:id="@+id/que_es"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:backgroundTint="@color/col3"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="¿Que es BankArg?"
+                    android:textAppearance="@style/faq_pregunt"
+                    android:textColor="@color/col6"
+                    android:textSize="16sp"
+                    app:cornerRadius="0dp"
+                    app:layout_constraintBottom_toTopOf="@+id/rectangle_2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/preguntas_frecuentes" />
+
+                <Button
+                    android:id="@+id/como_se_usa"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:backgroundTint="@color/col3"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="¿Como se usa BankArg?"
+                    android:textAppearance="@style/faq_pregunt"
+                    android:textColor="@color/col6"
+                    android:textSize="16sp"
+                    app:cornerRadius="0dp" />
+
+                <Button
+                    android:id="@+id/otras_preguntas"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:backgroundTint="@color/col3"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="Otras preguntas"
+                    android:textAppearance="@style/faq_pregunt"
+                    android:textColor="@color/col6"
+                    android:textSize="16sp"
+                    app:cornerRadius="0dp" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/black"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/consultas"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/que_es" />
+                app:layout_constraintTop_toBottomOf="@+id/cont_preguntas_frecuentes">
 
-            <Button
-                android:id="@+id/otras_preguntas"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:backgroundTint="@color/col3"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="Otras preguntas"
-                android:textAppearance="@style/faq_pregunt"
-                android:textColor="@color/col6"
-                android:textSize="16sp"
-                app:cornerRadius="0dp"
+                <TextView
+                    android:id="@+id/describe_tu"
+                    android:layout_width="240dp"
+                    android:layout_height="64dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="Tenes otra duda? Describila a continuación:"
+                    android:textAppearance="@style/describe_tu"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/tu_consulta"
+                    android:layout_width="350dp"
+                    android:layout_height="109dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/custom_edittext"
+                    android:hint="Quisiera saber sobre..."/>
+
+                <Button
+                    android:id="@+id/Enviar"
+                    android:layout_width="260dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="75dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTint="@color/col1"
+                    android:text="Enviar"
+                    android:textColor="@color/col6"
+                    android:textSize="16sp"
+                    app:cornerRadius="10dp" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/black"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/reservar_turno"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/como_se_usa" />
+                app:layout_constraintTop_toBottomOf="@+id/consultas">
 
-            <TextView
-                android:id="@+id/describe_tu"
-                android:layout_width="wrap_content"
-                android:layout_height="64dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="Describe tu consulta:"
-                android:textAppearance="@style/describe_tu"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/otras_preguntas" />
+                <TextView
+                    android:id="@+id/turnero"
+                    android:layout_width="240dp"
+                    android:layout_height="64dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="Reserva tu turno para atencion presencial:"
+                    android:textAppearance="@style/describe_tu"
+                    android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/tu_consulta"
-                android:layout_width="350dp"
-                android:layout_height="109dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/custom_edittext"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/describe_tu" />
+                <Button
+                    android:id="@+id/seleccionar_fecha"
+                    android:layout_width="320dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="45dp"
+                    android:backgroundTint="@color/col5"
+                    android:onClick="abrirCalendario"
+                    android:text="Seleccionar fecha:"
+                    android:textAppearance="@style/seleccionar_fecha"
+                    android:textColor="@color/col6"
+                    android:textSize="20sp"
+                    app:cornerRadius="10dp" />
 
-            <Button
-                android:id="@+id/Enviar"
-                android:layout_width="260dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/col1"
-                android:text="Enviar"
-                android:textColor="@color/col6"
-                android:textSize="16sp"
-                app:cornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tu_consulta" />
-
-            <Button
-                android:id="@+id/seleccionar_fecha"
-                android:layout_width="343dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="16dp"
-                android:backgroundTint="@color/col5"
-                android:onClick="abrirCalendario"
-                android:text="Seleccionar fecha:"
-                android:textAppearance="@style/seleccionar_fecha"
-                android:textColor="@color/col6"
-                android:textSize="20sp"
-                app:cornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Enviar" />
-
-            <Button
-                android:id="@+id/Solicitar_turno"
-                android:layout_width="260dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/col1"
-                android:fontFamily="@font/poppins"
-                android:text="Solicitar turno"
-                android:textColor="@color/col6"
-                android:textSize="16sp"
-                app:cornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/seleccionar_fecha" />
-
+                <Button
+                    android:id="@+id/Solicitar_turno"
+                    android:layout_width="260dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="75dp"
+                    android:backgroundTint="@color/col1"
+                    android:fontFamily="@font/poppins"
+                    android:text="Solicitar turno"
+                    android:textColor="@color/col6"
+                    android:textSize="16sp"
+                    app:cornerRadius="10dp" />
+            </LinearLayout>
 
             <!--            FOOTER START -->
             <View
@@ -213,26 +263,27 @@
                 android:layout_height="57dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="600dp"
                 android:background="@color/col1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Solicitar_turno" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/reservar_turno"
+                app:layout_constraintVertical_bias="0.979" />
 
             <TextView
                 android:id="@+id/bankarg_des"
-                android:layout_width="wrap_content"
+                style="@style/bankarg_des"
+                android:layout_width="433dp"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginBottom="3dp"
                 android:gravity="center_horizontal|center_vertical"
                 android:text="@string/bankarg_des"
                 android:textAppearance="@style/bankarg_des"
                 android:textColor="@color/col2"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/rectangle_2"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/rectangle_2" />

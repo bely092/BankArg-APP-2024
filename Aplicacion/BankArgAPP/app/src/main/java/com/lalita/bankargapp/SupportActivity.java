@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -19,6 +20,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
@@ -39,6 +41,7 @@ public class SupportActivity extends AppCompatActivity {
     private Button BtnComoSeUsa;
     private Button BtnOtrasPreguntas;
     private Button btnSolicitarTurno, btnEnviar;
+    private EditText tuConsulta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,143 +105,174 @@ public class SupportActivity extends AppCompatActivity {
 
         /*--- Ventana emergente de aviso ---*/
         btnEnviar = findViewById(R.id.Enviar);
+        tuConsulta = findViewById(R.id.tu_consulta);
         btnEnviar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(SupportActivity.this, "Servicio no disponible en estos momentos", Toast.LENGTH_SHORT).show();
+                                         @Override
+                                         public void onClick(View view) {
 
-            }
+
+                                             //Enviar correo
+                                             Intent intent = new Intent(Intent.ACTION_SEND);
+                                             intent.setType("message/rfc922");
+                                             intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"contacto.bankarg@gmail.com"});
+                                             intent.putExtra(Intent.EXTRA_SUBJECT, "Consulta hacia soporte");
+                                             intent.putExtra(Intent.EXTRA_TEXT, tuConsulta.getText().toString().trim());
+
+                                             try {
+                                                 startActivity(Intent.createChooser(intent, "Enviar correo usando..."));
+                                             } catch (android.content.ActivityNotFoundException ex) {
+                                                 Toast.makeText(SupportActivity.this, "No hay aplicaciones de correo instaladas.", Toast.LENGTH_SHORT).show();
+                                             }
+
+                                             // Limpia el campo de texto
+                                             tuConsulta.setText("");
+
+                                             // Muestra la alerta con SweetAlert2
+                                             AlertDialog.Builder alertaConsultaEnviada = new AlertDialog.Builder(SupportActivity.this);
+                                             alertaConsultaEnviada.setMessage("Tu consulta ha sido enviada.")
+                                                     .setCancelable(false)
+                                                     .setNegativeButton("Gracias", new DialogInterface.OnClickListener() {
+                                                         @Override
+                                                         public void onClick(DialogInterface dialogInterface, int i) {
+                                                             dialogInterface.cancel();
+                                                         };
+                                                     });
+                                             AlertDialog titulo = alertaConsultaEnviada.create();
+                                             titulo.setTitle("Enviado");
+                                             titulo.show();
+
+
+                                         }
         });
 
-        /*--- Ventana emergente de aviso ---*/
-        btnSolicitarTurno = findViewById(R.id.Solicitar_turno);
-        btnSolicitarTurno.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(SupportActivity.this, "Servicio no disponible en estos momentos", Toast.LENGTH_SHORT).show();
+                /*--- Ventana emergente de aviso ---*/
+                btnSolicitarTurno = findViewById(R.id.Solicitar_turno);
+                btnSolicitarTurno.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(SupportActivity.this, "Servicio no disponible en estos momentos", Toast.LENGTH_SHORT).show();
 
-            }
-        });
-
-
-        BtnComoSeUsa = (Button) findViewById(R.id.como_se_usa);
-        BtnComoSeUsa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder alertaComo = new AlertDialog.Builder(SupportActivity.this);
-                alertaComo.setMessage("-Registrarte es facil, rapido y seguro! Solo necesitas ingresar tus datos personales y estaras usando BankArg en unos instantes. \n -En BankArg creemos que: !La informacion es poder¡ Sobre todo aquella de una fuente segura y confiable.")
-                        .setCancelable(false)
-                        .setNegativeButton("Genial", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.cancel();
-                            }
-                        });
-                AlertDialog titulo = alertaComo.create();
-                titulo.setTitle("BankArg");
-                titulo.show();
-            }
-        });
+                    }
+                });
 
 
-        BtnOtrasPreguntas = (Button) findViewById(R.id.otras_preguntas);
-        BtnOtrasPreguntas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder alertaOtras = new AlertDialog.Builder(SupportActivity.this);
-                alertaOtras.setMessage("¿No pudimos aclarar todas tus dudas? No dudes en contactarnos, para que podamos seguir mejorando esta seccion")
-                        .setCancelable(false)
-                        .setNegativeButton("Gracias", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.cancel();
-                            }
-                        });
-                AlertDialog titulo = alertaOtras.create();
-                titulo.setTitle("BankArg");
-                titulo.show();
+                BtnComoSeUsa = (Button) findViewById(R.id.como_se_usa);
+                BtnComoSeUsa.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        AlertDialog.Builder alertaComo = new AlertDialog.Builder(SupportActivity.this);
+                        alertaComo.setMessage("-Registrarte es facil, rapido y seguro! Solo necesitas ingresar tus datos personales y estaras usando BankArg en unos instantes. \n -En BankArg creemos que: !La informacion es poder¡ Sobre todo aquella de una fuente segura y confiable.")
+                                .setCancelable(false)
+                                .setNegativeButton("Genial", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        dialogInterface.cancel();
+                                    }
+                                });
+                        AlertDialog titulo = alertaComo.create();
+                        titulo.setTitle("BankArg");
+                        titulo.show();
+                    }
+                });
 
-            }
-        });
+
+                BtnOtrasPreguntas = (Button) findViewById(R.id.otras_preguntas);
+                BtnOtrasPreguntas.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        AlertDialog.Builder alertaOtras = new AlertDialog.Builder(SupportActivity.this);
+                        alertaOtras.setMessage("¿No pudimos aclarar todas tus dudas? No dudes en contactarnos, para que podamos seguir mejorando esta seccion")
+                                .setCancelable(false)
+                                .setNegativeButton("Gracias", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        dialogInterface.cancel();
+                                    }
+                                });
+                        AlertDialog titulo = alertaOtras.create();
+                        titulo.setTitle("BankArg");
+                        titulo.show();
+
+                    }
+                });
 
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int itemId = item.getItemId();
+                navigationView = findViewById(R.id.nav_view);
+                navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        int itemId = item.getItemId();
 
-                SupportActivity activity = SupportActivity.this;
-                if (itemId == R.id.nav_product) {
-                    Intent intent = new Intent(activity, ProductActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Home is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
+                        SupportActivity activity = SupportActivity.this;
+                        if (itemId == R.id.nav_product) {
+                            Intent intent = new Intent(activity, ProductActivity.class);
+                            Log.i("MENU_DRAWER_TAG", "Home is selected");
+                            startActivities(new Intent[]{intent});
+                            drawerLayout.closeDrawer(GravityCompat.START);
 
-                } else if (itemId == R.id.nav_banking) {
-                    Intent intent = new Intent(activity, BankingActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Banking is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                }
-                else if (itemId == R.id.nav_contact) {
-                    Intent intent = new Intent(activity, ContactActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Contact is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_support) {
-                    Intent intent = new Intent(activity, SupportActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Support is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_logout) {
-                    Toast.makeText(activity, "Singing Out", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(activity, MainActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Logout is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                }
+                        } else if (itemId == R.id.nav_banking) {
+                            Intent intent = new Intent(activity, BankingActivity.class);
+                            Log.i("MENU_DRAWER_TAG", "Banking is selected");
+                            startActivities(new Intent[]{intent});
+                            drawerLayout.closeDrawer(GravityCompat.START);
+                        } else if (itemId == R.id.nav_contact) {
+                            Intent intent = new Intent(activity, ContactActivity.class);
+                            Log.i("MENU_DRAWER_TAG", "Contact is selected");
+                            startActivities(new Intent[]{intent});
+                            drawerLayout.closeDrawer(GravityCompat.START);
+                        } else if (itemId == R.id.nav_support) {
+                            Intent intent = new Intent(activity, SupportActivity.class);
+                            Log.i("MENU_DRAWER_TAG", "Support is selected");
+                            startActivities(new Intent[]{intent});
+                            drawerLayout.closeDrawer(GravityCompat.START);
+                        } else if (itemId == R.id.nav_logout) {
+                            Toast.makeText(activity, "Singing Out", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(activity, MainActivity.class);
+                            Log.i("MENU_DRAWER_TAG", "Logout is selected");
+                            startActivities(new Intent[]{intent});
+                            drawerLayout.closeDrawer(GravityCompat.START);
+                        }
 
-                return true;
+                        return true;
+                    }
+                });
             }
-        });
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (toggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-
-    public void abrirCalendario(View view) {
-        Calendar cal = Calendar.getInstance();
-        int anio = cal.get(Calendar.YEAR);
-        int mes = cal.get(Calendar.MONTH);
-        int dia = cal.get(Calendar.DAY_OF_MONTH);
-
-        DatePickerDialog dpd = new DatePickerDialog(SupportActivity.this, new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                String fecha = i + "/" + i1 + "/" + i2;
+            public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+                if (toggle.onOptionsItemSelected(item)) {
+                    return true;
+                }
 
+                return super.onOptionsItemSelected(item);
             }
-        }, anio, mes, dia);
-        dpd.show();
-    }
 
-}
+            @Override
+            public void onBackPressed() {
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else {
+                    super.onBackPressed();
+                }
+            }
+
+
+            public void abrirCalendario(View view) {
+                Calendar cal = Calendar.getInstance();
+                int anio = cal.get(Calendar.YEAR);
+                int mes = cal.get(Calendar.MONTH);
+                int dia = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dpd = new DatePickerDialog(SupportActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                        String fecha = i + "/" + i1 + "/" + i2;
+
+                    }
+                }, anio, mes, dia);
+                dpd.show();
+            }
+
+        }
