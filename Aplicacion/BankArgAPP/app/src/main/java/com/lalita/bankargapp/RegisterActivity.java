@@ -70,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String inputPassword = password.getText().toString().trim();
 
                 String inputNombre = nombre.getText().toString().trim();
-                String inputApellido = nombre.getText().toString().trim();
+                String inputApellido = apellido.getText().toString().trim();
 //
 //                String inputName = CustomerNameV.getText().toString();
 //                String inputLastName = LastNameV.getText().toString();
