@@ -18,7 +18,7 @@ import java.util.List;
 
 public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "BankArgAPP.db";
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 7;
 
     // Definir la estructura de la tabla "user".
     private static final String CREATE_TABLE_USER = "CREATE TABLE if not exists User (" +
@@ -884,12 +884,12 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
             createContactosTable(db);
         }
         // Aquí podrías agregar más condiciones si necesitas manejar futuras actualizaciones
-        db.execSQL("DROP TABLE IF EXISTS Usuarios2");
-        db.execSQL("DROP TABLE IF EXISTS Tipos_Cuenta");
-        db.execSQL("DROP TABLE IF EXISTS Cuentas");
-        db.execSQL("DROP TABLE IF EXISTS Tipos_Transaccion");
-        db.execSQL("DROP TABLE IF EXISTS Transacciones");
-        db.execSQL("DROP TABLE IF EXISTS Contactos");
+//        db.execSQL("DROP TABLE IF EXISTS Usuarios2");
+//        db.execSQL("DROP TABLE IF EXISTS Tipos_Cuenta");
+//        db.execSQL("DROP TABLE IF EXISTS Cuentas");
+//        db.execSQL("DROP TABLE IF EXISTS Tipos_Transaccion");
+//        db.execSQL("DROP TABLE IF EXISTS Transacciones");
+//        db.execSQL("DROP TABLE IF EXISTS Contactos");
     }
 
 
@@ -929,16 +929,16 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
     // Método para insertar datos iniciales
     private void insertarDatosIniciales(SQLiteDatabase db) {
         // Insertar 10 usuarios
-        insertarUsuario2("Juan", "Perez", "juan.perez@mail.com", "password123");
-        insertarUsuario2("Maria", "Gomez", "maria.gomez@mail.com", "password456");
-        insertarUsuario2("Luis", "Martinez", "luis.martinez@mail.com", "password789");
-        insertarUsuario2("Ana", "Garcia", "ana.garcia@mail.com", "password111");
-        insertarUsuario2("Pedro", "Lopez", "pedro.lopez@mail.com", "password222");
-        insertarUsuario2("Jose", "Diaz", "jose.diaz@mail.com", "password333");
-        insertarUsuario2("Carla", "Sanchez", "carla.sanchez@mail.com", "password444");
-        insertarUsuario2("Miguel", "Torres", "miguel.torres@mail.com", "password555");
-        insertarUsuario2("Laura", "Cruz", "laura.cruz@mail.com", "password666");
-        insertarUsuario2("Diego", "Mendez", "diego.mendez@mail.com", "password777");
+        insertarUsuario2(db,"Juan", "Perez", "juan.perez@mail.com", "password123");
+        insertarUsuario2(db,"Maria", "Gomez", "maria.gomez@mail.com", "password456");
+        insertarUsuario2(db,"Luis", "Martinez", "luis.martinez@mail.com", "password789");
+        insertarUsuario2(db,"Ana", "Garcia", "ana.garcia@mail.com", "password111");
+        insertarUsuario2(db,"Pedro", "Lopez", "pedro.lopez@mail.com", "password222");
+        insertarUsuario2(db,"Jose", "Diaz", "jose.diaz@mail.com", "password333");
+        insertarUsuario2(db,"Carla", "Sanchez", "carla.sanchez@mail.com", "password444");
+        insertarUsuario2(db,"Miguel", "Torres", "miguel.torres@mail.com", "password555");
+        insertarUsuario2(db,"Laura", "Cruz", "laura.cruz@mail.com", "password666");
+        insertarUsuario2(db,"Diego", "Mendez", "diego.mendez@mail.com", "password777");
 
         // Insertar 10 tipos de cuenta
         insertarTipoCuenta(db, "Ahorros");
@@ -953,16 +953,16 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
         insertarTipoCuenta(db, "Fideicomiso");
 
         // Insertar 10 cuentas
-        insertarCuenta(1, 1, 5000.50);
-        insertarCuenta(2, 2, 15000.75);
-        insertarCuenta(3, 3, 3000.00);
-        insertarCuenta(4, 4, 7500.20);
-        insertarCuenta(5, 1, 10000.00);
-        insertarCuenta(6, 2, 8500.10);
-        insertarCuenta(7, 5, 9500.00);
-        insertarCuenta(8, 6, 5000.25);
-        insertarCuenta(9, 7, 13000.00);
-        insertarCuenta(10, 8, 17500.60);
+        insertarCuenta(db,1, 1, 5000.50);
+        insertarCuenta(db,2, 2, 15000.75);
+        insertarCuenta(db,3, 3, 3000.00);
+        insertarCuenta(db,4, 4, 7500.20);
+        insertarCuenta(db,5, 1, 10000.00);
+        insertarCuenta(db,6, 2, 8500.10);
+        insertarCuenta(db,7, 5, 9500.00);
+        insertarCuenta(db,8, 6, 5000.25);
+        insertarCuenta(db,9, 7, 13000.00);
+        insertarCuenta(db,10, 8, 17500.60);
 
         // Insertar 10 tipos de transacción
         insertarTipoTransaccion(db, "Depósito");
@@ -977,16 +977,16 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
         insertarTipoTransaccion(db, "Penalización");
 
         // Insertar 10 transacciones
-        insertarTransaccion(1, 1, 100.50, "Compra de comida");
-        insertarTransaccion(2, 2, 200.00, "Pago de servicios");
-        insertarTransaccion(3, 1, 300.25, "Retiro de cajero");
-        insertarTransaccion(4, 2, 400.75, "Depósito");
-        insertarTransaccion(5, 1, 150.00, "Pago de alquiler");
-        insertarTransaccion(6, 2, 250.50, "Transferencia");
-        insertarTransaccion(7, 1, 350.30, "Compra de ropa");
-        insertarTransaccion(8, 2, 450.20, "Pago de factura");
-        insertarTransaccion(9, 1, 500.00, "Compra de electrodoméstico");
-        insertarTransaccion(10, 2, 600.00, "Gastos médicos");
+        insertarTransaccion(db,1, 1, 100.50, "Compra de comida");
+        insertarTransaccion(db,2, 2, 200.00, "Pago de servicios");
+        insertarTransaccion(db,3, 1, 300.25, "Retiro de cajero");
+        insertarTransaccion(db,4, 2, 400.75, "Depósito");
+        insertarTransaccion(db,5, 1, 150.00, "Pago de alquiler");
+        insertarTransaccion(db,6, 2, 250.50, "Transferencia");
+        insertarTransaccion(db,7, 1, 350.30, "Compra de ropa");
+        insertarTransaccion(db,8, 2, 450.20, "Pago de factura");
+        insertarTransaccion(db,9, 1, 500.00, "Compra de electrodoméstico");
+        insertarTransaccion(db,10, 2, 600.00, "Gastos médicos");
 
         // Insertar 10 tipos de contacto
 //        insertarTipoContacto(db, "Email");
@@ -994,16 +994,16 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
 //        insertarTipoContacto(db, "CBU/CVU");
 
         // Insertar 10 contactos
-        insertarContactos(1, "1234567894561234567891", "juan A");
-        insertarContactos(2, "1234567894561234567892", "juan B");
-        insertarContactos(3, "1234567894561234567894", "juan C");
-        insertarContactos(4, "1234567894561234567893", "juan D");
-        insertarContactos(5, "1234567894561234567895", "juan E");
-        insertarContactos(6, "7894561233214569874563", "juan F");
-        insertarContactos(7, "1234567894561234567896", "juan G");
-        insertarContactos(8, "1234567894561234567897", "juan H");
-        insertarContactos(9, "3698521477412589632587", "juan I");
-        insertarContactos(10, "1234567894561234567898", "juan J");
+        insertarContactos(db,1, "1234567894561234567891", "juan A");
+        insertarContactos(db,2, "1234567894561234567892", "juan B");
+        insertarContactos(db,3, "1234567894561234567894", "juan C");
+        insertarContactos(db,4, "1234567894561234567893", "juan D");
+        insertarContactos(db,5, "1234567894561234567895", "juan E");
+        insertarContactos(db,6, "7894561233214569874563", "juan F");
+        insertarContactos(db,7, "1234567894561234567896", "juan G");
+        insertarContactos(db,8, "1234567894561234567897", "juan H");
+        insertarContactos(db,9, "3698521477412589632587", "juan I");
+        insertarContactos(db,10, "1234567894561234567898", "juan J");
 
 //        insertarContactos(3,1, "1234567894561234567891", "juan A");
 //        insertarContactos(3,2, "1234567894561234567892", "juan B");
@@ -1027,8 +1027,8 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
                 "password TEXT)");
     }
 
-    public boolean insertarUsuario2(String nombre, String apellido, String email, String password) {
-        SQLiteDatabase db = this.getWritableDatabase();
+    public boolean insertarUsuario2(SQLiteDatabase db, String nombre, String apellido, String email, String password) {
+//        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("nombre", nombre);
         values.put("apellido", apellido);
@@ -1078,8 +1078,8 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY (id_tipo_cuenta) REFERENCES Tipos_Cuenta(id_tipo_cuenta))");
     }
 
-    public boolean insertarCuenta(long id_usuario, long id_tipo_cuenta, double saldo) {
-        SQLiteDatabase db = this.getWritableDatabase();
+    public boolean insertarCuenta(SQLiteDatabase db, long id_usuario, long id_tipo_cuenta, double saldo) {
+//        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("id_usuario", id_usuario);
         values.put("id_tipo_cuenta", id_tipo_cuenta);
@@ -1129,8 +1129,8 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY (id_tipo_transaccion) REFERENCES Tipos_Transaccion(id_tipo_transaccion))");
     }
 
-    public boolean insertarTransaccion(long id_cuenta, long id_tipo_transaccion, double monto, String descripcion) {
-        SQLiteDatabase db = this.getWritableDatabase();
+    public boolean insertarTransaccion(SQLiteDatabase db, long id_cuenta, long id_tipo_transaccion, double monto, String descripcion) {
+//        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("id_cuenta", id_cuenta);
         values.put("id_tipo_transaccion", id_tipo_transaccion);
@@ -1176,12 +1176,13 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
 //                "id_tipo_contacto INTEGER NOT NULL, " +
                 "id_usuario INTEGER NOT NULL, " +
                 "contacto TEXT, " +
+                "nombre TEXT, " +
 //                "FOREIGN KEY (id_tipo_contacto) REFERENCES Tipos_Contacto(id_tipo_contacto), " +
                 "FOREIGN KEY (id_usuario) REFERENCES Usuarios2(id_usuario))");
     }
 
-    public boolean insertarContactos(long id_usuario, String contacto, String nombre) {
-        SQLiteDatabase db = this.getWritableDatabase();
+    public boolean insertarContactos(SQLiteDatabase db, long id_usuario, String contacto, String nombre) {
+//        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("id_usuario", id_usuario);
         values.put("contacto", contacto);

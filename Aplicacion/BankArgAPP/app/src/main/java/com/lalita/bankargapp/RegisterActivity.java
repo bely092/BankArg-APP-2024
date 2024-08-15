@@ -17,8 +17,10 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText username;
+    EditText email;
     EditText password;
+    EditText nombre;
+    EditText apellido;
 //    EditText CustomerNameV;
 //    EditText LastNameV;
 //    EditText tipoDocV;
@@ -28,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
 //    EditText tipoSexV;
 //    EditText nroCalleV;
 //    EditText CalleV;
-    Button loginButton;
+    Button registerButton;
     SQLiteDatabase db;
     private Cursor fila;
 
@@ -37,9 +39,13 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        username = findViewById(R.id.username);
+        email = findViewById(R.id.email);
         password = findViewById(R.id.password);
-        loginButton = findViewById(R.id.loginButton);
+
+        nombre = findViewById(R.id.nombre);
+        apellido = findViewById(R.id.apellido);
+
+        registerButton = findViewById(R.id.registerButton);
 //
 //        CustomerNameV = findViewById(R.id.CustomerName);
 //        LastNameV = findViewById(R.id.LastName);
@@ -51,14 +57,19 @@ public class RegisterActivity extends AppCompatActivity {
 //        nroCalleV = findViewById(R.id.nroCalle);
 //        CalleV = findViewById(R.id.Calle);
 
+        // Inicializar la base de datos
         UsuariosSQLiteHelper dbHelper = new UsuariosSQLiteHelper(this);
         db = dbHelper.getWritableDatabase();
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        // Listener del botón de registro
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String inputUsername = username.getText().toString();
-                String inputPassword = password.getText().toString();
+                String inputEmail = email.getText().toString().trim();
+                String inputPassword = password.getText().toString().trim();
+
+                String inputNombre = nombre.getText().toString().trim();
+                String inputApellido = nombre.getText().toString().trim();
 //
 //                String inputName = CustomerNameV.getText().toString();
 //                String inputLastName = LastNameV.getText().toString();
@@ -80,22 +91,45 @@ public class RegisterActivity extends AppCompatActivity {
 //                    Toast.makeText(RegisterActivity.this, "Signup Failed!", Toast.LENGTH_SHORT).show();
 //                }
 
-                ContentValues values = new ContentValues();
-                values.put("username", inputUsername);
-                values.put("password", inputPassword);
+                // Validación de campos
+                if (inputEmail.isEmpty() || inputPassword.isEmpty() || inputNombre.isEmpty() || inputApellido.isEmpty()) {
+                    Toast.makeText(RegisterActivity.this, "Por favor, complete todos los campos.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-                long newRowId = db.insert("User", null, values);
+                // Llamar al método de inserción de usuario desde el helper
+                boolean registrationSuccessful = dbHelper.insertarUsuario2(db, inputNombre, inputApellido, inputEmail, inputPassword);
 
-                if (newRowId != -1) {
-                    // Registration successful
-                    Toast.makeText(RegisterActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
-                    // After successful registration, you might navigate the user back to the login screen
+                if (registrationSuccessful) {
+                    // Registro exitoso
+                    Toast.makeText(RegisterActivity.this, "¡Registro exitoso!", Toast.LENGTH_SHORT).show();
+                    // Navegar a la pantalla de login
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);
                 } else {
-                    // Registration failed
-                    Toast.makeText(RegisterActivity.this, "Registration Failed!", Toast.LENGTH_SHORT).show();
+                    // Fallo en el registro
+                    Toast.makeText(RegisterActivity.this, "Error en el registro. Inténtalo nuevamente.", Toast.LENGTH_SHORT).show();
                 }
+
+
+//                ContentValues values = new ContentValues();
+//                values.put("nombre", inputNombre);
+//                values.put("apellido", inputApellido);
+//                values.put("email", inputEmail);
+//                values.put("password", inputPassword);
+
+//                long newRowId = db.insert("User", null, values);
+
+//                if (newRowId != -1) {
+//                    // Registration successful
+//                    Toast.makeText(RegisterActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
+//                    // After successful registration, you might navigate the user back to the login screen
+//                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+//                    startActivity(intent);
+//                } else {
+//                    // Registration failed
+//                    Toast.makeText(RegisterActivity.this, "Registration Failed!", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
 

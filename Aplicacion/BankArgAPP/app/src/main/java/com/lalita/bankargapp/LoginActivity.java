@@ -12,8 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 
-import com.lalita.bankargapp.Clases.Usuarios;
-
 public class LoginActivity extends AppCompatActivity {
 
     EditText username;
@@ -27,13 +25,15 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        username = findViewById(R.id.username);
+        username = findViewById(R.id.email);
         password = findViewById(R.id.password);
         loginButton = findViewById(R.id.loginButton);
 
+        // Instancia del helper de la base de datos
         UsuariosSQLiteHelper dbHelper = new UsuariosSQLiteHelper(this);
         db = dbHelper.getReadableDatabase();
 
+        // Listener del botón de login
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,20 +56,31 @@ public class LoginActivity extends AppCompatActivity {
 //                    Toast.makeText(LoginActivity.this, "Login Failed!", Toast.LENGTH_SHORT).show();
 //                }
 
+                // Validar que los campos no estén vacíos
+                if (inputUsername.isEmpty() || inputPassword.isEmpty()) {
+                    Toast.makeText(LoginActivity.this, "Por favor, complete todos los campos.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 // Query the database to check if the user exists
-                fila = db.rawQuery("SELECT username, password FROM User WHERE username='"+
-                        inputUsername+"' and password='"+inputPassword+"'",null);
+//                fila = db.rawQuery("SELECT username, password FROM User WHERE username='"+
+//                        inputUsername+"' and password='"+inputPassword+"'",null);
+
+                // Consulta para validar el login usando un rawQuery con argumentos
+                fila = db.rawQuery("SELECT email FROM Usuarios2 WHERE email=? AND password=?",
+                        new String[]{inputUsername, inputPassword});
 
 
                 if (fila.moveToFirst()) {
-                    // User exists, login successful
+                    // Login exitoso
                     Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
 
+                    // Redirigir a la pantalla de productos
                     Intent intent = new Intent(LoginActivity.this, ProductActivity.class);
                     startActivities(new Intent[]{intent});
                 } else {
-                    // User doesn't exist or incorrect password
-                    Toast.makeText(LoginActivity.this, "Login Failed!", Toast.LENGTH_SHORT).show();
+                    // Fallo en el login
+                    Toast.makeText(LoginActivity.this, "Credenciales incorrectas. Inténtalo de nuevo!", Toast.LENGTH_SHORT).show();
                 }
                 fila.close();
 
@@ -84,8 +95,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // Listener para ir al registro
         TextView textViewRegister = findViewById(R.id.signupText);
-
         textViewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,8 +106,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // Listener para abrir una página web
         TextView textViewWeb = findViewById(R.id.webText);
-
         textViewWeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
