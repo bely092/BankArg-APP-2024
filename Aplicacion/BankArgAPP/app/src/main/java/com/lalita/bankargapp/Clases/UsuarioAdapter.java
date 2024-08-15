@@ -21,6 +21,7 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioV
         this.usuarios = usuarios;
     }
 
+//    Agarra el layout de item_usuario para usarse a posteriori y darle la informacion necesaria con nuestra clase java
     @NonNull
     @Override
     public UsuarioViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -28,6 +29,7 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioV
         return new UsuarioViewHolder(view);
     }
 
+//    Le coloca TODOS los datos correspondientes (setText) a lo necesario
     @Override
     public void onBindViewHolder(@NonNull UsuarioViewHolder holder, int position) {
         Usuario usuario = usuarios.get(position);
