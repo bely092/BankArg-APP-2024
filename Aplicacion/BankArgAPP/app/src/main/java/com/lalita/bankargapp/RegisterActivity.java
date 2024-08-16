@@ -118,7 +118,8 @@ public class RegisterActivity extends AppCompatActivity {
                             editor.apply();
 
                             Toast.makeText(RegisterActivity.this, "¡Registro y cuenta creados exitosamente!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(RegisterActivity.this, ProductActivity.class);
+
+                            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                             startActivity(intent);
                         } else {
                             // Error al crear la cuenta
