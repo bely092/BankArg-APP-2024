@@ -39,14 +39,44 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="25dp"
                 android:background="@drawable/borde_redondeado"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
-                android:hint="Usuario"
+                android:hint="Email/Usuario"
+                android:padding="8dp"
+                android:textColor="@color/col1"
+                android:textColorHighlight="@color/cardview_dark_background"
+                android:textColorHint="@color/col1"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/nombre"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/borde_redondeado"
+                android:drawableLeft="@drawable/baseline_person_24"
+                android:drawablePadding="8dp"
+                android:hint="Nombre"
+                android:padding="8dp"
+                android:textColor="@color/col1"
+                android:textColorHighlight="@color/cardview_dark_background"
+                android:textColorHint="@color/col1"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/apellido"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/borde_redondeado"
+                android:drawableLeft="@drawable/baseline_person_24"
+                android:drawablePadding="8dp"
+                android:hint="Apellido"
                 android:padding="8dp"
                 android:textColor="@color/col1"
                 android:textColorHighlight="@color/cardview_dark_background"
@@ -224,7 +254,7 @@
             <!--            </LinearLayout>-->
 
             <Button
-                android:id="@+id/loginButton"
+                android:id="@+id/registerButton"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"

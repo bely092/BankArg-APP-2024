@@ -9,6 +9,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,14 +36,41 @@ public class PerfilActivity extends AppCompatActivity {
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
 
+    TextView nombreCompleto, email, telefono, cvu, alias, dni, saldo;
     Button btnEditar;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
+        // Referencias a los TextView en el layout
+        nombreCompleto = findViewById(R.id.nombreCompleto);
+        email = findViewById(R.id.Email);
+        telefono = findViewById(R.id.Telefono);
+        cvu = findViewById(R.id.CVU);
+        alias = findViewById(R.id.Alias);
+        dni = findViewById(R.id.DNI);
+        saldo = findViewById(R.id.saldo);
+
         btnEditar = findViewById(R.id.btn_editar);
+
+        // Inicializar la base de datos
+        UsuariosSQLiteHelper dbHelper = new UsuariosSQLiteHelper(this);
+        db = dbHelper.getReadableDatabase();
+
+        // Recuperar id_usuario de SharedPreferences
+        SharedPreferences preferences = getSharedPreferences("user_session", MODE_PRIVATE);
+        int idUsuario = preferences.getInt("id_usuario", -1);
+
+        // Verificar si id_usuario es válido
+        if (idUsuario != -1) {
+            // Obtener los datos del usuario de la base de datos
+            obtenerDatosUsuario(idUsuario);
+        } else {
+            Toast.makeText(this, "Error: Usuario no logueado", Toast.LENGTH_SHORT).show();
+        }
 
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,39 +81,23 @@ public class PerfilActivity extends AppCompatActivity {
         });
 
         /*--- boton copiar CVU ---*/
-
         ImageButton copyText = findViewById(R.id.imageButton5);
         copyText.setOnClickListener(view -> {
-            // TextView que contiene el CVU
-            TextView texto = findViewById(R.id.CVU);
-            String textToCopy = texto.getText().toString();
-
-            // portapapeles
+            String textToCopy = cvu.getText().toString();
             ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clip = ClipData.newPlainText("copiado", textToCopy);
             clipboard.setPrimaryClip(clip);
-
-            // mensaje salio ok
-            //Toast.makeText(this, "CVU copiado", Toast.LENGTH_SHORT).show();
         });
 
 
 
         /*--- boton copiar Alias ---*/
-
         ImageButton copTexto = findViewById(R.id.imageButton7);
         copTexto.setOnClickListener(view -> {
-            // TextView que contiene Alias
-            TextView texto = findViewById(R.id.Alias);
-            String textToCopy = texto.getText().toString();
-
-            // portapapeles
+            String textToCopy = alias.getText().toString();
             ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clip = ClipData.newPlainText("copiado", textToCopy);
             clipboard.setPrimaryClip(clip);
-
-            // mensaje salio ok
-            //Toast.makeText(this, "Alias copiado", Toast.LENGTH_SHORT).show();
         });
 
 
@@ -197,6 +211,41 @@ public class PerfilActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    private void obtenerDatosUsuario(int idUsuario) {
+        // Consulta para obtener la información del usuario desde la base de datos
+        String query = "SELECT u.nombre, u.apellido, u.email, c.saldo, c.id_cuenta " +
+                "FROM Usuarios2 u " +
+                "LEFT JOIN Cuentas c ON u.id_usuario = c.id_usuario " +
+                "WHERE u.id_usuario = ?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idUsuario)});
+
+        if (cursor.moveToFirst()) {
+            // Obtener datos del cursor y actualizar las vistas
+            String nombre = cursor.getString(0);
+            String apellido = cursor.getString(1);
+            String emailStr = cursor.getString(2);
+            double saldoValue = cursor.getDouble(3);
+            String aliasStr = null;
+            String cvuStr = null;
+            String dniStr = null;
+            String telefonoStr = null;
+            int idCuenta = cursor.getInt(4); // ID de la cuenta
+
+            // Actualizar los TextView con los datos del usuario
+            nombreCompleto.setText(nombre + " " + apellido);
+            email.setText(emailStr);
+            cvu.setText(cvuStr != null ? cvuStr : "Sin CVU");
+            alias.setText(aliasStr != null ? aliasStr : "Sin alias");
+            dni.setText(dniStr != null ? dniStr : "Sin DNI");
+            telefono.setText(telefonoStr != null ? telefonoStr : "Sin teléfono");
+            saldo.setText("$" + String.format("%.2f", saldoValue));
+        } else {
+            Toast.makeText(this, "No se encontraron datos para el usuario", Toast.LENGTH_SHORT).show();
+        }
+        cursor.close();
     }
 
 }
