@@ -18,7 +18,7 @@ import java.util.List;
 
 public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "BankArgAPP.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 7;
 
     // Definir la estructura de la tabla "user".
     private static final String CREATE_TABLE_USER = "CREATE TABLE if not exists User (" +
@@ -35,9 +35,28 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
         // Ejecutar la creación de la tabla "user".
         db.execSQL(CREATE_TABLE_USER);
 
-        // Crear tabla 'contacto'
+        // Crear las tablas
         createContactoTable(db);
 
+        createUsuarioTable(db);
+        createTipoCuentaTable(db);
+        createCuentaTable(db);
+        createTipoTransaccionTable(db);
+        createTransaccionTable(db);
+//        createTipoContactosTable(db);
+        createContactosTable(db);
+
+        Cursor cursor = db.rawQuery("PRAGMA table_info(Usuarios2);", null);
+        if (cursor.moveToFirst()) {
+            do {
+                String columnName = cursor.getString(1); // 1 es el índice del nombre de la columna
+                Log.d("DatabaseInfo", "Columna: " + columnName);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+//        Insertar las tablas
+        insertarDatosIniciales(db);
 
 
 //        Por alguna razon me da error: table Usuarios not exist
@@ -803,62 +822,6 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
         insertarUsuario(db, "Mateo", "Luna", "12345", 2, "45678901", 1, 1010, "Calle de la Plaza", "1993-12-08", 1);
 
 
-////        Paises
-//        db.execSQL("INSERT INTO paises (pais) VALUES ('Argentina')");
-//        db.execSQL("INSERT INTO paises (pais) VALUES ('Brasil')");
-//        db.execSQL("INSERT INTO paises (pais) VALUES ('Chile')");
-//        db.execSQL("INSERT INTO paises (pais) VALUES ('Uruguay')");
-//
-////        Provincias
-//        db.execSQL("INSERT INTO provincias (provincia, cod_pais) VALUES ('Buenos Aires', 1)");
-//        db.execSQL("INSERT INTO provincias (provincia, cod_pais) VALUES ('Catamarca', 1)");
-//        db.execSQL("INSERT INTO provincias (provincia, cod_pais) VALUES ('Chaco', 1)");
-//        db.execSQL("INSERT INTO provincias (provincia, cod_pais) VALUES ('Chubut', 1)");
-//        db.execSQL("INSERT INTO provincias (provincia, cod_pais) VALUES ('Cordoba', 1)");
-//
-//        db.execSQL("INSERT INTO provincias (provincia, cod_pais) VALUES ('Some Province in Brazil', 2)");
-//        db.execSQL("INSERT INTO provincias (provincia, cod_pais) VALUES ('Some Province in Chile', 3)");
-//        db.execSQL("INSERT INTO provincias (provincia, cod_pais) VALUES ('Some Province in Uruguay', 4)");
-//
-////        Localidades
-//        db.execSQL("INSERT INTO localidades (localidad, cod_provincia) VALUES ('Buenos Aires', 1)");
-//        db.execSQL("INSERT INTO localidades (localidad, cod_provincia) VALUES ('La Plata', 1)");
-//        db.execSQL("INSERT INTO localidades (localidad, cod_provincia) VALUES ('Mar del Plata', 1)");
-//
-//        db.execSQL("INSERT INTO localidades (localidad, cod_provincia) VALUES ('City in Catamarca', (SELECT cod_provincia FROM provincias WHERE provincia = 'Catamarca'))");
-//        db.execSQL("INSERT INTO localidades (localidad, cod_provincia) VALUES ('City in Chaco', (SELECT cod_provincia FROM provincias WHERE provincia = 'Chaco'))");
-//        db.execSQL("INSERT INTO localidades (localidad, cod_provincia) VALUES ('City in Chubut', (SELECT cod_provincia FROM provincias WHERE provincia = 'Chubut'))");
-//        db.execSQL("INSERT INTO localidades (localidad, cod_provincia) VALUES ('City in Cordoba', (SELECT cod_provincia FROM provincias WHERE provincia = 'Cordoba'))");
-//        db.execSQL("INSERT INTO localidades (localidad, cod_provincia) VALUES ('Some City in Brazil', (SELECT cod_provincia FROM provincias WHERE provincia = 'Some Province in Brazil'))");
-//        db.execSQL("INSERT INTO localidades (localidad, cod_provincia) VALUES ('Some City in Chile', (SELECT cod_provincia FROM provincias WHERE provincia = 'Some Province in Chile'))");
-//        db.execSQL("INSERT INTO localidades (localidad, cod_provincia) VALUES ('Some City in Uruguay', (SELECT cod_provincia FROM provincias WHERE provincia = 'Some Province in Uruguay'))");
-//
-////        Documentos
-//        db.execSQL("INSERT INTO Documentos (tipo_doc) VALUES ('Dni')");
-//        db.execSQL("INSERT INTO Documentos (tipo_doc) VALUES ('Pasaporte')");
-//        db.execSQL("INSERT INTO Documentos (tipo_doc) VALUES ('Obra social')");
-//        db.execSQL("INSERT INTO Documentos (tipo_doc) VALUES ('Licencia de conducir')");
-//
-////        Sexos
-//        db.execSQL("INSERT INTO Sexos (tipo) VALUES ('Hombre')");
-//        db.execSQL("INSERT INTO Sexos (tipo) VALUES ('Mujer')");
-//        db.execSQL("INSERT INTO Sexos (tipo) VALUES ('Otro')");
-//
-////        Usuarios
-//        db.execSQL("INSERT INTO Usuarios (nombre, apellido, username, password, id_tipo_doc, nro_doc, cod_localidad, nro_calle, calle, fecha_nac, id_tipo_sexo) " +
-//                "VALUES ('Ana', 'López', 'analopez', '12345', 1, '12345678', 1, 101, 'Calle Principal', '1990-04-15', 2)");
-//        String insertMultipleUsersQuery = "INSERT INTO Usuarios (nombre, apellido, username, password, id_tipo_doc, nro_doc, cod_localidad, nro_calle, calle, fecha_nac, id_tipo_sexo) " +
-//                "VALUES " +
-//                "('Juan', 'Martínez', 'juanmartinez', '12345', 2, '87654321', 2, 202, 'Avenida Secundaria', '1985-07-20', 1), " +
-//                "('María', 'González', 'mariagonzalez', '12345', 1, '98765432', 3, 303, 'Calle del Centro', '1992-02-10', 2), " +
-//                "('Carlos', 'Rodríguez', 'carlosrodriguez', '12345', 2, '56789012', 1, 404, 'Calle Residencial', '1998-05-05', 1), " +
-//                "('Luisa', 'Sánchez', 'luisasanchez', '12345', 1, '34567890', 2, 505, 'Avenida Principal', '1987-11-30', 2), " +
-//                "('Javier', 'Pérez', 'javierperez', '12345', 2, '23456789', 3, 606, 'Calle del Parque', '1994-08-25', 1), " +
-//                "('Sofía', 'Fernández', 'sofiafernandez', '12345', 1, '43210987', 1, 707, 'Avenida Central', '1991-01-18', 2), " +
-//                "('Diego', 'Ramírez', 'diegoramirez', '12345', 2, '54321098', 2, 808, 'Calle Comercial', '1996-03-02', 1), " +
-//                "('Lucía', 'Torres', 'luciatorres', '12345', 1, '67890123', 3, 909, 'Avenida Residencial', '1988-06-10', 2), " +
-//                "('Mateo', 'Luna', 'mateoluna', '12345', 2, '45678901', 1, 1010, 'Calle de la Plaza', '1993-12-08', 1)";
-//        db.execSQL(insertMultipleUsersQuery);
 
     }
 
@@ -871,9 +834,16 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
         if (oldVersion < 4) {
             // Crear la nueva tabla 'contacto' cuando se actualiza a la versión 4
             createContactoTable(db);
+            createContactosTable(db);
         }
         // Aquí podrías agregar más condiciones si necesitas manejar futuras actualizaciones
-
+        db.execSQL("DROP TABLE IF EXISTS Usuarios2");
+        db.execSQL("DROP TABLE IF EXISTS Tipos_Cuenta");
+        db.execSQL("DROP TABLE IF EXISTS Cuentas");
+        db.execSQL("DROP TABLE IF EXISTS Tipos_Transaccion");
+        db.execSQL("DROP TABLE IF EXISTS Transacciones");
+        db.execSQL("DROP TABLE IF EXISTS Contactos");
+        onCreate(db);  // Crear la tabla nuevamente
     }
 
 
@@ -881,7 +851,7 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
 
 
 
-    // Esto Pertenece a la Pantalla de Agregar Contactos
+    // Esto Pertenece a la Pantalla de Agregar Contactos (mobido abajo)
 
     private void createContactoTable(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS contacto (" +
@@ -907,6 +877,279 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
 
 
     // FIN  Agregar Contactos
+
+    // Tablas BD 2
+
+    // Método para insertar datos iniciales
+    private void insertarDatosIniciales(SQLiteDatabase db) {
+        // Insertar 10 usuarios
+        insertarUsuario2(db,"Juan", "Perez", "juan.perez@mail.com", "password123");
+        insertarUsuario2(db,"Maria", "Gomez", "maria.gomez@mail.com", "password456");
+        insertarUsuario2(db,"Luis", "Martinez", "luis.martinez@mail.com", "password789");
+        insertarUsuario2(db,"Ana", "Garcia", "ana.garcia@mail.com", "password111");
+        insertarUsuario2(db,"Pedro", "Lopez", "pedro.lopez@mail.com", "password222");
+        insertarUsuario2(db,"Jose", "Diaz", "jose.diaz@mail.com", "password333");
+        insertarUsuario2(db,"Carla", "Sanchez", "carla.sanchez@mail.com", "password444");
+        insertarUsuario2(db,"Miguel", "Torres", "miguel.torres@mail.com", "password555");
+        insertarUsuario2(db,"Laura", "Cruz", "laura.cruz@mail.com", "password666");
+        insertarUsuario2(db,"Diego", "Mendez", "diego.mendez@mail.com", "password777");
+
+        // Insertar 10 tipos de cuenta
+        insertarTipoCuenta(db, "Ahorros");
+        insertarTipoCuenta(db, "Corriente");
+        insertarTipoCuenta(db, "Nomina");
+        insertarTipoCuenta(db, "Inversion");
+        insertarTipoCuenta(db, "Crédito");
+        insertarTipoCuenta(db, "Estudiantil");
+        insertarTipoCuenta(db, "Empresarial");
+        insertarTipoCuenta(db, "Conjunta");
+        insertarTipoCuenta(db, "Infantil");
+        insertarTipoCuenta(db, "Fideicomiso");
+
+        // Insertar 10 cuentas
+        insertarCuenta(db,1, 1, 5000.50);
+        insertarCuenta(db,2, 2, 15000.75);
+        insertarCuenta(db,3, 3, 3000.00);
+        insertarCuenta(db,4, 4, 7500.20);
+        insertarCuenta(db,5, 1, 10000.00);
+        insertarCuenta(db,6, 2, 8500.10);
+        insertarCuenta(db,7, 5, 9500.00);
+        insertarCuenta(db,8, 6, 5000.25);
+        insertarCuenta(db,9, 7, 13000.00);
+        insertarCuenta(db,10, 8, 17500.60);
+
+        // Insertar 10 tipos de transacción
+        insertarTipoTransaccion(db, "Depósito");
+        insertarTipoTransaccion(db, "Retiro");
+        insertarTipoTransaccion(db, "Transferencia");
+        insertarTipoTransaccion(db, "Pago");
+        insertarTipoTransaccion(db, "Compra");
+        insertarTipoTransaccion(db, "Recarga");
+        insertarTipoTransaccion(db, "Devolución");
+        insertarTipoTransaccion(db, "Reembolso");
+        insertarTipoTransaccion(db, "Intereses");
+        insertarTipoTransaccion(db, "Penalización");
+
+        // Insertar 10 transacciones
+        insertarTransaccion(db,1, 1, 100.50, "Compra de comida");
+        insertarTransaccion(db,2, 2, 200.00, "Pago de servicios");
+        insertarTransaccion(db,3, 1, 300.25, "Retiro de cajero");
+        insertarTransaccion(db,4, 2, 400.75, "Depósito");
+        insertarTransaccion(db,5, 1, 150.00, "Pago de alquiler");
+        insertarTransaccion(db,6, 2, 250.50, "Transferencia");
+        insertarTransaccion(db,7, 1, 350.30, "Compra de ropa");
+        insertarTransaccion(db,8, 2, 450.20, "Pago de factura");
+        insertarTransaccion(db,9, 1, 500.00, "Compra de electrodoméstico");
+        insertarTransaccion(db,10, 2, 600.00, "Gastos médicos");
+
+        // Insertar 10 tipos de contacto
+//        insertarTipoContacto(db, "Email");
+//        insertarTipoContacto(db, "Teléfono");
+//        insertarTipoContacto(db, "CBU/CVU");
+
+        // Insertar 10 contactos
+        insertarContactos(db,1, "1234567894561234567891", "juan A");
+        insertarContactos(db,2, "1234567894561234567892", "juan B");
+        insertarContactos(db,3, "1234567894561234567894", "juan C");
+        insertarContactos(db,4, "1234567894561234567893", "juan D");
+        insertarContactos(db,5, "1234567894561234567895", "juan E");
+        insertarContactos(db,6, "7894561233214569874563", "juan F");
+        insertarContactos(db,7, "1234567894561234567896", "juan G");
+        insertarContactos(db,8, "1234567894561234567897", "juan H");
+        insertarContactos(db,9, "3698521477412589632587", "juan I");
+        insertarContactos(db,10, "1234567894561234567898", "juan J");
+
+    }
+
+    // =================== Métodos para la tabla Usuarios ===================
+    private void createUsuarioTable(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE IF NOT EXISTS Usuarios2 (" +
+                "id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "nombre TEXT, " +
+                "apellido TEXT, " +
+                "email TEXT UNIQUE, " +
+                "password TEXT)");
+    }
+
+    public boolean insertarUsuario2(SQLiteDatabase db, String nombre, String apellido, String email, String password) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("nombre", nombre);
+        values.put("apellido", apellido);
+        values.put("email", email);
+        values.put("password", password);
+        long result = db.insert("Usuarios2", null, values);
+        return result != -1;
+    }
+
+    public boolean eliminarUsuario2(long id_usuario) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete("Usuarios2", "id_usuario = ?", new String[]{String.valueOf(id_usuario)}) > 0;
+    }
+
+    public boolean actualizarUsuario2(long id_usuario, String nombre, String apellido, String email, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("nombre", nombre);
+        values.put("apellido", apellido);
+        values.put("email", email);
+        values.put("password", password);
+        return db.update("Usuarios2", values, "id_usuario = ?", new String[]{String.valueOf(id_usuario)}) > 0;
+    }
+
+    // =================== Métodos para la tabla Tipos_Cuenta ===================
+    private void createTipoCuentaTable(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE IF NOT EXISTS Tipos_Cuenta (" +
+                "id_tipo_cuenta INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "tipo_cuenta TEXT)");
+    }
+
+    public boolean insertarTipoCuenta(SQLiteDatabase db, String tipo_cuenta) {
+        ContentValues values = new ContentValues();
+        values.put("tipo_cuenta", tipo_cuenta);
+        long result = db.insert("Tipos_Cuenta", null, values);
+        return result != -1;
+    }
+
+    // =================== Métodos para la tabla Cuentas ===================
+    private void createCuentaTable(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE IF NOT EXISTS Cuentas (" +
+                "id_cuenta INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "id_usuario INTEGER NOT NULL, " +
+                "id_tipo_cuenta INTEGER NOT NULL, " +
+                "saldo DECIMAL(12, 2) DEFAULT 0.00, " +
+                "FOREIGN KEY (id_usuario) REFERENCES Usuarios2(id_usuario), " +
+                "FOREIGN KEY (id_tipo_cuenta) REFERENCES Tipos_Cuenta(id_tipo_cuenta))");
+    }
+
+    public boolean insertarCuenta(SQLiteDatabase db, long id_usuario, long id_tipo_cuenta, double saldo) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id_usuario", id_usuario);
+        values.put("id_tipo_cuenta", id_tipo_cuenta);
+        values.put("saldo", saldo); // Saldo inicial (0.0)
+        long result = db.insert("Cuentas", null, values);
+        return result != -1;
+    }
+
+    public boolean eliminarCuenta(long id_cuenta) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete("Cuentas", "id_cuenta = ?", new String[]{String.valueOf(id_cuenta)}) > 0;
+    }
+
+    public boolean actualizarCuenta(long id_cuenta, long id_usuario, long id_tipo_cuenta, double saldo) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id_usuario", id_usuario);
+        values.put("id_tipo_cuenta", id_tipo_cuenta);
+        values.put("saldo", saldo);
+        return db.update("Cuentas", values, "id_cuenta = ?", new String[]{String.valueOf(id_cuenta)}) > 0;
+    }
+
+    // =================== Métodos para la tabla Tipos_Transaccion ===================
+    private void createTipoTransaccionTable(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE IF NOT EXISTS Tipos_Transaccion (" +
+                "id_tipo_transaccion INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "tipo_transaccion TEXT)");
+    }
+
+    public boolean insertarTipoTransaccion(SQLiteDatabase db, String tipo_transaccion) {
+        ContentValues values = new ContentValues();
+        values.put("tipo_transaccion", tipo_transaccion);
+        long result = db.insert("Tipos_Transaccion", null, values);
+        return result != -1;
+    }
+
+    // =================== Métodos para la tabla Transacciones ===================
+    private void createTransaccionTable(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE IF NOT EXISTS Transacciones (" +
+                "id_transaccion INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "id_cuenta INTEGER NOT NULL, " +
+                "id_tipo_transaccion INTEGER NOT NULL, " +
+                "monto DECIMAL(10, 2), " +
+                "fecha_transaccion TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
+                "descripcion TEXT, " +
+                "FOREIGN KEY (id_cuenta) REFERENCES Cuentas(id_cuenta), " +
+                "FOREIGN KEY (id_tipo_transaccion) REFERENCES Tipos_Transaccion(id_tipo_transaccion))");
+    }
+
+    public boolean insertarTransaccion(SQLiteDatabase db, long id_cuenta, long id_tipo_transaccion, double monto, String descripcion) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id_cuenta", id_cuenta);
+        values.put("id_tipo_transaccion", id_tipo_transaccion);
+        values.put("monto", monto);
+        values.put("descripcion", descripcion);
+        long result = db.insert("Transacciones", null, values);
+        return result != -1;
+    }
+
+    public boolean eliminarTransaccion(long id_transaccion) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete("Transacciones", "id_transaccion = ?", new String[]{String.valueOf(id_transaccion)}) > 0;
+    }
+
+    public boolean actualizarTransaccion(long id_transaccion, long id_cuenta, long id_tipo_transaccion, double monto, String descripcion) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id_cuenta", id_cuenta);
+        values.put("id_tipo_transaccion", id_tipo_transaccion);
+        values.put("monto", monto);
+        values.put("descripcion", descripcion);
+        return db.update("Transacciones", values, "id_transaccion = ?", new String[]{String.valueOf(id_transaccion)}) > 0;
+    }
+
+    // =================== Métodos para la tabla Tipos_Contacto ===================\
+//    private void createTipoContactosTable(SQLiteDatabase db) {
+//        db.execSQL("CREATE TABLE IF NOT EXISTS Tipos_Contacto (" +
+//                "id_tipo_contacto INTEGER PRIMARY KEY AUTOINCREMENT, " +
+//                "tipo_contacto TEXT)");
+//    }
+//
+//    public boolean insertarTipoContacto(SQLiteDatabase db, String tipo_contacto) {
+//        ContentValues values = new ContentValues();
+//        values.put("tipo_contacto", tipo_contacto);
+//        long result = db.insert("Tipos_Contacto", null, values);
+//        return result != -1;
+//    }
+
+    // =================== Métodos para la tabla Contactos ===================
+    private void createContactosTable(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE IF NOT EXISTS Contactos (" +
+                "id_contacto INTEGER PRIMARY KEY AUTOINCREMENT, " +
+//                "id_tipo_contacto INTEGER NOT NULL, " +
+                "id_usuario INTEGER NOT NULL, " +
+                "contacto TEXT, " +
+                "nombre TEXT, " +
+//                "FOREIGN KEY (id_tipo_contacto) REFERENCES Tipos_Contacto(id_tipo_contacto), " +
+                "FOREIGN KEY (id_usuario) REFERENCES Usuarios2(id_usuario))");
+    }
+
+    public boolean insertarContactos(SQLiteDatabase db, long id_usuario, String contacto, String nombre) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id_usuario", id_usuario);
+        values.put("contacto", contacto);
+        values.put("nombre", nombre);
+        long result = db.insert("Contactos", null, values);
+        return result != -1;
+    }
+
+    public boolean eliminarContactos(long id_contacto) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete("Contactos", "id_contacto = ?", new String[]{String.valueOf(id_contacto)}) > 0;
+    }
+
+    public boolean actualizarContactos(long id_contacto, long id_usuario, String contacto, String nombre) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id_usuario", id_usuario);
+        values.put("contacto", contacto);
+        values.put("nombre", nombre);
+        return db.update("Contactos", values, "id_contacto = ?", new String[]{String.valueOf(id_contacto)}) > 0;
+    }
+
+    // Fin Tablas BD 2
 
 
 
