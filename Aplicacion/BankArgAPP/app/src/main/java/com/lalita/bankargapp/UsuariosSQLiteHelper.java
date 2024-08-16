@@ -46,6 +46,15 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
 //        createTipoContactosTable(db);
         createContactosTable(db);
 
+        Cursor cursor = db.rawQuery("PRAGMA table_info(Usuarios2);", null);
+        if (cursor.moveToFirst()) {
+            do {
+                String columnName = cursor.getString(1); // 1 es el índice del nombre de la columna
+                Log.d("DatabaseInfo", "Columna: " + columnName);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
 //        Insertar las tablas
         insertarDatosIniciales(db);
 
@@ -884,12 +893,13 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
             createContactosTable(db);
         }
         // Aquí podrías agregar más condiciones si necesitas manejar futuras actualizaciones
-//        db.execSQL("DROP TABLE IF EXISTS Usuarios2");
-//        db.execSQL("DROP TABLE IF EXISTS Tipos_Cuenta");
-//        db.execSQL("DROP TABLE IF EXISTS Cuentas");
-//        db.execSQL("DROP TABLE IF EXISTS Tipos_Transaccion");
-//        db.execSQL("DROP TABLE IF EXISTS Transacciones");
-//        db.execSQL("DROP TABLE IF EXISTS Contactos");
+        db.execSQL("DROP TABLE IF EXISTS Usuarios2");
+        db.execSQL("DROP TABLE IF EXISTS Tipos_Cuenta");
+        db.execSQL("DROP TABLE IF EXISTS Cuentas");
+        db.execSQL("DROP TABLE IF EXISTS Tipos_Transaccion");
+        db.execSQL("DROP TABLE IF EXISTS Transacciones");
+        db.execSQL("DROP TABLE IF EXISTS Contactos");
+        onCreate(db);  // Crear la tabla nuevamente
     }
 
 
