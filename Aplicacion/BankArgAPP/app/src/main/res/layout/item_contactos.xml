@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="8dp">
-
-
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textViewCBU"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CBU" />
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:orientation="vertical">
 
         <TextView
             android:id="@+id/textViewNombreContacto"
@@ -25,18 +16,31 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:text="Nombre"
+            android:textColor="@color/col1"
+            android:textColorHighlight="@color/col1"
+            android:textColorHint="@color/col1"
+            android:textColorLink="@color/col1"
             android:textSize="16sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/textViewCBU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CBU"
+            android:textColor="@color/col1"
+            android:textColorHighlight="@color/col1"
+            android:textColorHint="@color/col1"
+            android:textColorLink="@color/col1" />
     </LinearLayout>
 
     <Button
         android:id="@+id/buttonEliminarContacto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:text="Eliminar" />
-
-
-
+        android:text="Eliminar"
+        android:textColor="@color/col6"
+        android:textColorHighlight="@color/col6"
+        android:textColorHint="@color/col6"
+        android:textColorLink="@color/col6" />
 </LinearLayout>

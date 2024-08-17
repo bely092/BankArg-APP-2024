@@ -41,6 +41,7 @@
                     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                     app:buttonGravity="center_vertical" />
 
+
             </LinearLayout>
 
             <View
@@ -64,7 +65,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
 
+                android:background="@color/col6"
+                android:backgroundTint="@color/col6"
                 android:paddingBottom="20dp"
+                app:cardBackgroundColor="@color/col6"
                 app:cardCornerRadius="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -110,9 +114,9 @@
                         android:id="@+id/nombrePers"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="32dp"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
-                        android:layout_marginEnd="32dp"
+                        android:layout_marginEnd="16dp"
                         android:background="?android:attr/fastScrollPreviewBackgroundRight"
                         android:backgroundTint="@color/col4"
                         android:drawableLeft="@drawable/baseline_person_24"
@@ -136,9 +140,9 @@
                         android:id="@+id/editTextCBU"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="32dp"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
-                        android:layout_marginEnd="32dp"
+                        android:layout_marginEnd="16dp"
                         android:background="?android:attr/fastScrollPreviewBackgroundRight"
                         android:backgroundTint="@color/col4"
                         android:drawableLeft="@drawable/baseline_person_24"
@@ -203,6 +207,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:text="Contactos Agendados:"
+                        android:textColor="@color/col5"
+                        android:textColorHighlight="@color/col5"
+                        android:textColorHint="@color/col5"
+                        android:textColorLink="@color/col5"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 

@@ -2,6 +2,7 @@ package com.lalita.bankargapp;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -23,7 +24,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
-import com.lalita.bankargapp.Clases.Contacto;
+
+import com.lalita.bankargapp.Clases.Contactos;
 import com.lalita.bankargapp.Clases.ContactosAdapter;
 
 import java.util.ArrayList;
@@ -41,7 +43,7 @@ public class AgregarPersonasActivity extends AppCompatActivity {
 
     RecyclerView recyclerViewContactos;
     ContactosAdapter contactoAdapter;
-    List<Contacto> contactoList;
+    List<Contactos> contactoList;
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -53,30 +55,41 @@ public class AgregarPersonasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_person);
 
-        editTextCBU = findViewById(R.id.editTextCBU);
-        //editTextAlias = findViewById(R.id.editTextAlias);
-        nombrePers = findViewById(R.id.nombrePers);
-        buttonAddPerson = findViewById(R.id.buttonAddPerson);
-
+        // Inicializar la base de datos
+        miBase = new UsuariosSQLiteHelper(this);
         recyclerViewContactos = findViewById(R.id.recyclerViewContactos);
 
 
-        // Inicializar la base de datos
-        miBase = new UsuariosSQLiteHelper(this);
+        // Recuperar el id_usuario de SharedPreferences
+        SharedPreferences preferences = getSharedPreferences("user_session", MODE_PRIVATE);
+        int idUsuario = preferences.getInt("id_usuario", -1); // -1 es el valor por defecto si no se encuentra
+
+        if (idUsuario != -1) {
+            // el id_usuario se encontro
+        } else {
+            // No se encontró un id_usuario
+            Toast.makeText(this, "No se encontró un usuario logueado", Toast.LENGTH_SHORT).show();
+            // Puedes redirigir al usuario a la pantalla de inicio de sesión o manejarlo de otra forma
+        }
+
+
+
+        editTextCBU = findViewById(R.id.editTextCBU);
+        nombrePers = findViewById(R.id.nombrePers);
+        buttonAddPerson = findViewById(R.id.buttonAddPerson);
+
 
         // Configurar el RecyclerView
         recyclerViewContactos.setLayoutManager(new LinearLayoutManager(this));
         contactoList = getAllContactos();
+
         contactoAdapter = new ContactosAdapter(contactoList, this::eliminarContacto);
         recyclerViewContactos.setAdapter(contactoAdapter);
 
 
-        buttonAddPerson.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addPerson();
-            }
-        });
+
+
+        buttonAddPerson.setOnClickListener(v -> addPerson());
 
 
         /*--- Boton en el tool bar que lleva al perfil---*/
@@ -157,11 +170,21 @@ public class AgregarPersonasActivity extends AppCompatActivity {
 
     // Aca arranca la funcion Para Agregar un contacto
     private void addPerson() {
-        String CBU = editTextCBU.getText().toString().trim();
+        // Recuperar el id_usuario desde SharedPreferences
+        SharedPreferences preferences = getSharedPreferences("user_session", MODE_PRIVATE);
+        int idUsuario = preferences.getInt("id_usuario", -1);
+
+        if (idUsuario == -1) {
+            // Manejar el caso donde no se encontró un id_usuario
+            Toast.makeText(this, "No se encontró un usuario logueado", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String contactoA = editTextCBU.getText().toString().trim();
         String nombre = nombrePers.getText().toString().trim();
 
-        if (TextUtils.isEmpty(CBU)) {
-            editTextCBU.setError("CBU/CVU es requerido");
+        if (TextUtils.isEmpty(contactoA)) {
+            editTextCBU.setError("CBU es requerido");
             return;
         }
         if (TextUtils.isEmpty(nombre)) {
@@ -169,42 +192,44 @@ public class AgregarPersonasActivity extends AppCompatActivity {
             return;
         }
 
-        if (validarCampos(CBU, nombre)) {
-            agregarContacto(CBU, nombre);
+        if (validarCampos(contactoA, nombre)) {
+
+            // Pasar id_usuario junto con contacto y nombre
+            agregarContacto(idUsuario, contactoA, nombre);
         }
-
-
     }
+
+
 
 
     //Verifico los campos
 
-    private boolean validarCampos(String cbu, String nombre) {
+    private boolean validarCampos(String contacto, String nombre) {
         // Validar que el nombre solo contenga letras
         if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
             Toast.makeText(this, "El nombre solo debe contener letras", Toast.LENGTH_SHORT).show();
             return false;
         }
 
-        // Valido que el CBU contenga exactamente 22 numeros
-        if (!cbu.matches("\\d{22}")) {
-            Toast.makeText(this, "El CBU debe contener 22 dígitos", Toast.LENGTH_SHORT).show();
+        // Valido que el contacto (CBU) contenga exactamente 22 números
+        if (!contacto.matches("\\d{22}")) {
+            Toast.makeText(this, "CBU/CVU debe contener 22 dígitos", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         return true;
     }
 
+
     //Agrego el contacto
 
-
-    private void agregarContacto(String cbu, String nombreContacto) {
-        boolean insertado = miBase.insertarContacto(cbu, nombreContacto);
-        if (insertado) {
-            contactoList.add(new Contacto(cbu, nombreContacto));
+    private void agregarContacto( int idUsuario, String contacto, String nombre) {
+        boolean insertar = miBase.insertarContactos(idUsuario, contacto, nombre);
+        if (insertar) {
+            contactoList.add(new Contactos(idUsuario,contacto, nombre));
             contactoAdapter.notifyDataSetChanged();
             Toast.makeText(this, "Contacto agregado", Toast.LENGTH_SHORT).show();
-            //Con esto se limpian los campos del formulario
+            // Limpia los campos del formulario
             editTextCBU.setText("");
             nombrePers.setText("");
         } else {
@@ -212,41 +237,53 @@ public class AgregarPersonasActivity extends AppCompatActivity {
         }
     }
 
+// Traer los contactos agendados
 
-
-    // Mostrar Contactos que esten Cargados
-    private List<Contacto> getAllContactos() {
-        List<Contacto> contactos = new ArrayList<>();
+    public List<Contactos> getAllContactos() {
+        List<Contactos> contactos = new ArrayList<>();
         SQLiteDatabase db = miBase.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT CBU, nombre FROM contacto", null);
 
-        if (cursor.moveToFirst()) {
-            do {
-                String cbu = cursor.getString(0);
-                String nombre = cursor.getString(1);
-                contactos.add(new Contacto(cbu, nombre));
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        return contactos;
+        Cursor cursor= db.query(
+        "Contactos",new String[]{"id_contacto", "id_usuario", "contacto", "nombre"},null,null,null,null,null);
+
+        // Procesa el cursor para obtener los datos
+        if (cursor != null && cursor.moveToFirst()) {
+        do {
+            long idContacto= cursor.getLong(cursor.getColumnIndexOrThrow("id_contacto"));
+            long idUsuario= cursor.getLong(cursor.getColumnIndexOrThrow("id_usuario"));
+            String contacto= cursor.getString(cursor.getColumnIndexOrThrow("contacto"));
+            String nombre= cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
+
+            // Crea un objeto Contactos y añade a la lista
+            Contactos contactoItem= new Contactos((int) idUsuario, contacto, nombre);
+            contactos.add(contactoItem);
+        } while (cursor.moveToNext());
+        cursor.close(); // Cierra el cursor para liberar recursos
     }
+
+    return contactos; // Retorna la lista de contactos
+}
+
 
 
     //Borrar contacto
 
-    private void eliminarContacto(Contacto contacto) {
-        boolean eliminado = miBase.eliminarContacto(contacto.getCbu());
+    private void eliminarContacto(Contactos contacto) {
+
+        String contactoValor= contacto.getContacto();
+        // / Eliminar el contacto usando el valor del contacto
+        boolean eliminado= miBase.eliminarPorCBU(contactoValor);
+
         if (eliminado) {
+            // Actualizar la lista y la vista
             contactoList.remove(contacto);
             contactoAdapter.notifyDataSetChanged();
-            Toast.makeText(this, "Contacto eliminado", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, " Contacto eliminado", Toast.LENGTH_SHORT).show();
         } else {
+            // Mostrar mensaje de error
             Toast.makeText(this, "Error al eliminar el contacto", Toast.LENGTH_SHORT).show();
         }
     }
-
-
-
 
 
 

@@ -15,14 +15,14 @@ import java.util.List;
 
 public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.ContactoViewHolder> {
 
-    private List<Contacto> contactoList;
+    private List<Contactos> contactoList;
     private OnContactoDeleteListener deleteListener;
 
     public interface OnContactoDeleteListener {
-        void onContactoDelete(Contacto contacto);
+        void onContactoDelete(Contactos contacto);
     }
 
-    public ContactosAdapter(List<Contacto> contactoList, OnContactoDeleteListener deleteListener) {
+    public ContactosAdapter(List<Contactos> contactoList, OnContactoDeleteListener deleteListener) {
         this.contactoList = contactoList;
         this.deleteListener = deleteListener;
     }
@@ -34,32 +34,37 @@ public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.Cont
         return new ContactoViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull ContactoViewHolder holder, int position) {
-        Contacto contacto = contactoList.get(position);
-        holder.textViewCBU.setText(contacto.getCbu());
-        holder.textViewNombreContacto.setText(contacto.getNombreContacto());
+        Contactos contacto = contactoList.get(position);
+        holder.textViewContacto.setText(contacto.getContacto());
+        holder.textViewNombre.setText(contacto.getNombre());
 
         holder.buttonEliminarContacto.setOnClickListener(v -> {
             deleteListener.onContactoDelete(contacto);
         });
     }
 
+
     @Override
     public int getItemCount() {
         return contactoList.size();
     }
 
+
+
     public static class ContactoViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewCBU, textViewNombreContacto;
+        TextView textViewContacto, textViewNombre;
         Button buttonEliminarContacto;
 
         public ContactoViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewCBU = itemView.findViewById(R.id.textViewCBU);
-            textViewNombreContacto = itemView.findViewById(R.id.textViewNombreContacto);
+            textViewContacto = itemView.findViewById(R.id.textViewCBU);
+            textViewNombre = itemView.findViewById(R.id.textViewNombreContacto);
             buttonEliminarContacto = itemView.findViewById(R.id.buttonEliminarContacto);
         }
     }
+
 }
