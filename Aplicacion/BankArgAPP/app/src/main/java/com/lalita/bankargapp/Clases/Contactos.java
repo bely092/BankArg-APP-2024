@@ -2,13 +2,14 @@ package com.lalita.bankargapp.Clases;
 
 public class Contactos {
     private int id_usuario;
+
     private String contacto;
     private String nombre;
 
 
-    public Contactos(int idUsuario, String contacto, String nombre) {
+    public Contactos( int idUsuario, String contacto, String nombre) {
         id_usuario = idUsuario;
-        this.contacto = contacto;
+        this.contacto = contacto; //esta variable funciona como cbu
         this.nombre = nombre;
     }
 
