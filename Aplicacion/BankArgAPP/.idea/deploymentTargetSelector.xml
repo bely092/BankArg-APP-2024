@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="BankArg">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-08-17T02:22:49.941917Z">
+        <DropdownSelection timestamp="2024-08-18T18:09:52.701137500Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\Ezequiel Giampaoli\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd" />
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=CMFE4HQWCYWWJN5D" />
             </handle>
           </Target>
         </DropdownSelection>

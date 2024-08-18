@@ -18,7 +18,7 @@ import java.util.List;
 
 public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "BankArgAPP.db";
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 13;
 
     // Definir la estructura de la tabla "user".
     private static final String CREATE_TABLE_USER = "CREATE TABLE if not exists User (" +
@@ -785,18 +785,16 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        if (oldVersion < 4) {
-            // Crear la nueva tabla 'contacto' cuando se actualiza a la versión 4
-            createContactosTable(db);
-        }
         // Aquí podrías agregar más condiciones si necesitas manejar futuras actualizaciones
-        db.execSQL("DROP TABLE IF EXISTS Usuarios2");
-        db.execSQL("DROP TABLE IF EXISTS Tipos_Cuenta");
-        db.execSQL("DROP TABLE IF EXISTS Cuentas");
-        db.execSQL("DROP TABLE IF EXISTS Tipos_Transaccion");
-        db.execSQL("DROP TABLE IF EXISTS Transacciones");
-        db.execSQL("DROP TABLE IF EXISTS Contactos");
-        onCreate(db);  // Crear la tabla nuevamente
+//        db.execSQL("DROP TABLE IF EXISTS Usuarios2");
+//        db.execSQL("DROP TABLE IF EXISTS Tipos_Cuenta");
+//        db.execSQL("DROP TABLE IF EXISTS Cuentas");
+//        db.execSQL("DROP TABLE IF EXISTS Tipos_Transaccion");
+//        db.execSQL("DROP TABLE IF EXISTS Transacciones");
+//        db.execSQL("DROP TABLE IF EXISTS Contactos");
+//
+//        createContactosTable(db);
+//        onCreate(db);  // Crear la tabla nuevamente
     }
 
 

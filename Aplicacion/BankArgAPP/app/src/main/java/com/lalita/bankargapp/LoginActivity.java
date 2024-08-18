@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -82,6 +83,15 @@ public class LoginActivity extends AppCompatActivity {
                     editor.apply();
 
                     Toast.makeText(LoginActivity.this, "¡Login exitoso!", Toast.LENGTH_SHORT).show();
+
+                    Cursor cursor = db.rawQuery("PRAGMA table_info(Contactos);", null);
+                    if (cursor.moveToFirst()) {
+                        do {
+                            String columnName = cursor.getString(1); // 1 es el índice del nombre de la columna
+                            Log.d("DatabaseInfo", "Columna: " + columnName);
+                        } while (cursor.moveToNext());
+                    }
+                    cursor.close();
 
                     // Navegar a la siguiente pantalla
                     Intent intent = new Intent(LoginActivity.this, ProductActivity.class);

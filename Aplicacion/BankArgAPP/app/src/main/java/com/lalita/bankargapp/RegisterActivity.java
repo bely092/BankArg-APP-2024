@@ -98,6 +98,18 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
+                // Validación de longitud de la contraseña (mínimo 8 caracteres)
+                if (inputPassword.length() < 8) {
+                    Toast.makeText(RegisterActivity.this, "La contraseña debe tener al menos 8 caracteres.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Validación de formato de email
+                if (!isValidEmail(inputEmail)) {
+                    Toast.makeText(RegisterActivity.this, "Por favor, ingrese un email válido.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 // Llamar al método de inserción de usuario desde el helper
                 boolean registrationSuccessful = dbHelper.insertarUsuario2(db, inputNombre, inputApellido, inputEmail, inputPassword);
 
@@ -163,5 +175,11 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    // Método para validar el formato de email
+    private boolean isValidEmail(String email) {
+        // Usamos una expresión regular básica para validar el email
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }
