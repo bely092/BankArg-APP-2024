@@ -169,6 +169,24 @@ public class AgregarPersonasActivity extends AppCompatActivity {
 
 
     // Aca arranca la funcion Para Agregar un contacto
+
+
+    //reviso si existe un cbu con el mismo numero
+    private boolean existeCBU(String contacto) {
+        SQLiteDatabase db = miBase.getReadableDatabase();
+        String query = "SELECT COUNT(*) FROM Contactos WHERE contacto = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{contacto});
+
+        if (cursor != null) {
+            cursor.moveToFirst();
+            int count = cursor.getInt(0);
+            cursor.close();
+            return count > 0;
+        }
+        return false;
+    }
+
+
     private void addPerson() {
         // Recuperar el id_usuario desde SharedPreferences
         SharedPreferences preferences = getSharedPreferences("user_session", MODE_PRIVATE);
@@ -189,6 +207,12 @@ public class AgregarPersonasActivity extends AppCompatActivity {
         }
         if (TextUtils.isEmpty(nombre)) {
             nombrePers.setError("Nombre es requerido");
+            return;
+        }
+
+        // Verificar si ya existe un contacto con el mismo CBU
+        if (existeCBU(contactoA)) {
+            Toast.makeText(this, "Ya existe un contacto con este CBU/CVU", Toast.LENGTH_SHORT).show();
             return;
         }
 
