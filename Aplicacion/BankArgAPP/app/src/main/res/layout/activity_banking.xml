@@ -424,7 +424,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="30dp"
                             android:fontFamily="@font/poppins"
-                            android:text="+ $ 8.780"
+                            android:text="+ $ 6.560"
                             android:textColor="#FFFFFF"
                             android:textSize="20sp"
                             android:textStyle="bold"

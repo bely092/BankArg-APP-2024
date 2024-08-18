@@ -2,6 +2,7 @@ package com.lalita.bankargapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -35,7 +36,14 @@ public class MainActivity extends AppCompatActivity {
         db = dbHelper.getWritableDatabase();
 
         // Ejemplo: Insertar un documento
-        db.execSQL("INSERT INTO Documentos (tipo_doc) VALUES ('DNI');");
+//        db.execSQL("INSERT INTO Documentos (tipo_doc) VALUES ('DNI');");
+    }
+
+    // Sobrescribe el comportamiento del botón "atrás"
+    @SuppressLint("MissingSuperCall")
+    @Override
+    public void onBackPressed() {
+        // No se llama a super.onBackPressed(), por lo tanto el botón "atrás" no hará nada
     }
 
 }
