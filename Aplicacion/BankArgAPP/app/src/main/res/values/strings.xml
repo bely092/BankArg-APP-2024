@@ -23,7 +23,7 @@
     <!-- DATOS TARJETA -->
 
     <string name="num_tarjeta">**** **** **** 9039</string>
-    <string name="vencimiento_tarjeta">09/24</string>
+    <string name="vencimiento_tarjeta">09/28</string>
     <string name="title_activity_personas">PersonasActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

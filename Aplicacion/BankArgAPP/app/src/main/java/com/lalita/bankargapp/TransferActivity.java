@@ -39,6 +39,14 @@ public class TransferActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer);
 
+
+        // Botón en el tool bar que lleva al perfil
+        View btnPerfil = findViewById(R.id.account_cir);
+        btnPerfil.setOnClickListener(view -> {
+            Intent intent = new Intent(TransferActivity.this, PerfilActivity.class);
+            startActivity(intent);
+        });
+
         saldo = findViewById(R.id.saldo);
 
         // Inicializar la base de datos
@@ -56,15 +64,6 @@ public class TransferActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Error: Usuario no logueado", Toast.LENGTH_SHORT).show();
         }
-
-
-
-        // Botón en el tool bar que lleva al perfil
-        View btnPerfil = findViewById(R.id.account_cir);
-        btnPerfil.setOnClickListener(view -> {
-            Intent intent = new Intent(TransferActivity.this, PerfilActivity.class);
-            startActivity(intent);
-        });
 
 
         // Botones de acciones> transferir, agregar e historial

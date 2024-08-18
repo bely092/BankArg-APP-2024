@@ -9,12 +9,16 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.view.MenuItem;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -25,6 +29,8 @@ public class BankingActivity extends AppCompatActivity {
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
+    TextView saldo;
+    SQLiteDatabase db;
 
     Button btnTransferencia, btnPagos, btnPerfil, btnLoan;
 
@@ -45,6 +51,24 @@ public class BankingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        saldo = findViewById(R.id.saldo);
+
+        // Inicializar la base de datos
+        UsuariosSQLiteHelper dbHelper = new UsuariosSQLiteHelper(this);
+        db = dbHelper.getReadableDatabase();
+
+        // Recuperar id_usuario de SharedPreferences
+        SharedPreferences preferences = getSharedPreferences("user_session", MODE_PRIVATE);
+        int idUsuario = preferences.getInt("id_usuario", -1);
+
+        // Verificar si id_usuario es válido
+        if (idUsuario != -1) {
+            // Obtener los datos del usuario de la base de datos
+            obtenerDatosUsuario(idUsuario);
+        } else {
+            Toast.makeText(this, "Error: Usuario no logueado", Toast.LENGTH_SHORT).show();
+        }
 
 
         Button btn_transferir = findViewById(R.id.button13);
@@ -139,6 +163,27 @@ public class BankingActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    private void obtenerDatosUsuario(int idUsuario) {
+        // Consulta para obtener la información del usuario desde la base de datos
+        String query = "SELECT c.saldo " +
+                "FROM Usuarios2 u " +
+                "LEFT JOIN Cuentas c ON u.id_usuario = c.id_usuario " +
+                "WHERE u.id_usuario = ?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idUsuario)});
+
+        if (cursor.moveToFirst()) {
+            // Obtener datos del cursor y actualizar las vistas
+            double saldoValue = cursor.getDouble(0);
+
+            // Actualizar los TextView con los datos del usuario
+            saldo.setText("$" + String.format("%.2f", saldoValue));
+        } else {
+            Toast.makeText(this, "No se encontraron datos para el usuario", Toast.LENGTH_SHORT).show();
+        }
+        cursor.close();
     }
 
     @Override
