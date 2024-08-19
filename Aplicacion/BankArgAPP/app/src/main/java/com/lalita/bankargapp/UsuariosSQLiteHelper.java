@@ -18,7 +18,7 @@ import java.util.List;
 
 public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "BankArgAPP.db";
-    private static final int DATABASE_VERSION = 16;
+    private static final int DATABASE_VERSION = 15;
 
     // Definir la estructura de la tabla "user".
     private static final String CREATE_TABLE_USER = "CREATE TABLE if not exists User (" +
@@ -1203,6 +1203,7 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
     public List<Usuario> getAllUsuarios() {
         List<Usuario> usuarios = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
+
         String query = "SELECT u.*, d.tipo_doc AS DocNombre, l.localidad AS LocalidadNombre, s.tipo AS SexoNombre " +
                 "FROM Usuarios u " +
                 "JOIN Documentos d ON u.id_tipo_doc = d.id_tipo_doc " +
@@ -1211,28 +1212,30 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery(query, null);
 
-        if (cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
             do {
-                Usuario usuario = new Usuario(
-                        cursor.getInt(cursor.getColumnIndex("id_usuario")),
-                        cursor.getString(cursor.getColumnIndex("nombre")),
-                        cursor.getString(cursor.getColumnIndex("apellido")),
-                        cursor.getString(cursor.getColumnIndex("password")),
-                        cursor.getString(cursor.getColumnIndex("DocNombre")),
-                        cursor.getString(cursor.getColumnIndex("nro_doc")),
-                        cursor.getString(cursor.getColumnIndex("LocalidadNombre")),
-                        cursor.getInt(cursor.getColumnIndex("nro_calle")),
-                        cursor.getString(cursor.getColumnIndex("calle")),
-                        cursor.getString(cursor.getColumnIndex("fecha_nac")),
-                        cursor.getString(cursor.getColumnIndex("SexoNombre"))
-                );
+                int idUsuario = cursor.getInt(cursor.getColumnIndexOrThrow("id_usuario"));
+                String nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
+                String apellido = cursor.getString(cursor.getColumnIndexOrThrow("apellido"));
+                String password = cursor.getString(cursor.getColumnIndexOrThrow("password"));
+                String docNombre = cursor.getString(cursor.getColumnIndexOrThrow("DocNombre"));
+                String nroDoc = cursor.getString(cursor.getColumnIndexOrThrow("nro_doc"));
+                String localidadNombre = cursor.getString(cursor.getColumnIndexOrThrow("LocalidadNombre"));
+                int nroCalle = cursor.getInt(cursor.getColumnIndexOrThrow("nro_calle"));
+                String calle = cursor.getString(cursor.getColumnIndexOrThrow("calle"));
+                String fechaNac = cursor.getString(cursor.getColumnIndexOrThrow("fecha_nac"));
+                String sexoNombre = cursor.getString(cursor.getColumnIndexOrThrow("SexoNombre"));
+
+                Usuario usuario = new Usuario(idUsuario, nombre, apellido, password, docNombre, nroDoc,
+                        localidadNombre, nroCalle, calle, fechaNac, sexoNombre);
                 usuarios.add(usuario);
             } while (cursor.moveToNext());
+            cursor.close(); // Asegúrate de cerrar el cursor cuando hayas terminado
         }
-        cursor.close();
-        db.close();
+
         return usuarios;
     }
+
 
     public List<String> getAllLabels(String columnName, String tableName) {
         List<String> labels = new ArrayList<>();
