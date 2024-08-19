@@ -158,7 +158,7 @@
                 android:backgroundTint="@color/col4"
                 android:fontFamily="@font/poppins"
                 android:hint="Ingrese Monto"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:padding="10dp"
                 android:textAlignment="center"
                 android:textColor="@color/col1"
@@ -168,7 +168,8 @@
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/select" />
+                app:layout_constraintTop_toBottomOf="@+id/select"
+                android:required="true"/>
 
             <EditText
                 android:id="@+id/codigo_empresa"
@@ -190,7 +191,8 @@
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/numero_monto" />
+                app:layout_constraintTop_toBottomOf="@+id/numero_monto"
+                android:required="true" />
 
             <EditText
                 android:id="@+id/codigo_pago"
@@ -213,7 +215,8 @@
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/codigo_empresa" />
+                app:layout_constraintTop_toBottomOf="@+id/codigo_empresa"
+                android:required="true" />
 
             <Button
                 android:id="@+id/btn_pagar_servicio"
