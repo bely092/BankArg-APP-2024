@@ -20,7 +20,17 @@
           <theme>@style/Theme.BankArgAPP</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
+        <config>
+          <theme>@style/Theme.BankArgAPP</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_item_transaccion.xml">
+        <config>
+          <theme>@style/Theme.BankArgAPP</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_loan.xml">
         <config>
           <theme>@style/Theme.BankArgAPP</theme>
         </config>
@@ -31,6 +41,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_mantenimiento.xml">
+        <config>
+          <theme>@style/Theme.BankArgAPP</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_pago_cuentas.xml">
         <config>
           <theme>@style/Theme.BankArgAPP</theme>
         </config>
@@ -46,6 +61,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_personas.xml">
+        <config>
+          <theme>@style/Theme.BankArgAPP</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_products.xml">
         <config>
           <theme>@style/Theme.BankArgAPP</theme>
         </config>
@@ -86,7 +106,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5441de98-309f-4a61-b682-8dc84a7777dc" name="Changes" comment="" />
+    <list default="true" id="5441de98-309f-4a61-b682-8dc84a7777dc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lalita/bankargapp/ProductActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lalita/bankargapp/ProductActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_products.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_products.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

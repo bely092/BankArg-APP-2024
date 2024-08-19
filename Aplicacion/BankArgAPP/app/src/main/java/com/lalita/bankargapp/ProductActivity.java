@@ -56,7 +56,7 @@ public class ProductActivity extends AppCompatActivity {
         });
 
         btnBanking = findViewById(R.id.btn_pago_servicios);
-        btnLoan = findViewById(R.id.btn_pago_prestamos);
+//        btnLoan = findViewById(R.id.btn_pago_prestamos);
         btnTransfer = findViewById(R.id.btn_pago_tarjeta);
         btnPagos = findViewById(R.id.btn_pago_cuentas);
 
@@ -68,13 +68,13 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
 
-        btnLoan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProductActivity.this, LoanActivity.class);
-                startActivity(intent);
-            }
-        });
+//        btnLoan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(ProductActivity.this, LoanActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         btnBanking.setOnClickListener(new View.OnClickListener() {
             @Override
