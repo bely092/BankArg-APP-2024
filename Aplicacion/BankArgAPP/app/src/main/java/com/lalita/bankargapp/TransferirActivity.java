@@ -18,8 +18,11 @@ import android.view.MenuItem;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -36,7 +39,9 @@ public class TransferirActivity extends AppCompatActivity {
     UsuariosSQLiteHelper dbHelper;
     EditText inputCVU, inputMonto;
     Button transferButton;
+    Spinner spinnerTipoTransaccion;
     int idUsuario;
+    int idTipoTransaccionSeleccionado = 1; // Valor por defecto
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,28 +57,51 @@ public class TransferirActivity extends AppCompatActivity {
 
         inputCVU = findViewById(R.id.cbu);
         inputMonto = findViewById(R.id.Dinerotransferir);
+        spinnerTipoTransaccion = findViewById(R.id.spinnerTipoTransaccion);
         transferButton = findViewById(R.id.Transferir);
+
+        // Configurar el Spinner para seleccionar el tipo de transacción
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this, R.array.tipos_transaccion, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerTipoTransaccion.setAdapter(adapter);
+
+        // Listener para obtener el tipo de transacción seleccionado
+        spinnerTipoTransaccion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                idTipoTransaccionSeleccionado = obtenerIdTipoTransaccion(position); // Mapea el tipo a su ID
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // No hacer nada
+            }
+        });
 
 
         transferButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Validar campos y realizar la transferencia
-                String cvu = inputCVU.getText().toString().trim();
                 String montoStr = inputMonto.getText().toString().trim();
 
-                if (cvu.isEmpty() || montoStr.isEmpty()) {
-                    Toast.makeText(TransferirActivity.this, "Por favor, complete todos los campos.", Toast.LENGTH_SHORT).show();
+                if (montoStr.isEmpty()) {
+                    Toast.makeText(TransferirActivity.this, "Por favor, ingrese un monto.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 double monto = Double.parseDouble(montoStr);
 
-                // Validar el saldo y realizar la transferencia
-                if (validarSaldo(idUsuario, monto)) {
-                    realizarTransferencia(idUsuario, cvu, monto);
+                // Validar el saldo si la transacción es un gasto (resta)
+                if (esGasto(idTipoTransaccionSeleccionado)) {
+                    if (validarSaldo(idUsuario, monto)) {
+                        realizarTransaccion(idUsuario, monto, idTipoTransaccionSeleccionado, "Gasto realizado");
+                    } else {
+                        Toast.makeText(TransferirActivity.this, "Saldo insuficiente.", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(TransferirActivity.this, "Saldo insuficiente para la transferencia.", Toast.LENGTH_SHORT).show();
+                    // Si es un ingreso (suma), no es necesario validar saldo
+                    realizarTransaccion(idUsuario, monto, idTipoTransaccionSeleccionado, "Ingreso realizado");
                 }
             }
         });
@@ -164,6 +192,39 @@ public class TransferirActivity extends AppCompatActivity {
         });
     }
 
+    // Método para obtener el id_tipo_transaccion basado en la posición seleccionada en el Spinner
+    private int obtenerIdTipoTransaccion(int position) {
+        switch (position) {
+            case 0:
+                return 0; // Depósito
+            case 1:
+                return 1; // Retiro
+            case 2:
+                return 2; // Transferencia
+            case 3:
+                return 3; // Pago
+            case 4:
+                return 4; // Compra
+            case 5:
+                return 5; // Recarga
+            case 6:
+                return 6; // Devolución
+            case 7:
+                return 7; // Reembolso
+            case 8:
+                return 8; // Intereses
+            case 9:
+                return 9; // Penalización
+            default:
+                return 0; // Valor por defecto
+        }
+    }
+
+    // Método para verificar si el tipo de transacción es un gasto (resta)
+    private boolean esGasto(int idTipoTransaccion) {
+        return !(idTipoTransaccion == 0 || idTipoTransaccion == 5 || idTipoTransaccion == 6 || idTipoTransaccion == 7);
+    }
+
     // Método para validar el saldo antes de realizar la transferencia
     private boolean validarSaldo(int idUsuario, double monto) {
         String query = "SELECT saldo FROM Cuentas WHERE id_usuario = ?";
@@ -179,6 +240,54 @@ public class TransferirActivity extends AppCompatActivity {
 
         cursor.close();
         return false;
+    }
+
+    // Método para realizar la transacción (sumar o restar)
+    private void realizarTransaccion(int idUsuario, double monto, int idTipoTransaccion, String descripcion) {
+        db.beginTransaction();
+
+        try {
+            // Obtener el id_cuenta del usuario
+            String queryCuenta = "SELECT id_cuenta, saldo FROM Cuentas WHERE id_usuario = ?";
+            Cursor cursor = db.rawQuery(queryCuenta, new String[]{String.valueOf(idUsuario)});
+
+            if (!cursor.moveToFirst()) {
+                Toast.makeText(this, "Error: No se encontró la cuenta del usuario.", Toast.LENGTH_SHORT).show();
+                cursor.close();
+                return;
+            }
+
+            int idCuenta = cursor.getInt(0);
+            double saldoActual = cursor.getDouble(1);
+            cursor.close();
+
+            // Actualizar el saldo dependiendo del tipo de transacción
+            if (esGasto(idTipoTransaccion)) {
+                // Resta si es un gasto
+                String queryActualizarSaldo = "UPDATE Cuentas SET saldo = saldo - ? WHERE id_usuario = ?";
+                db.execSQL(queryActualizarSaldo, new Object[]{monto, idUsuario});
+            } else {
+                // Suma si es un ingreso
+                String queryActualizarSaldo = "UPDATE Cuentas SET saldo = saldo + ? WHERE id_usuario = ?";
+                db.execSQL(queryActualizarSaldo, new Object[]{monto, idUsuario});
+            }
+
+            // Insertar la transacción en la tabla Transacciones
+            ContentValues transaccionValues = new ContentValues();
+            transaccionValues.put("id_cuenta", idCuenta); // La cuenta desde la que se transfiere
+            transaccionValues.put("id_tipo_transaccion", idTipoTransaccion);
+            transaccionValues.put("monto", monto);
+            transaccionValues.put("descripcion", descripcion);
+            db.insert("Transacciones", null, transaccionValues);
+
+            db.setTransactionSuccessful();
+            Toast.makeText(this, "Transacción realizada con éxito.", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error al realizar la transacción.", Toast.LENGTH_SHORT).show();
+        } finally {
+            db.endTransaction();
+        }
     }
 
     // Método para realizar la transferencia

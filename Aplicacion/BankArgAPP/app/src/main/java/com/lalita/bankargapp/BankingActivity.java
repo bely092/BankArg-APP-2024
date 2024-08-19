@@ -209,7 +209,7 @@ public class BankingActivity extends AppCompatActivity {
         cursor.close();
 
         // Configurar el adaptador del RecyclerView
-        transaccionAdapter = new TransaccionAdapter(transaccionList);
+        transaccionAdapter = new TransaccionAdapter(transaccionList, this); // 'this' es el Context
         recyclerViewTransacciones.setAdapter(transaccionAdapter);
     }
 
