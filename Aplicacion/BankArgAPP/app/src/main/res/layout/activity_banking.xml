@@ -214,7 +214,7 @@
                     android:layout_marginTop="50dp"
 
                     android:backgroundTint="@color/col1"
-                    android:contentDescription="prestamos"
+                    android:contentDescription="ingresar dinero"
                     app:icon="@drawable/real_estate_agent"
                     app:iconGravity="textTop"
                     app:iconSize="50dp"
@@ -280,7 +280,7 @@
                     android:layout_height="33dp"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/poppins"
-                    android:text="Prestamos"
+                    android:text="Ingresar"
                     android:textAlignment="textEnd"
                     android:textColor="#000000"
                     android:textSize="16sp"
