@@ -187,7 +187,9 @@ public class BankingActivity extends AppCompatActivity {
                 "FROM Transacciones t " +
                 "JOIN Cuentas c ON t.id_cuenta = c.id_cuenta " +
                 "WHERE c.id_usuario = ? " +
-                "ORDER BY t.fecha_transaccion DESC"; // Ordenar por fecha DESC
+                "ORDER BY t.fecha_transaccion DESC " + // Ordenar por fecha DESC
+                "LIMIT 10"; // Limite 10
+
 
         Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idUsuario)});
 
