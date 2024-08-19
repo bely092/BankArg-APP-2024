@@ -170,7 +170,7 @@
                 android:fontFamily="@font/poppins"
                 android:hapticFeedbackEnabled="false"
                 android:hint="Monto"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:padding="8dp"
                 android:textAlignment="textStart"
                 android:textColor="@color/col1"

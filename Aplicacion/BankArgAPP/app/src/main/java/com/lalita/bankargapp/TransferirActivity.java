@@ -9,6 +9,7 @@ import androidx.core.view.GravityCompat;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -83,26 +84,46 @@ public class TransferirActivity extends AppCompatActivity {
         transferButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String cvu = inputCVU.getText().toString().trim();
                 String montoStr = inputMonto.getText().toString().trim();
+
+                // Verificar si los campos están vacíos
+                if (cvu.isEmpty()) {
+                    Toast.makeText(TransferirActivity.this, "Por favor, ingrese un CVU.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 if (montoStr.isEmpty()) {
                     Toast.makeText(TransferirActivity.this, "Por favor, ingrese un monto.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
+                // Convertir el monto a double
                 double monto = Double.parseDouble(montoStr);
 
-                // Validar el saldo si la transacción es un gasto (resta)
-                if (esGasto(idTipoTransaccionSeleccionado)) {
-                    if (validarSaldo(idUsuario, monto)) {
-                        realizarTransaccion(idUsuario, monto, idTipoTransaccionSeleccionado, "Gasto realizado");
-                    } else {
-                        Toast.makeText(TransferirActivity.this, "Saldo insuficiente.", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    // Si es un ingreso (suma), no es necesario validar saldo
-                    realizarTransaccion(idUsuario, monto, idTipoTransaccionSeleccionado, "Ingreso realizado");
-                }
+                // Mostrar un AlertDialog de confirmación
+                new AlertDialog.Builder(TransferirActivity.this)
+                        .setTitle("Confirmar Transacción")
+                        .setMessage("¿Está seguro de realizar esta transacción?")
+                        .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Confirmación de la transacción
+                                if (esGasto(idTipoTransaccionSeleccionado)) {
+                                    if (validarSaldo(idUsuario, monto)) {
+                                        realizarTransaccion(idUsuario, monto, idTipoTransaccionSeleccionado, "Gasto realizado");
+                                        Toast.makeText(TransferirActivity.this, "Transacción realizada con éxito.", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(TransferirActivity.this, "Saldo insuficiente.", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    // Si es un ingreso (suma), no es necesario validar saldo
+                                    realizarTransaccion(idUsuario, monto, idTipoTransaccionSeleccionado, "Ingreso realizado");
+                                    Toast.makeText(TransferirActivity.this, "Transacción realizada con éxito.", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        })
+                        .setNegativeButton("No", null) // Opción de cancelar la transacción
+                        .show();
             }
         });
 
