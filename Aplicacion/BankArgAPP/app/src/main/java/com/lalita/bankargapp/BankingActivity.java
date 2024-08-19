@@ -182,11 +182,12 @@ public class BankingActivity extends AppCompatActivity {
     private void cargarTransacciones(int idUsuario) {
         List<Transaccion> transaccionList = new ArrayList<>();
 
-        // Consulta para obtener las transacciones del usuario
+        // Consulta para obtener las transacciones del usuario, ordenadas por fecha_transaccion DESC (de más reciente a más antigua)
         String query = "SELECT t.id_transaccion, t.id_cuenta, t.id_tipo_transaccion, t.monto, t.fecha_transaccion, t.descripcion " +
                 "FROM Transacciones t " +
                 "JOIN Cuentas c ON t.id_cuenta = c.id_cuenta " +
-                "WHERE c.id_usuario = ?";
+                "WHERE c.id_usuario = ? " +
+                "ORDER BY t.fecha_transaccion DESC"; // Ordenar por fecha DESC
 
         Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idUsuario)});
 

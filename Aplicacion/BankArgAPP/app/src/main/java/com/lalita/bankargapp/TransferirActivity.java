@@ -8,13 +8,18 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.view.MenuItem;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -22,34 +27,54 @@ import android.app.AlertDialog;
 import android.widget.Button;
 
 public class TransferirActivity extends AppCompatActivity {
-
-
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
+
+    SQLiteDatabase db;
+    UsuariosSQLiteHelper dbHelper;
+    EditText inputCVU, inputMonto;
+    Button transferButton;
+    int idUsuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transferir);
 
+        dbHelper = new UsuariosSQLiteHelper(this);
+        db = dbHelper.getWritableDatabase();
 
-        Button transferButton = findViewById(R.id.Transferir);
+        // Recuperar id_usuario de SharedPreferences
+        SharedPreferences preferences = getSharedPreferences("user_session", MODE_PRIVATE);
+        idUsuario = preferences.getInt("id_usuario", -1);
+
+        inputCVU = findViewById(R.id.cbu);
+        inputMonto = findViewById(R.id.Dinerotransferir);
+        transferButton = findViewById(R.id.Transferir);
+
+
         transferButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Validar campos y realizar la transferencia
+                String cvu = inputCVU.getText().toString().trim();
+                String montoStr = inputMonto.getText().toString().trim();
 
-                new AlertDialog.Builder(TransferirActivity.this)
-                        .setTitle("Confirmación")
-                        .setMessage("¿Estás seguro de que deseas enviar el dinero?")
-                        .setPositiveButton("Sí", (dialog, which) -> {
-                            Toast.makeText(TransferirActivity.this, "Dinero enviado", Toast.LENGTH_SHORT).show();
-                        })
-                        .setNegativeButton("No", (dialog, which) -> {
-                            dialog.dismiss();
-                        })
-                        .create()
-                        .show();
+                if (cvu.isEmpty() || montoStr.isEmpty()) {
+                    Toast.makeText(TransferirActivity.this, "Por favor, complete todos los campos.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                double monto = Double.parseDouble(montoStr);
+
+                // Validar el saldo y realizar la transferencia
+                if (validarSaldo(idUsuario, monto)) {
+                    realizarTransferencia(idUsuario, cvu, monto);
+                } else {
+                    Toast.makeText(TransferirActivity.this, "Saldo insuficiente para la transferencia.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -65,14 +90,14 @@ public class TransferirActivity extends AppCompatActivity {
         });
 
         /*--- Ventana emergente de aviso ---*/
-        Button btnPagar = findViewById(R.id.Transferir);
-        btnPagar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(TransferirActivity.this, "Servicio no disponible en estos momentos", Toast.LENGTH_SHORT).show();
-
-            }
-        });
+//        Button btnPagar = findViewById(R.id.Transferir);
+//        btnPagar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(TransferirActivity.this, "Servicio no disponible en estos momentos", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
 
 
         /*--- lleva al home ---*/
@@ -137,6 +162,98 @@ public class TransferirActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    // Método para validar el saldo antes de realizar la transferencia
+    private boolean validarSaldo(int idUsuario, double monto) {
+        String query = "SELECT saldo FROM Cuentas WHERE id_usuario = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idUsuario)});
+
+        if (cursor.moveToFirst()) {
+            double saldoActual = cursor.getDouble(0);
+            cursor.close();
+
+            // Verificar que el saldo sea mayor o igual al monto que se desea transferir
+            return saldoActual >= monto;
+        }
+
+        cursor.close();
+        return false;
+    }
+
+    // Método para realizar la transferencia
+    private void realizarTransferencia(int idUsuario, String cvu, double monto) {
+        db.beginTransaction();
+
+        try {
+            // Obtener el id_cuenta del usuario
+            String queryCuenta = "SELECT id_cuenta, saldo FROM Cuentas WHERE id_usuario = ?";
+            Cursor cursor = db.rawQuery(queryCuenta, new String[]{String.valueOf(idUsuario)});
+
+            if (!cursor.moveToFirst()) {
+                Toast.makeText(this, "Error: No se encontró la cuenta del usuario.", Toast.LENGTH_SHORT).show();
+                cursor.close();
+                return;
+            }
+
+            int idCuenta = cursor.getInt(0);
+            double saldoActual = cursor.getDouble(1);
+            cursor.close();
+
+            // Paso 1: Actualizar el saldo de la cuenta del usuario (restar el monto)
+            String queryActualizarSaldo = "UPDATE Cuentas SET saldo = saldo - ? WHERE id_usuario = ?";
+            db.execSQL(queryActualizarSaldo, new Object[]{monto, idUsuario});
+
+            // Paso 2: Insertar la transacción en la tabla Transacciones
+            ContentValues transaccionValues = new ContentValues();
+            transaccionValues.put("id_cuenta", idCuenta); // La cuenta desde la que se transfiere
+            transaccionValues.put("id_tipo_transaccion", 3); // 3 es tipo 'transferencia'
+            transaccionValues.put("monto", monto);
+            transaccionValues.put("descripcion", "Transferencia realizada");
+            db.insert("Transacciones", null, transaccionValues);
+
+            // Finalizar la transacción
+            db.setTransactionSuccessful();
+            Toast.makeText(this, "Transferencia realizada con éxito.", Toast.LENGTH_SHORT).show();
+
+//            // Paso 1: Verificar si el destino (cvu) existe en la tabla de cuentas
+//            String queryCuentaDestino = "SELECT id_cuenta FROM Cuentas WHERE contacto = ?";
+//            Cursor cursor = db.rawQuery(queryCuentaDestino, new String[]{cvu});
+//
+//            if (!cursor.moveToFirst()) {
+//                Toast.makeText(this, "El destino no existe.", Toast.LENGTH_SHORT).show();
+//                cursor.close();
+//                return;
+//            }
+//
+//            int idCuentaDestino = cursor.getInt(0);
+//            cursor.close();
+//
+//            // Paso 2: Actualizar el saldo de la cuenta del usuario (restar el monto)
+//            String queryActualizarSaldo = "UPDATE Cuentas SET saldo = saldo - ? WHERE id_usuario = ?";
+//            db.execSQL(queryActualizarSaldo, new Object[]{monto, idUsuario});
+//
+//            // Paso 3: Actualizar el saldo de la cuenta destino (sumar el monto)
+//            String queryActualizarSaldoDestino = "UPDATE Cuentas SET saldo = saldo + ? WHERE id_cuenta = ?";
+//            db.execSQL(queryActualizarSaldoDestino, new Object[]{monto, idCuentaDestino});
+//
+//            // Paso 4: Insertar la transacción en la tabla Transacciones
+//            ContentValues transaccionValues = new ContentValues();
+//            transaccionValues.put("id_cuenta", idCuentaDestino); // La cuenta destino
+//            transaccionValues.put("id_tipo_transaccion", 1); // Suponiendo 1 es tipo 'transferencia'
+//            transaccionValues.put("monto", monto);
+//            transaccionValues.put("descripcion", "Transferencia realizada");
+//            db.insert("Transacciones", null, transaccionValues);
+//
+//            // Finalizar la transacción
+//            db.setTransactionSuccessful();
+//            Toast.makeText(this, "Transferencia realizada con éxito.", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error al realizar la transferencia.", Toast.LENGTH_SHORT).show();
+        } finally {
+            db.endTransaction();
+        }
     }
 
     @Override

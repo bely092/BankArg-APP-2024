@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@color/col1"
     android:fitsSystemWindows="false"
-    tools:context=".LoanActivity">
+    tools:context=".TransferirActivity">
 
     <!--    tools:openDrawer="start"-->
 
