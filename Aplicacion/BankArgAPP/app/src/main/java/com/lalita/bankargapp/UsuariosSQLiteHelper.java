@@ -793,7 +793,14 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
 //        db.execSQL("DROP TABLE IF EXISTS Transacciones");
 //        db.execSQL("DROP TABLE IF EXISTS Contactos");
 //
+//        createUsuarioTable(db);
+//        createTipoCuentaTable(db);
+//        createCuentaTable(db);
+//        createTipoTransaccionTable(db);
+//        createTransaccionTable(db);
 //        createContactosTable(db);
+//        insertarDatosIniciales(db);
+
 //        onCreate(db);  // Crear la tabla nuevamente
     }
 
