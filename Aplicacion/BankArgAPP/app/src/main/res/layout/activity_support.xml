@@ -183,11 +183,12 @@
                     android:id="@+id/tu_consulta"
                     android:layout_width="350dp"
                     android:layout_height="109dp"
-                    android:layout_marginLeft="30dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:background="@drawable/custom_edittext"
-                    android:hint="Quisiera saber sobre..."/>
+                    android:layout_marginLeft="30dp"
+                    android:background="?android:attr/fastScrollPreviewBackgroundRight"
+                    android:backgroundTint="@color/col4"
+                    android:hint="Quisiera saber sobre..." />
 
                 <Button
                     android:id="@+id/Enviar"
