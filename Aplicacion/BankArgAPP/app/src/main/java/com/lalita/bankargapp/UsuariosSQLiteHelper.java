@@ -18,7 +18,7 @@ import java.util.List;
 
 public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "BankArgAPP.db";
-    private static final int DATABASE_VERSION = 14;
+    private static final int DATABASE_VERSION = 15;
 
     // Definir la estructura de la tabla "user".
     private static final String CREATE_TABLE_USER = "CREATE TABLE if not exists User (" +
@@ -42,6 +42,7 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
         createCuentaTable(db);
         createTipoTransaccionTable(db);
         createTransaccionTable(db);
+
 //        createTipoContactosTable(db);
         createContactosTable(db);
 
@@ -55,6 +56,7 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
 
 //        Insertar las tablas
+        //insertarDatosIniciales(db);
         insertarDatosIniciales(db);
 
 
@@ -785,7 +787,6 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-
         // Aquí podrías agregar más condiciones si necesitas manejar futuras actualizaciones
         db.execSQL("DROP TABLE IF EXISTS Usuarios2");
         db.execSQL("DROP TABLE IF EXISTS Tipos_Cuenta");
@@ -794,22 +795,16 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Transacciones");
         db.execSQL("DROP TABLE IF EXISTS Contactos");
 
-        createUsuarioTable(db);
-        createTipoCuentaTable(db);
-        createCuentaTable(db);
-        createTipoTransaccionTable(db);
-        createTransaccionTable(db);
-        createContactosTable(db);
-//        db.execSQL("DROP TABLE IF EXISTS Usuarios2");
-//        db.execSQL("DROP TABLE IF EXISTS Tipos_Cuenta");
-//        db.execSQL("DROP TABLE IF EXISTS Cuentas");
-//        db.execSQL("DROP TABLE IF EXISTS Tipos_Transaccion");
-//        db.execSQL("DROP TABLE IF EXISTS Transacciones");
-//        db.execSQL("DROP TABLE IF EXISTS Contactos");
-//
-//        createContactosTable(db);
-//        onCreate(db);  // Crear la tabla nuevamente
+       // createUsuarioTable(db);
+       // createTipoCuentaTable(db);
+       // createCuentaTable(db);
+      //  createTipoTransaccionTable(db);
+       // createTransaccionTable(db);
+       // createContactosTable(db);
+
+       onCreate(db);  // Crear la tabla nuevamente
     }
+
 
 
 
@@ -817,6 +812,7 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
 
     // Método para insertar datos iniciales
     private void insertarDatosIniciales(SQLiteDatabase db) {
+
         // Insertar 10 usuarios
         insertarUsuario2(db,"Juan", "Perez", "juan.perez@mail.com", "password123");
         insertarUsuario2(db,"Maria", "Gomez", "maria.gomez@mail.com", "password456");
@@ -883,16 +879,16 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
 //        insertarTipoContacto(db, "CBU/CVU");
 
         // Insertar 10 contactos
-        insertarContactos(1, "1234567894561234567891", "juan A");
-        insertarContactos(2, "1234567894561234567892", "juan B");
-        insertarContactos(3, "1234567894561234567894", "juan C");
-        insertarContactos(4, "1234567894561234567893", "juan D");
-        insertarContactos(5, "1234567894561234567895", "juan E");
-        insertarContactos(6, "7894561233214569874563", "juan F");
-        insertarContactos(7, "1234567894561234567896", "juan G");
-        insertarContactos(8, "1234567894561234567897", "juan H");
-        insertarContactos(9, "3698521477412589632587", "juan I");
-        insertarContactos(10, "1234567894561234567898", "juan J");
+        insertarContactos(db,1, "1234567894561234567891", "juan A");
+        insertarContactos(db,2, "1234567894561234567892", "juan B");
+        insertarContactos(db,3, "1234567894561234567894", "juan C");
+        insertarContactos(db,4, "1234567894561234567893", "juan D");
+        insertarContactos(db,5, "1234567894561234567895", "juan E");
+        insertarContactos(db,6, "7894561233214569874563", "juan F");
+        insertarContactos(db,7, "1234567894561234567896", "juan G");
+        insertarContactos(db,8, "1234567894561234567897", "juan H");
+        insertarContactos(db,9, "3698521477412589632587", "juan I");
+        insertarContactos(db,10, "1234567894561234567898", "juan J");
 
     }
 
@@ -907,6 +903,7 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertarUsuario2(SQLiteDatabase db, String nombre, String apellido, String email, String password) {
+        Log.d("DB_CREATION", "Creating Usuarios2 table");
 //        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("nombre", nombre);
@@ -1065,8 +1062,7 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY (id_usuario) REFERENCES Usuarios2(id_usuario))");
     }
 
-    public boolean insertarContactos(long id_usuario, String contacto, String nombre) {
-        SQLiteDatabase db = this.getWritableDatabase();
+    public boolean insertarContactos(SQLiteDatabase db,long id_usuario, String contacto, String nombre) {
         ContentValues values = new ContentValues();
         values.put("id_usuario", id_usuario);
         values.put("contacto", contacto);
@@ -1098,10 +1094,6 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
     }
 
     // Fin Tablas BD 2
-
-
-
-
 
 
 
