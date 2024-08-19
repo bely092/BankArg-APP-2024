@@ -18,7 +18,7 @@ import java.util.List;
 
 public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "BankArgAPP.db";
-    private static final int DATABASE_VERSION = 14;
+    private static final int DATABASE_VERSION = 16;
 
     // Definir la estructura de la tabla "user".
     private static final String CREATE_TABLE_USER = "CREATE TABLE if not exists User (" +
@@ -787,19 +787,6 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
 
 
         // Aquí podrías agregar más condiciones si necesitas manejar futuras actualizaciones
-        db.execSQL("DROP TABLE IF EXISTS Usuarios2");
-        db.execSQL("DROP TABLE IF EXISTS Tipos_Cuenta");
-        db.execSQL("DROP TABLE IF EXISTS Cuentas");
-        db.execSQL("DROP TABLE IF EXISTS Tipos_Transaccion");
-        db.execSQL("DROP TABLE IF EXISTS Transacciones");
-        db.execSQL("DROP TABLE IF EXISTS Contactos");
-
-        createUsuarioTable(db);
-        createTipoCuentaTable(db);
-        createCuentaTable(db);
-        createTipoTransaccionTable(db);
-        createTransaccionTable(db);
-        createContactosTable(db);
 //        db.execSQL("DROP TABLE IF EXISTS Usuarios2");
 //        db.execSQL("DROP TABLE IF EXISTS Tipos_Cuenta");
 //        db.execSQL("DROP TABLE IF EXISTS Cuentas");
