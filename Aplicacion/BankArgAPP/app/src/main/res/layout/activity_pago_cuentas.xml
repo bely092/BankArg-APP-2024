@@ -141,7 +141,7 @@
                 android:backgroundTint="@color/col4"
                 android:fontFamily="@font/poppins"
                 android:hint="Ingrese Monto"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:padding="10dp"
                 android:textAlignment="center"
                 android:textColor="@color/col1"

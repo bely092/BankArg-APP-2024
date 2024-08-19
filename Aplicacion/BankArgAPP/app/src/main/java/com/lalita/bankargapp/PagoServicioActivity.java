@@ -268,6 +268,7 @@ public class PagoServicioActivity extends AppCompatActivity {
         valoresTransaccion.put("id_tipo_transaccion", 3);
         valoresTransaccion.put("monto", monto);
         valoresTransaccion.put("descripcion", "Pago de servicio");
+
         db.insert("Transacciones", null, valoresTransaccion);
 
         // Actualizar saldo en la cuenta
