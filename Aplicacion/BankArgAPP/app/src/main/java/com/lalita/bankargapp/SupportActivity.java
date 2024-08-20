@@ -42,6 +42,7 @@ public class SupportActivity extends AppCompatActivity {
     private Button BtnOtrasPreguntas;
     private Button btnSolicitarTurno, btnEnviar;
     private EditText tuConsulta;
+    private String fechaSeleccionada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,15 +146,7 @@ public class SupportActivity extends AppCompatActivity {
                                          }
         });
 
-                /*--- Ventana emergente de aviso ---*/
-                btnSolicitarTurno = findViewById(R.id.Solicitar_turno);
-                btnSolicitarTurno.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Toast.makeText(SupportActivity.this, "Servicio no disponible en estos momentos", Toast.LENGTH_SHORT).show();
 
-                    }
-                });
 
 
                 BtnComoSeUsa = (Button) findViewById(R.id.como_se_usa);
@@ -258,21 +251,64 @@ public class SupportActivity extends AppCompatActivity {
                 }
             }
 
+    /*--- Ventana emergente de aviso ---*/
+    //btnSolicitarTurno = findViewById(R.id.Solicitar_turno);
+    //btnSolicitarTurno.setOnClickListener(new View.OnClickListener() {
+    //    @Override
+    //   public void onClick(View view) {
+    //        Toast.makeText(SupportActivity.this, "Servicio no disponible en estos momentos", Toast.LENGTH_SHORT).show();
 
-            public void abrirCalendario(View view) {
-                Calendar cal = Calendar.getInstance();
-                int anio = cal.get(Calendar.YEAR);
-                int mes = cal.get(Calendar.MONTH);
-                int dia = cal.get(Calendar.DAY_OF_MONTH);
+    //    }
+    // });
 
-                DatePickerDialog dpd = new DatePickerDialog(SupportActivity.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                        String fecha = i + "/" + i1 + "/" + i2;
+    
+    public void abrirCalendario(View view) {
+        Calendar cal = Calendar.getInstance();
+        int anioActual = cal.get(Calendar.YEAR);
+        int mesActual = cal.get(Calendar.MONTH);
+        int diaActual = cal.get(Calendar.DAY_OF_MONTH);
 
-                    }
-                }, anio, mes, dia);
-                dpd.show();
+        DatePickerDialog dpd = new DatePickerDialog(SupportActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int anio, int mes, int dia) {
+                // Crear un calendario con la fecha seleccionada
+                Calendar fechaSeleccionadaCal = Calendar.getInstance();
+                fechaSeleccionadaCal.set(anio, mes, dia);
+
+                // Comparar la fecha seleccionada con la fecha actual
+                if (fechaSeleccionadaCal.before(cal)) {
+                    // Si la fecha seleccionada es anterior a la actual, mostrar advertencia
+                    Toast.makeText(SupportActivity.this, "La fecha no puede ser anterior a hoy.", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Guardar la fecha seleccionada si es válida
+                    fechaSeleccionada = anio + "/" + (mes + 1) + "/" + dia;
+                    //Toast.makeText(SupportActivity.this, "Fecha seleccionada: " + fechaSeleccionada, Toast.LENGTH_SHORT).show();
+                }
             }
+        }, anioActual, mesActual, diaActual);
 
+        // Establecer la fecha mínima para que el usuario no pueda seleccionar fechas anteriores
+        dpd.getDatePicker().setMinDate(cal.getTimeInMillis());
+
+        dpd.show();
+    }
+
+
+
+    public void solicitarTurno(View view) {
+        if (fechaSeleccionada != null) {
+            // aca se sumarian las operaciones para agendar el turno
+            // como guardar fecha en la base de datos o mostrar un mensaje de confirmación
+            Toast.makeText(SupportActivity.this, "Turno agendado para la fecha: " + fechaSeleccionada, Toast.LENGTH_SHORT).show();
+
+            // También puedes limpiar la fecha seleccionada después de agendar el turno si es necesario
+            fechaSeleccionada = null;
+        } else {
+            Toast.makeText(SupportActivity.this, "Por favor, selecciona una fecha primero.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+
+
+
+}
