@@ -42,7 +42,7 @@ public class BankingActivity extends AppCompatActivity {
     TransaccionAdapter transaccionAdapter;
     List<Transaccion> transaccionList;
 
-    Button btnTransferencia, btnPagos, btnPerfil, btnLoan;
+    Button btnTransferencia, btnPagos, btnPerfil;
 
 
     @Override
@@ -103,11 +103,11 @@ public class BankingActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_prestamos = findViewById(R.id.button14);
-        btn_prestamos.setOnClickListener(new View.OnClickListener() {
+        Button btn_ingresar = findViewById(R.id.button14);
+        btn_ingresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BankingActivity.this, LoanActivity.class);
+                Intent intent = new Intent(BankingActivity.this, IngresarDineroActivity.class);
                 startActivity(intent);
             }
         });
