@@ -179,10 +179,10 @@ public class AgregarPersonasActivity extends AppCompatActivity {
 
 
     //reviso si existe un cbu con el mismo numero
-    private boolean existeCBU(String contacto) {
+    private boolean existeCBU(String contacto, int idUsuario) {
 
-        String query = "SELECT COUNT(*) FROM Contactos WHERE contacto = ?";
-        Cursor cursor = db.rawQuery(query, new String[]{contacto});
+        String query = "SELECT COUNT(*) FROM Contactos WHERE contacto = ? AND id_usuario = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{contacto, String.valueOf(idUsuario)});
 
         if (cursor != null) {
             cursor.moveToFirst();
@@ -218,7 +218,7 @@ public class AgregarPersonasActivity extends AppCompatActivity {
         }
 
         // Verificar si ya existe un contacto con el mismo CBU
-        if (existeCBU(contactoA)) {
+        if (existeCBU(contactoA, idUsuario)) {
             Toast.makeText(this, "Ya existe un contacto con este CBU/CVU", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -271,21 +271,31 @@ public class AgregarPersonasActivity extends AppCompatActivity {
 // Traer los contactos agendados
 
     public List<Contactos> getAllContactos() {
+        // Recuperar el id_usuario desde SharedPreferences
+        SharedPreferences preferences = getSharedPreferences("user_session", MODE_PRIVATE);
+        int idUsuario = preferences.getInt("id_usuario", -1);
+
         List<Contactos> contactos = new ArrayList<>();
 
-        Cursor cursor= db.query(
-        "Contactos",new String[]{"id_contacto", "id_usuario", "contacto", "nombre"},null,null,null,null,null);
+        String query = "SELECT id_contacto, id_usuario, contacto, nombre " +
+                "FROM Contactos " +
+                "WHERE id_usuario = ? ";
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idUsuario)});
+
+//        Cursor cursor= db.query(
+//        "Contactos",new String[]{"id_contacto", "id_usuario", "contacto", "nombre"},null,null,null,null,null);
 
         // Procesa el cursor para obtener los datos
         if (cursor != null && cursor.moveToFirst()) {
         do {
             long idContacto= cursor.getLong(cursor.getColumnIndexOrThrow("id_contacto"));
-            long idUsuario= cursor.getLong(cursor.getColumnIndexOrThrow("id_usuario"));
+            long idUsuario2= cursor.getLong(cursor.getColumnIndexOrThrow("id_usuario"));
             String contacto= cursor.getString(cursor.getColumnIndexOrThrow("contacto"));
             String nombre= cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
 
             // Crea un objeto Contactos y añade a la lista
-            Contactos contactoItem= new Contactos((int) idUsuario, contacto, nombre);
+            Contactos contactoItem= new Contactos((int) idUsuario2, contacto, nombre);
             contactos.add(contactoItem);
         } while (cursor.moveToNext());
         cursor.close(); // Cierra el cursor para liberar recursos
