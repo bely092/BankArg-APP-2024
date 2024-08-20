@@ -311,6 +311,8 @@ public class TransferirActivity extends AppCompatActivity {
         }
     }
 
+//    Antiguo
+
     // Método para realizar la transferencia
     private void realizarTransferencia(int idUsuario, String cvu, double monto) {
         db.beginTransaction();

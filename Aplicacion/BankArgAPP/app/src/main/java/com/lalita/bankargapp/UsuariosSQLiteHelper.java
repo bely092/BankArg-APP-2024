@@ -276,7 +276,7 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
         insertarTransaccion(db,9, 1, 500.00, "Compra de electrodoméstico");
         insertarTransaccion(db,10, 2, 600.00, "Gastos médicos");
 
-        // Insertar 10 tipos de contacto
+        // Insertar tipos de contacto
 //        insertarTipoContacto(db, "Email");
 //        insertarTipoContacto(db, "Teléfono");
 //        insertarTipoContacto(db, "CBU/CVU");
