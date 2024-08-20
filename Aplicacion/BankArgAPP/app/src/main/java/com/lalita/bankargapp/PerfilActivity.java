@@ -237,7 +237,7 @@ public class PerfilActivity extends AppCompatActivity {
             // Actualizar los TextView con los datos del usuario
             nombreCompleto.setText(nombre + " " + apellido);
             email.setText(emailStr);
-            cvu.setText(cvuStr != null ? cvuStr : "Sin CVU");
+            cvu.setText(cvuStr != null ? cvuStr : "3336664445552221117778");
             alias.setText(aliasStr != null ? aliasStr : "Sin alias");
             dni.setText(dniStr != null ? dniStr : "Sin DNI");
             telefono.setText(telefonoStr != null ? telefonoStr : "Sin teléfono");
