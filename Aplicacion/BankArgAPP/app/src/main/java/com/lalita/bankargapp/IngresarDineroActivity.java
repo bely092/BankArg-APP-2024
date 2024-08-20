@@ -8,13 +8,18 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.view.MenuItem;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,15 +33,34 @@ public class IngresarDineroActivity extends AppCompatActivity {
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
+    private SQLiteDatabase db;
+    private EditText dineroIngresarEditText;
+    private Button ingresarButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingresar_dinero);
 
-        /*--- Boton en el tool bar que lleva al perfil---*/
+        dineroIngresarEditText = findViewById(R.id.Dineroingresar);
+        ingresarButton = findViewById(R.id.Ingresar);
 
-        View btnPerfil = findViewById(R.id.account_cir);
+
+        // Inicializar la base de datos
+        UsuariosSQLiteHelper dbHelper = new UsuariosSQLiteHelper(this);
+        db = dbHelper.getReadableDatabase();
+
+        // Agregar la funcionalidad al botón Ingresar
+        ingresarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ingresarDinero();
+            }
+        });
+
+//        /--- Boton en el tool bar que lleva al perfil---/
+
+                View btnPerfil = findViewById(R.id.account_cir);
         btnPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,8 +69,8 @@ public class IngresarDineroActivity extends AppCompatActivity {
             }
         });
 
-        /*--- lleva al home ---*/
-        View btnHome = findViewById(R.id.rectangle_2);
+//        /--- lleva al home ---/
+                View btnHome = findViewById(R.id.rectangle_2);
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,9 +110,9 @@ public class IngresarDineroActivity extends AppCompatActivity {
         });
 
 
-        /*---------------------Hooks------------------------*/
-        drawerLayout=findViewById(R.id.drawer_layout);
-        toolbar=findViewById(R.id.toolbar);
+//        /---------------------Hooks------------------------/
+                drawerLayout = findViewById(R.id.drawer_layout);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav,
@@ -116,8 +140,7 @@ public class IngresarDineroActivity extends AppCompatActivity {
                     Log.i("MENU_DRAWER_TAG", "Banking is selected");
                     startActivities(new Intent[]{intent});
                     drawerLayout.closeDrawer(GravityCompat.START);
-                }
-                else if (itemId == R.id.nav_contact) {
+                } else if (itemId == R.id.nav_contact) {
                     Intent intent = new Intent(activity, ContactActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Contact is selected");
                     startActivities(new Intent[]{intent});
@@ -139,6 +162,70 @@ public class IngresarDineroActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void ingresarDinero() {
+        // Obtener el monto ingresado
+        String montoIngresadoStr = dineroIngresarEditText.getText().toString().trim();
+        if (montoIngresadoStr.isEmpty()) {
+            Toast.makeText(this, "Por favor, ingrese un monto válido", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        double montoIngresado = Double.parseDouble(montoIngresadoStr);
+
+        // Aquí debes obtener el ID del usuario actualmente logueado.
+        // Supongamos que lo tenemos almacenado en una variable llamada idUsuarioLogueado.
+        int idUsuarioLogueado = obtenerIdUsuarioLogueado();
+
+        // Consultar el saldo actual
+        double saldoActual = obtenerSaldoActual(idUsuarioLogueado);
+
+        // Sumar el monto ingresado al saldo actual
+        double nuevoSaldo = saldoActual + montoIngresado;
+
+        // Actualizar el saldo en la base de datos
+        ContentValues values = new ContentValues();
+        values.put("saldo", nuevoSaldo);
+        int rowsUpdated = db.update("Cuentas", values, "id_usuario = ?", new String[]{String.valueOf(idUsuarioLogueado)});
+
+        if (rowsUpdated > 0) {
+            Toast.makeText(this, "Saldo actualizado correctamente", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Error al actualizar el saldo", Toast.LENGTH_SHORT).show();
+        }
+
+        // Registrar la transacción en la tabla Transacciones (Opcional)
+        registrarTransaccion(idUsuarioLogueado, montoIngresado);
+    }
+
+    private int obtenerIdUsuarioLogueado() {
+        // Recuperar id_usuario de SharedPreferences
+        SharedPreferences preferences = getSharedPreferences("user_session", MODE_PRIVATE);
+        int idUsuario = preferences.getInt("id_usuario", -1);
+        return idUsuario;
+    }
+
+    private double obtenerSaldoActual(int idUsuarioLogueado) {
+        double saldo = 0.0;
+        Cursor cursor = db.rawQuery("SELECT saldo FROM Cuentas WHERE id_usuario = ?", new String[]{String.valueOf(idUsuarioLogueado)});
+        if (cursor.moveToFirst()) {
+            saldo = cursor.getDouble(cursor.getColumnIndex("saldo"));
+        }
+        cursor.close();
+        return saldo;
+    }
+
+    private void registrarTransaccion(int idUsuarioLogueado, double monto) {
+        ContentValues values = new ContentValues();
+        values.put("id_cuenta", idUsuarioLogueado);
+        values.put("id_tipo_transaccion", 0);
+        values.put("monto", monto);
+        values.put("descripcion", "Ingreso de dinero");
+        db.insert("Transacciones", null, values);
+    }
+
+
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
