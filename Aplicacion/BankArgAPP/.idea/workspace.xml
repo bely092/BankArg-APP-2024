@@ -1,126 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AndroidLayouts">
-    <shared>
-      <config />
-    </shared>
-    <layouts>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_person.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_banking.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_contact.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_ingresar_dinero.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_item_transaccion.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_mantenimiento.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_pago_servicio.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_pagos.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_perfil.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_personas.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_products.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_support.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_transfer.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_transferir.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_contactos.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_usuario.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/no_activity_sobre_nosotros.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/menu/main_menu.xml">
-        <config>
-          <theme>@style/Theme.BankArgAPP</theme>
-        </config>
-      </layout>
-    </layouts>
-  </component>
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="NONE" />
+    <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5441de98-309f-4a61-b682-8dc84a7777dc" name="Changes" comment="">
+    <list default="true" id="9c7d0b12-9b80-446d-9372-17a6f2812a5a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lalita/bankargapp/BankingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/lalita/bankargapp/BankingActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_banking.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_banking.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_ingresar_dinero.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_ingresar_dinero.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,51 +16,19 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=ZE222SM6GC)]" />
-  <component name="ExternalProjectsData">
-    <projectState path="$PROJECT_DIR$">
-      <ProjectState />
-    </projectState>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
-  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Ezequiel Giampaoli\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd)]" />
   <component name="KotlinScriptingSettings">
     <scriptDefinition className="org.jetbrains.kotlin.scripting.resolve.KotlinScriptDefinitionFromAnnotatedTemplate" definitionName="KotlinBuildScript">
       <order>2147483647</order>
     </scriptDefinition>
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 6
-}</component>
-  <component name="ProjectId" id="2klbtqVCE9vOeBEpwVbfstguioM" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Android App.BankArg.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "FEATURE-UniendoRamas",
-    "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "SDK Location",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.0"
+    "git-widget-placeholder": "FEATURE-UniendoRamas"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="android.template.1267459514">
-      <recent name="com.lalita.bankargapp" />
-    </key>
-  </component>
+}]]></component>
   <component name="RunManager">
-    <configuration name="BankArg" type="AndroidRunConfigurationType" factoryName="Android App">
+    <configuration name="Bankarg" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="BankArgAPP.app.main" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -241,15 +95,7 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="5441de98-309f-4a61-b682-8dc84a7777dc" name="Changes" comment="" />
-      <created>1723861328237</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1723861328237</updated>
-    </task>
     <servers />
   </component>
 </project>
