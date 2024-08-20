@@ -96,6 +96,7 @@
                     android:layout_height="127dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
+                    android:fontFamily="@font/poppins"
                     android:gravity="center_horizontal|center_vertical"
                     android:text="Preguntas frecuentes"
                     android:textAppearance="@style/soporte"
@@ -111,6 +112,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:backgroundTint="@color/col3"
+                    android:fontFamily="@font/poppins"
                     android:gravity="center_horizontal|center_vertical"
                     android:text="¿Que es BankArg?"
                     android:textAppearance="@style/faq_pregunt"
@@ -130,6 +132,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:backgroundTint="@color/col3"
+                    android:fontFamily="@font/poppins"
                     android:gravity="center_horizontal|center_vertical"
                     android:text="¿Como se usa BankArg?"
                     android:textAppearance="@style/faq_pregunt"
@@ -145,16 +148,19 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:backgroundTint="@color/col3"
+                    android:fontFamily="@font/poppins"
                     android:gravity="center_horizontal|center_vertical"
                     android:text="Otras preguntas"
                     android:textAppearance="@style/faq_pregunt"
                     android:textColor="@color/col6"
                     android:textSize="16sp"
                     app:cornerRadius="0dp" />
+
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dp"
-                    android:background="@android:color/black"/>
+                    android:layout_marginTop="32dp"
+                    android:background="@android:color/black" />
             </LinearLayout>
 
             <LinearLayout
@@ -168,14 +174,16 @@
 
                 <TextView
                     android:id="@+id/describe_tu"
-                    android:layout_width="240dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="64dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins"
                     android:gravity="center_horizontal|center_vertical"
                     android:text="Tenes otra duda? Describila a continuación:"
+                    android:textAlignment="textStart"
                     android:textAppearance="@style/describe_tu"
                     android:textSize="20sp" />
 
@@ -187,25 +195,30 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="30dp"
                     android:background="?android:attr/fastScrollPreviewBackgroundRight"
-                    android:backgroundTint="@color/col4"
-                    android:hint="Quisiera saber sobre..." />
+                    android:backgroundTint="#DEE1E0"
+                    android:hint="Quisiera saber sobre..."
+                    android:textColor="@color/col1"
+                    android:textColorHighlight="@color/col1"
+                    android:textColorHint="@color/col5" />
 
                 <Button
                     android:id="@+id/Enviar"
                     android:layout_width="260dp"
                     android:layout_height="60dp"
-                    android:layout_marginStart="75dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
                     android:backgroundTint="@color/col1"
+                    android:fontFamily="@font/poppins"
                     android:text="Enviar"
                     android:textColor="@color/col6"
                     android:textSize="16sp"
                     app:cornerRadius="10dp" />
+
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dp"
-                    android:background="@android:color/black"/>
+                    android:layout_marginTop="32dp"
+                    android:background="@android:color/black" />
             </LinearLayout>
 
             <LinearLayout
@@ -224,33 +237,42 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="32dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="32dp"
+                    android:fontFamily="@font/poppins"
                     android:gravity="center_horizontal|center_vertical"
                     android:text="Reserva tu turno para atencion presencial:"
+                    android:textAlignment="viewStart"
                     android:textAppearance="@style/describe_tu"
                     android:textSize="20sp" />
 
                 <Button
                     android:id="@+id/seleccionar_fecha"
-                    android:layout_width="320dp"
+                    android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginLeft="45dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="32dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginRight="32dp"
                     android:backgroundTint="@color/col5"
+                    android:drawableTintMode="src_atop"
+                    android:fontFamily="@font/poppins"
                     android:onClick="abrirCalendario"
-                    android:text="Seleccionar fecha:"
+                    android:text="Seleccionar fecha"
                     android:textAppearance="@style/seleccionar_fecha"
                     android:textColor="@color/col6"
                     android:textSize="20sp"
-                    app:cornerRadius="10dp" />
+                    app:cornerRadius="10dp"
+                    app:icon="@drawable/baseline_assignment_24"
+                    app:iconGravity="end" />
 
                 <Button
                     android:id="@+id/Solicitar_turno"
-                    android:layout_width="260dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="60dp"
-                    android:layout_marginLeft="75dp"
+                    android:layout_gravity="center_horizontal"
                     android:backgroundTint="@color/col1"
                     android:fontFamily="@font/poppins"
+                    android:onClick="solicitarTurno"
                     android:text="Solicitar turno"
                     android:textColor="@color/col6"
                     android:textSize="16sp"
@@ -260,10 +282,11 @@
             <!--            FOOTER START -->
             <View
                 android:id="@+id/rectangle_2"
-                android:layout_width="fill_parent"
-                android:layout_height="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="57dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
+                android:layout_marginTop="100dp"
                 android:background="@color/col1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -275,8 +298,8 @@
             <TextView
                 android:id="@+id/bankarg_des"
                 style="@style/bankarg_des"
-                android:layout_width="433dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:gravity="center_horizontal|center_vertical"
