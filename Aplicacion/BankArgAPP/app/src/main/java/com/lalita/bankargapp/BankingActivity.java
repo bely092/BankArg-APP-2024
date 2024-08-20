@@ -71,6 +71,11 @@ public class BankingActivity extends AppCompatActivity {
         UsuariosSQLiteHelper dbHelper = new UsuariosSQLiteHelper(this);
         db = dbHelper.getReadableDatabase();
 
+//        SharedPreferences es una API en Android que se utiliza para almacenar datos pequeños y simples en un almacenamiento persistente.
+//        Los datos almacenados en SharedPreferences se guardan como pares clave-valor y se mantienen incluso después de que la aplicación se cierre.
+//        Este mecanismo es útil para guardar configuraciones de la aplicación, estados del usuario o cualquier otra información
+//        pequeña que deba persistir entre sesiones de usuario.
+
         // Recuperar id_usuario de SharedPreferences
         SharedPreferences preferences = getSharedPreferences("user_session", MODE_PRIVATE);
         int idUsuario = preferences.getInt("id_usuario", -1);
