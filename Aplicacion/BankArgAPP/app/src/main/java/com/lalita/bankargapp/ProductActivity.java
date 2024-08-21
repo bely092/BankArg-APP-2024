@@ -50,13 +50,13 @@ public class ProductActivity extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ProductActivity.this, HomeActivity.class);
+                Intent intent = new Intent(ProductActivity.this, ProductActivity.class);
                 startActivity(intent);
             }
         });
 
         btnBanking = findViewById(R.id.btn_pago_servicios);
-        btnLoan = findViewById(R.id.btn_pago_prestamos);
+//        btnLoan = findViewById(R.id.btn_pago_prestamos);
         btnTransfer = findViewById(R.id.btn_pago_tarjeta);
         btnPagos = findViewById(R.id.btn_pago_cuentas);
 
@@ -68,13 +68,13 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
 
-        btnLoan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProductActivity.this, LoanActivity.class);
-                startActivity(intent);
-            }
-        });
+//        btnLoan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(ProductActivity.this, LoanActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         btnBanking.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,32 +111,19 @@ public class ProductActivity extends AppCompatActivity {
                 int itemId = item.getItemId();
 
                 ProductActivity activity = ProductActivity.this;
-                if (itemId == R.id.nav_home) {
-                    Intent intent = new Intent(activity, HomeActivity.class);
+                if (itemId == R.id.nav_product) {
+                    Intent intent = new Intent(activity, ProductActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Home is selected");
                     startActivities(new Intent[]{intent});
                     drawerLayout.closeDrawer(GravityCompat.START);
+
                 } else if (itemId == R.id.nav_banking) {
                     Intent intent = new Intent(activity, BankingActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Banking is selected");
                     startActivities(new Intent[]{intent});
                     drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_product) {
-                    Intent intent = new Intent(activity, ProductActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Product is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_loan) {
-                    Intent intent = new Intent(activity, LoanActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Loan is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_profile) {
-                    Intent intent = new Intent(activity, PerfilActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Perfil is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_contact) {
+                }
+                else if (itemId == R.id.nav_contact) {
                     Intent intent = new Intent(activity, ContactActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Contact is selected");
                     startActivities(new Intent[]{intent});
@@ -144,11 +131,6 @@ public class ProductActivity extends AppCompatActivity {
                 } else if (itemId == R.id.nav_support) {
                     Intent intent = new Intent(activity, SupportActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Support is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_transfer) {
-                    Intent intent = new Intent(activity, TransferActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Transfer is selected");
                     startActivities(new Intent[]{intent});
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (itemId == R.id.nav_logout) {
@@ -162,8 +144,6 @@ public class ProductActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-
     }
 
     @Override

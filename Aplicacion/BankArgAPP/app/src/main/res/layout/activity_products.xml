@@ -92,20 +92,20 @@
                     app:circularflow_radiusInDP="10sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_pago_prestamos" />
-
-                <View
-                    android:id="@+id/view5"
-                    android:layout_width="350dp"
-                    android:layout_height="450dp"
-                    android:layout_marginTop="100dp"
-                    android:background="#F8F9FA"
-                    app:circularflow_angles="10sp"
-                    app:circularflow_defaultRadius="10sp"
-                    app:circularflow_radiusInDP="10sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/btn_pago_cuentas" />
+
+<!--                <View-->
+<!--                    android:id="@+id/view5"-->
+<!--                    android:layout_width="350dp"-->
+<!--                    android:layout_height="450dp"-->
+<!--                    android:layout_marginTop="100dp"-->
+<!--                    android:background="#F8F9FA"-->
+<!--                    app:circularflow_angles="10sp"-->
+<!--                    app:circularflow_defaultRadius="10sp"-->
+<!--                    app:circularflow_radiusInDP="10sp"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/btn_pago_cuentas" />-->
 
                 <View
                     android:id="@+id/view4"
@@ -140,7 +140,7 @@
                     android:fontFamily="@font/poppins"
                     android:text="Tendrás acceso a tus cuentas y podrás revisar tus movimientos de dinero en cualquier momento y desde todos los dispositivos asociados"
                     android:textAlignment="center"
-                    android:textColor="#767676"
+                    android:textColor="@color/col1"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="@+id/view3"
                     app:layout_constraintStart_toStartOf="@+id/view3"
@@ -180,7 +180,7 @@
                     android:fontFamily="@font/poppins"
                     android:text="Podrás agregar servicios, hacer pagos únicos y recibir alertas de vencimientos"
                     android:textAlignment="center"
-                    android:textColor="#767676"
+                    android:textColor="@color/col1"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="@+id/view4"
                     app:layout_constraintStart_toStartOf="@+id/view4"
@@ -212,45 +212,45 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view4" />
 
-                <TextView
-                    android:id="@+id/textView22"
-                    android:layout_width="305dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:fontFamily="@font/poppins"
-                    android:text="¿Te quedaste sin efectivo? No te preocupes, te préstamos en cómodas cuotas y si acreditas tu sueldo con nosotros accedes a tasas preferenciales"
-                    android:textAlignment="center"
-                    android:textColor="#767676"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="@+id/view5"
-                    app:layout_constraintStart_toStartOf="@+id/view5"
-                    app:layout_constraintTop_toTopOf="@+id/view5" />
+<!--                <TextView-->
+<!--                    android:id="@+id/textView22"-->
+<!--                    android:layout_width="305dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="30dp"-->
+<!--                    android:fontFamily="@font/poppins"-->
+<!--                    android:text="¿Te quedaste sin efectivo? No te preocupes, te préstamos en cómodas cuotas y si acreditas tu sueldo con nosotros accedes a tasas preferenciales"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="@color/col1"-->
+<!--                    android:textSize="20sp"-->
+<!--                    app:layout_constraintEnd_toEndOf="@+id/view5"-->
+<!--                    app:layout_constraintStart_toStartOf="@+id/view5"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/view5" />-->
 
-                <ImageView
-                    android:id="@+id/imageView18"
-                    android:layout_width="250dp"
-                    android:layout_height="250dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/view5"
-                    app:layout_constraintEnd_toEndOf="@+id/view5"
-                    app:layout_constraintStart_toStartOf="@+id/view5"
-                    app:layout_constraintTop_toBottomOf="@+id/textView22"
-                    app:srcCompat="@mipmap/prestamo" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/imageView18"-->
+<!--                    android:layout_width="250dp"-->
+<!--                    android:layout_height="250dp"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/view5"-->
+<!--                    app:layout_constraintEnd_toEndOf="@+id/view5"-->
+<!--                    app:layout_constraintStart_toStartOf="@+id/view5"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/textView22"-->
+<!--                    app:srcCompat="@mipmap/prestamo" />-->
 
-                <Button
-                    android:id="@+id/btn_pago_prestamos"
-                    android:layout_width="300dp"
-                    android:layout_height="80dp"
-                    android:layout_marginTop="10dp"
-                    android:backgroundTint="@color/col1"
-                    android:fontFamily="@font/poppins"
-                    android:text="Prestamos"
-                    android:textColor="#FFFFFF"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:cornerRadius="24dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view5" />
+<!--                <Button-->
+<!--                    android:id="@+id/btn_pago_prestamos"-->
+<!--                    android:layout_width="300dp"-->
+<!--                    android:layout_height="80dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:backgroundTint="@color/col1"-->
+<!--                    android:fontFamily="@font/poppins"-->
+<!--                    android:text="Prestamos"-->
+<!--                    android:textColor="#FFFFFF"-->
+<!--                    android:textSize="16sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    app:cornerRadius="24dp"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/view5" />-->
 
                 <TextView
                     android:id="@+id/textView23"
@@ -260,7 +260,7 @@
                     android:fontFamily="@font/poppins"
                     android:text="Realizar tus transferencias nunca fue tan fácil"
                     android:textAlignment="center"
-                    android:textColor="#767676"
+                    android:textColor="@color/col1"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="@+id/view6"
                     app:layout_constraintStart_toStartOf="@+id/view6"

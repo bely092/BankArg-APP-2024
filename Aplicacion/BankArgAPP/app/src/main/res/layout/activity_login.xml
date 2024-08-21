@@ -62,14 +62,14 @@
                 android:textStyle="normal" />
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="25dp"
                 android:background="@drawable/borde_redondeado"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
-                android:hint="Usuario"
+                android:hint="Email"
                 android:padding="8dp"
                 android:textColor="#2C3333"
                 android:textColorHighlight="#2C3333"

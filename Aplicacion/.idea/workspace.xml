@@ -21,9 +21,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2hNrOhngLifCbzIs7ZNuQfT4Yqi" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -37,9 +37,9 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "MLaura",
+    "git-widget-placeholder": "FEATURE-UniendoRamas",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/FACU/ISPC/2024/BankArg-APP-2024/Aplicacion"
+    "last_opened_file_path": "D:/Ezequiel Giampaoli/Documents/Educacion/ISPC/TP Final/BankArg-APP-2024/Aplicacion"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

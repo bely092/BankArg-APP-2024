@@ -7,17 +7,28 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.view.MenuItem;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.lalita.bankargapp.Clases.Transaccion;
+import com.lalita.bankargapp.Clases.TransaccionAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BankingActivity extends AppCompatActivity {
 
@@ -25,14 +36,22 @@ public class BankingActivity extends AppCompatActivity {
     NavigationView navigationView;
     Toolbar toolbar;
     ActionBarDrawerToggle toggle;
+    TextView saldo;
+    RecyclerView recyclerViewTransacciones;
+    SQLiteDatabase db;
+    TransaccionAdapter transaccionAdapter;
+    List<Transaccion> transaccionList;
 
-    Button btnTransferencia, btnPagos, btnPerfil, btnLoan;
+    Button btnTransferencia, btnPagos, btnPerfil;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_banking);
+
+        recyclerViewTransacciones = findViewById(R.id.recyclerViewTransacciones);
+        recyclerViewTransacciones.setLayoutManager(new LinearLayoutManager(this));
 
         /*--- Boton en el tool bar que lleva al perfil---*/
 
@@ -45,6 +64,30 @@ public class BankingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        saldo = findViewById(R.id.saldo);
+
+        // Inicializar la base de datos
+        UsuariosSQLiteHelper dbHelper = new UsuariosSQLiteHelper(this);
+        db = dbHelper.getReadableDatabase();
+
+//        SharedPreferences es una API en Android que se utiliza para almacenar datos pequeños y simples en un almacenamiento persistente.
+//        Los datos almacenados en SharedPreferences se guardan como pares clave-valor y se mantienen incluso después de que la aplicación se cierre.
+//        Este mecanismo es útil para guardar configuraciones de la aplicación, estados del usuario o cualquier otra información
+//        pequeña que deba persistir entre sesiones de usuario.
+
+        // Recuperar id_usuario de SharedPreferences
+        SharedPreferences preferences = getSharedPreferences("user_session", MODE_PRIVATE);
+        int idUsuario = preferences.getInt("id_usuario", -1);
+
+        // Verificar si id_usuario es válido
+        if (idUsuario != -1) {
+            // Obtener los datos del usuario de la base de datos
+            cargarTransacciones(idUsuario);
+            obtenerDatosUsuario(idUsuario);
+        } else {
+            Toast.makeText(this, "Error: Usuario no logueado", Toast.LENGTH_SHORT).show();
+        }
 
 
         Button btn_transferir = findViewById(R.id.button13);
@@ -65,11 +108,11 @@ public class BankingActivity extends AppCompatActivity {
             }
         });
 
-        Button btn_prestamos = findViewById(R.id.button14);
-        btn_prestamos.setOnClickListener(new View.OnClickListener() {
+        Button btn_ingresar = findViewById(R.id.button14);
+        btn_ingresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BankingActivity.this, LoanActivity.class);
+                Intent intent = new Intent(BankingActivity.this, IngresarDineroActivity.class);
                 startActivity(intent);
             }
         });
@@ -79,7 +122,7 @@ public class BankingActivity extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BankingActivity.this, HomeActivity.class);
+                Intent intent = new Intent(BankingActivity.this, ProductActivity.class);
                 startActivity(intent);
             }
         });
@@ -106,32 +149,19 @@ public class BankingActivity extends AppCompatActivity {
                 int itemId = item.getItemId();
 
                 BankingActivity activity = BankingActivity.this;
-                if (itemId == R.id.nav_home) {
-                    Intent intent = new Intent(activity, HomeActivity.class);
+                if (itemId == R.id.nav_product) {
+                    Intent intent = new Intent(activity, ProductActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Home is selected");
                     startActivities(new Intent[]{intent});
                     drawerLayout.closeDrawer(GravityCompat.START);
+
                 } else if (itemId == R.id.nav_banking) {
                     Intent intent = new Intent(activity, BankingActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Banking is selected");
                     startActivities(new Intent[]{intent});
                     drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_product) {
-                    Intent intent = new Intent(activity, ProductActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Product is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_loan) {
-                    Intent intent = new Intent(activity, LoanActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Loan is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_profile) {
-                    Intent intent = new Intent(activity, PerfilActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Perfil is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_contact) {
+                }
+                else if (itemId == R.id.nav_contact) {
                     Intent intent = new Intent(activity, ContactActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Contact is selected");
                     startActivities(new Intent[]{intent});
@@ -139,11 +169,6 @@ public class BankingActivity extends AppCompatActivity {
                 } else if (itemId == R.id.nav_support) {
                     Intent intent = new Intent(activity, SupportActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Support is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_transfer) {
-                    Intent intent = new Intent(activity, TransferActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Transfer is selected");
                     startActivities(new Intent[]{intent});
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (itemId == R.id.nav_logout) {
@@ -157,7 +182,64 @@ public class BankingActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
 
+    private void cargarTransacciones(int idUsuario) {
+        List<Transaccion> transaccionList = new ArrayList<>();
+
+        // Consulta para obtener las transacciones del usuario, ordenadas por fecha_transaccion DESC (de más reciente a más antigua)
+        String query = "SELECT t.id_transaccion, t.id_cuenta, t.id_tipo_transaccion, t.monto, t.fecha_transaccion, t.descripcion " +
+                "FROM Transacciones t " +
+                "JOIN Cuentas c ON t.id_cuenta = c.id_cuenta " +
+                "WHERE c.id_usuario = ? " +
+                "ORDER BY t.fecha_transaccion DESC " + // Ordenar por fecha DESC
+                "LIMIT 10"; // Limite 10
+
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idUsuario)});
+
+        if (cursor.moveToFirst()) {
+            do {
+                // Recuperar los datos del cursor
+                int idTransaccion = cursor.getInt(0);
+                int idCuenta = cursor.getInt(1);
+                int idTipoTransaccion = cursor.getInt(2);
+                float monto = cursor.getFloat(3);
+                String fechaTransaccion = cursor.getString(4);  // Ahora la fecha es un String
+                String descripcion = cursor.getString(5);
+
+                // Crear un objeto Transaccion con los datos
+                Transaccion transaccion = new Transaccion(idTransaccion, idCuenta, idTipoTransaccion, monto, fechaTransaccion, descripcion);
+                transaccionList.add(transaccion);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        // Configurar el adaptador del RecyclerView
+        transaccionAdapter = new TransaccionAdapter(transaccionList, this); // 'this' es el Context
+        recyclerViewTransacciones.setAdapter(transaccionAdapter);
+    }
+
+
+    private void obtenerDatosUsuario(int idUsuario) {
+        // Consulta para obtener la información del usuario desde la base de datos
+        String query = "SELECT c.saldo " +
+                "FROM Usuarios2 u " +
+                "LEFT JOIN Cuentas c ON u.id_usuario = c.id_usuario " +
+                "WHERE u.id_usuario = ?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idUsuario)});
+
+        if (cursor.moveToFirst()) {
+            // Obtener datos del cursor y actualizar las vistas
+            double saldoValue = cursor.getDouble(0);
+
+            // Actualizar los TextView con los datos del usuario
+            saldo.setText("$" + String.format("%.2f", saldoValue));
+        } else {
+            Toast.makeText(this, "No se encontraron datos para el usuario", Toast.LENGTH_SHORT).show();
+        }
+        cursor.close();
     }
 
     @Override

@@ -107,7 +107,7 @@
                 android:layout_height="100dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/gradient_banking"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.507"
@@ -120,26 +120,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="52dp"
+                android:layout_marginTop="40dp"
+                android:drawablePadding="2dp"
+                android:drawingCacheQuality="auto"
                 android:fontFamily="@font/poppins"
                 android:text=" Balance: "
                 android:textColor="@color/col3"
                 android:textSize="28sp"
                 android:textStyle="normal"
-                app:drawableLeftCompat="@drawable/baseline_monetization_on_24"
+                app:drawableStartCompat="@drawable/baseline_monetization_on_24"
                 app:drawableTint="@color/col6"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/icono_usuar" />
 
 
             <TextView
-                android:id="@+id/some_id"
+                android:id="@+id/saldo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="21dp"
-                android:layout_marginTop="52dp"
+                android:layout_marginTop="40dp"
                 android:fontFamily="@font/poppins"
                 android:text="@string/some_id"
                 android:textAppearance="@style/some_id"
@@ -217,7 +219,6 @@
             <!-- ventana balance -->
 
 
-
             <View
                 android:id="@+id/icono_usuar"
                 android:layout_width="120dp"
@@ -225,19 +226,19 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="38dp"
+                android:layout_marginTop="32dp"
                 android:background="@drawable/baseline_person_4_24"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
             <TextView
-                android:id="@+id/joaqu_n_bon"
+                android:id="@+id/nombreCompleto"
                 android:layout_width="251dp"
                 android:layout_height="120dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="38dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="2dp"
                 android:fontFamily="@font/poppins"
                 android:gravity="center_horizontal|center_vertical"
@@ -258,7 +259,7 @@
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/poppins"
                 android:text="4562238744196"
-                android:textColor="#000000"
+                android:textColor="@color/col1"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.016"
@@ -274,7 +275,7 @@
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/poppins"
                 android:text="nicoquinonero@gmail.com"
-                android:textColor="#000000"
+                android:textColor="@color/col1"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -290,7 +291,7 @@
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/poppins"
                 android:text="351223547"
-                android:textColor="#000000"
+                android:textColor="@color/col1"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -301,13 +302,14 @@
                 android:id="@+id/imageButton7"
                 android:layout_width="50dp"
                 android:layout_height="48dp"
-                android:layout_marginTop="112dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="60dp"
                 android:background="@color/col6"
                 android:contentDescription="copiar alias"
-                app:layout_constraintBottom_toBottomOf="@+id/Alias"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/Alias"
-                app:layout_constraintTop_toBottomOf="@+id/Dinerotransferir"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton5"
                 app:srcCompat="@drawable/baseline_content_copy_24" />
 
             <TextView
@@ -319,7 +321,7 @@
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/poppins"
                 android:text="31524679"
-                android:textColor="#000000"
+                android:textColor="@color/col1"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -330,10 +332,11 @@
                 android:id="@+id/imageButton5"
                 android:layout_width="50dp"
                 android:layout_height="48dp"
-                android:layout_marginTop="45dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="60dp"
                 android:background="@color/col6"
                 android:contentDescription="copiar cbu"
-                app:layout_constraintBottom_toBottomOf="@+id/CVU"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/CVU"
                 app:layout_constraintTop_toBottomOf="@+id/Dinerotransferir"
@@ -365,7 +368,7 @@
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/poppins"
                 android:text="Elmago"
-                android:textColor="#000000"
+                android:textColor="@color/col1"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -419,6 +422,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/rectangle_2"
                 app:layout_constraintVertical_bias="1.0" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="20dp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

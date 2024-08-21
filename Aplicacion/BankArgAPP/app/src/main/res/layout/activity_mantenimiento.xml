@@ -120,6 +120,8 @@
         android:backgroundTint="@color/col1"
         app:headerLayout="@layout/header"
         app:itemIconTint="@color/col6"
+        app:itemRippleColor="@color/col1"
+        app:itemShapeFillColor="@color/col1"
         app:itemTextColor="@color/col6"
         app:menu="@menu/main_menu"
         app:subheaderColor="@color/col2" />

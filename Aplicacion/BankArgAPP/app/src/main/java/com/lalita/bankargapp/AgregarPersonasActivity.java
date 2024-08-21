@@ -1,6 +1,10 @@
 package com.lalita.bankargapp;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -16,15 +20,31 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
+
+import com.lalita.bankargapp.Clases.Contactos;
+import com.lalita.bankargapp.Clases.ContactosAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
 
 public class AgregarPersonasActivity extends AppCompatActivity {
 
     private EditText editTextCBU;
-    private EditText editTextAlias;
+    //private EditText editTextAlias;
     private EditText nombrePers;
     private Button buttonAddPerson;
+    SQLiteDatabase db;
+
+
+    RecyclerView recyclerViewContactos;
+    ContactosAdapter contactoAdapter;
+    List<Contactos> contactoList;
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -36,17 +56,45 @@ public class AgregarPersonasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_person);
 
+        // Inicializar la base de datos
+
+        recyclerViewContactos = findViewById(R.id.recyclerViewContactos);
+
+
+        UsuariosSQLiteHelper dbHelper = new UsuariosSQLiteHelper(this);
+        db = dbHelper.getWritableDatabase();
+
+
+        // Recuperar el id_usuario de SharedPreferences
+        SharedPreferences preferences = getSharedPreferences("user_session", MODE_PRIVATE);
+        int idUsuario = preferences.getInt("id_usuario", -1); // -1 es el valor por defecto si no se encuentra
+
+        if (idUsuario != -1) {
+            // el id_usuario se encontro
+        } else {
+            // No se encontró un id_usuario
+            Toast.makeText(this, "No se encontró un usuario logueado", Toast.LENGTH_SHORT).show();
+            // Puedes redirigir al usuario a la pantalla de inicio de sesión o manejarlo de otra forma
+        }
+
+
+
         editTextCBU = findViewById(R.id.editTextCBU);
-        editTextAlias = findViewById(R.id.editTextAlias);
         nombrePers = findViewById(R.id.nombrePers);
         buttonAddPerson = findViewById(R.id.buttonAddPerson);
 
-        buttonAddPerson.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addPerson();
-            }
-        });
+
+        // Configurar el RecyclerView
+        recyclerViewContactos.setLayoutManager(new LinearLayoutManager(this));
+        contactoList = getAllContactos();
+
+        contactoAdapter = new ContactosAdapter(contactoList, this::eliminarContacto);
+        recyclerViewContactos.setAdapter(contactoAdapter);
+
+
+
+
+        buttonAddPerson.setOnClickListener(v -> addPerson());
 
 
         /*--- Boton en el tool bar que lleva al perfil---*/
@@ -65,7 +113,7 @@ public class AgregarPersonasActivity extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AgregarPersonasActivity.this, HomeActivity.class);
+                Intent intent = new Intent(AgregarPersonasActivity.this, ProductActivity.class);
                 startActivity(intent);
             }
         });
@@ -89,32 +137,19 @@ public class AgregarPersonasActivity extends AppCompatActivity {
                 int itemId = item.getItemId();
 
                 AgregarPersonasActivity activity = AgregarPersonasActivity.this;
-                if (itemId == R.id.nav_home) {
-                    Intent intent = new Intent(activity, HomeActivity.class);
+                if (itemId == R.id.nav_product) {
+                    Intent intent = new Intent(activity, ProductActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Home is selected");
                     startActivities(new Intent[]{intent});
                     drawerLayout.closeDrawer(GravityCompat.START);
+
                 } else if (itemId == R.id.nav_banking) {
                     Intent intent = new Intent(activity, BankingActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Banking is selected");
                     startActivities(new Intent[]{intent});
                     drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_product) {
-                    Intent intent = new Intent(activity, ProductActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Product is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_loan) {
-                    Intent intent = new Intent(activity, LoanActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Loan is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_profile) {
-                    Intent intent = new Intent(activity, PerfilActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Perfil is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_contact) {
+                }
+                else if (itemId == R.id.nav_contact) {
                     Intent intent = new Intent(activity, ContactActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Contact is selected");
                     startActivities(new Intent[]{intent});
@@ -122,11 +157,6 @@ public class AgregarPersonasActivity extends AppCompatActivity {
                 } else if (itemId == R.id.nav_support) {
                     Intent intent = new Intent(activity, SupportActivity.class);
                     Log.i("MENU_DRAWER_TAG", "Support is selected");
-                    startActivities(new Intent[]{intent});
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (itemId == R.id.nav_transfer) {
-                    Intent intent = new Intent(activity, TransferActivity.class);
-                    Log.i("MENU_DRAWER_TAG", "Transfer is selected");
                     startActivities(new Intent[]{intent});
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (itemId == R.id.nav_logout) {
@@ -142,29 +172,162 @@ public class AgregarPersonasActivity extends AppCompatActivity {
         });
     }
 
+
+    // Aca arranca la funcion Para Agregar un contacto
+
+    UsuariosSQLiteHelper dbHelper = new UsuariosSQLiteHelper(this);
+
+
+    //reviso si existe un cbu con el mismo numero
+    private boolean existeCBU(String contacto, int idUsuario) {
+
+        String query = "SELECT COUNT(*) FROM Contactos WHERE contacto = ? AND id_usuario = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{contacto, String.valueOf(idUsuario)});
+
+        if (cursor != null) {
+            cursor.moveToFirst();
+            int count = cursor.getInt(0);
+            cursor.close();
+            return count > 0;
+        }
+        return false;
+    }
+
+
     private void addPerson() {
-        String cbu = editTextCBU.getText().toString().trim();
-        String alias = editTextAlias.getText().toString().trim();
+        // Recuperar el id_usuario desde SharedPreferences
+        SharedPreferences preferences = getSharedPreferences("user_session", MODE_PRIVATE);
+        int idUsuario = preferences.getInt("id_usuario", -1);
+
+        if (idUsuario == -1) {
+            // Manejar el caso donde no se encontró un id_usuario
+            Toast.makeText(this, "No se encontró un usuario logueado", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String contactoA = editTextCBU.getText().toString().trim();
         String nombre = nombrePers.getText().toString().trim();
 
-        if (TextUtils.isEmpty(cbu)) {
-            editTextCBU.setError("CBU/CVU es requerido");
+        if (TextUtils.isEmpty(contactoA)) {
+            editTextCBU.setError("CBU es requerido");
             return;
         }
-
-        if (TextUtils.isEmpty(alias)) {
-            editTextAlias.setError("Alias es requerido");
-            return;
-        }
-
         if (TextUtils.isEmpty(nombre)) {
             nombrePers.setError("Nombre es requerido");
             return;
         }
 
-//        Toast.makeText(this, "Persona agregada: " + nombre, Toast.LENGTH_LONG).show();
-        Toast.makeText(this, "Servicio no disponible en estos momentos", Toast.LENGTH_LONG).show();
+        // Verificar si ya existe un contacto con el mismo CBU
+        if (existeCBU(contactoA, idUsuario)) {
+            Toast.makeText(this, "Ya existe un contacto con este CBU/CVU", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (validarCampos(contactoA, nombre)) {
+
+            // Pasar id_usuario junto con contacto y nombre
+            agregarContacto(idUsuario, contactoA, nombre);
+        }
     }
+
+
+
+
+    //Verifico los campos
+
+    private boolean validarCampos(String contacto, String nombre) {
+        // Validar que el nombre solo contenga letras
+        if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            Toast.makeText(this, "El nombre solo debe contener letras", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        // Valido que el contacto (CBU) contenga exactamente 22 números
+        if (!contacto.matches("\\d{22}")) {
+            Toast.makeText(this, "CBU/CVU debe contener 22 dígitos", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
+    }
+
+
+    //Agrego el contacto
+
+    private void agregarContacto( int idUsuario, String contacto, String nombre) {
+        boolean insertar = dbHelper.insertarContactos(db, idUsuario, contacto, nombre);
+        if (insertar) {
+            contactoList.add(new Contactos(idUsuario,contacto, nombre));
+            contactoAdapter.notifyDataSetChanged();
+            Toast.makeText(this, "Contacto agregado", Toast.LENGTH_SHORT).show();
+            // Limpia los campos del formulario
+            editTextCBU.setText("");
+            nombrePers.setText("");
+        } else {
+            Toast.makeText(this, "Error al agregar el contacto", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+// Traer los contactos agendados
+
+    public List<Contactos> getAllContactos() {
+        // Recuperar el id_usuario desde SharedPreferences
+        SharedPreferences preferences = getSharedPreferences("user_session", MODE_PRIVATE);
+        int idUsuario = preferences.getInt("id_usuario", -1);
+
+        List<Contactos> contactos = new ArrayList<>();
+
+        String query = "SELECT id_contacto, id_usuario, contacto, nombre " +
+                "FROM Contactos " +
+                "WHERE id_usuario = ? ";
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idUsuario)});
+
+//        Cursor cursor= db.query(
+//        "Contactos",new String[]{"id_contacto", "id_usuario", "contacto", "nombre"},null,null,null,null,null);
+
+        // Procesa el cursor para obtener los datos
+        if (cursor != null && cursor.moveToFirst()) {
+        do {
+            long idContacto= cursor.getLong(cursor.getColumnIndexOrThrow("id_contacto"));
+            long idUsuario2= cursor.getLong(cursor.getColumnIndexOrThrow("id_usuario"));
+            String contacto= cursor.getString(cursor.getColumnIndexOrThrow("contacto"));
+            String nombre= cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
+
+            // Crea un objeto Contactos y añade a la lista
+            Contactos contactoItem= new Contactos((int) idUsuario2, contacto, nombre);
+            contactos.add(contactoItem);
+        } while (cursor.moveToNext());
+        cursor.close(); // Cierra el cursor para liberar recursos
+    }
+
+    return contactos; // Retorna la lista de contactos
+}
+
+
+
+    //Borrar contacto
+
+    private void eliminarContacto(Contactos contacto) {
+
+        String contactoValor= contacto.getContacto();
+        // / Eliminar el contacto usando el valor del contacto
+        boolean eliminado= dbHelper.eliminarPorCBU(contactoValor);
+
+        if (eliminado) {
+            // Actualizar la lista y la vista
+            contactoList.remove(contacto);
+            contactoAdapter.notifyDataSetChanged();
+            Toast.makeText(this, " Contacto eliminado", Toast.LENGTH_SHORT).show();
+        } else {
+            // Mostrar mensaje de error
+            Toast.makeText(this, "Error al eliminar el contacto", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

@@ -116,7 +116,7 @@
                 <!--            FOOTER START -->
 
                 <TextView
-                    android:id="@+id/some_id"
+                    android:id="@+id/saldo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -143,6 +143,8 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:text="@string/transferencias"
                     android:textAppearance="@style/transferenc"
+                    android:textColor="@color/col1"
+                    android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -200,7 +202,11 @@
                     android:layout_marginEnd="1dp"
                     android:backgroundTint="@color/col1"
                     android:text="Agregar"
-                    android:textSize="16sp"
+                    android:textColor="@color/col6"
+                    android:textColorHighlight="@color/col6"
+                    android:textColorHint="@color/col6"
+                    android:textColorLink="@color/col6"
+                    android:textSize="14sp"
                     android:textStyle="normal"
                     app:icon="@drawable/baseline_person_add_alt_24"
                     app:iconGravity="textTop"
@@ -220,7 +226,11 @@
                     android:backgroundTint="@color/col1"
                     android:text="Historial"
                     android:textAlignment="center"
-                    android:textSize="16sp"
+                    android:textColor="@color/col6"
+                    android:textColorHighlight="@color/col6"
+                    android:textColorHint="@color/col6"
+                    android:textColorLink="@color/col6"
+                    android:textSize="14sp"
                     android:textStyle="normal"
                     app:icon="@drawable/baseline_manage_history_24"
                     app:iconGravity="textTop"
@@ -237,18 +247,22 @@
                     android:layout_height="130dp"
                     android:layout_marginStart="2dp"
                     android:layout_marginTop="50dp"
+                    android:backgroundTint="@color/col1"
                     android:text="Transferir"
                     android:textAlignment="center"
-                    android:textSize="16sp"
+                    android:textColor="@color/col6"
+
+                    android:textColorHighlight="@color/col6"
+                    android:textColorHint="@color/col6"
+                    android:textColorLink="@color/col6"
+                    android:textSize="14sp"
+
                     android:textStyle="normal"
 
-                    android:backgroundTint="@color/col1"
+                    app:icon="@drawable/send_money"
                     app:iconGravity="textTop"
                     app:iconSize="50dp"
                     app:iconTint="@color/col3"
-
-                    app:icon="@drawable/send_money"
-
                     app:layout_constraintEnd_toStartOf="@+id/button11"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/Dinerotransferir" />
